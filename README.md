@@ -19,3 +19,34 @@ Procket integrates these effective strategies into its design by providing users
 ### User Profile
 <!-- Who will use your app? How will they use it? Any special considerations that your app must take into account. -->
 Procket is for anyone looking to enhance their productivity and better understand their procrastination habits. Users will create tasks, set goals, track their mood, and analyze procrastination patterns to optimize their planning strategies. The app must consider users' varying levels of tech-savviness and preferences for visual feedback to ensure accessibility and engagement.
+
+### Features
+<!-- List the functionality that your app will include. These can be written as user stories or descriptions with related details. Do not describe _how_ these features are implemented, only _what_ needs to be implemented. -->
+- Task Creation:
+    - Users can create tasks with customizable goals, durations, and reminders.
+
+- Mood Tracking:
+    - Users can log their mood daily to correlate emotional states with productivity levels.
+
+- Procrastination Analysis:
+    - Advanced analytics provide insights into procrastination patterns over time.
+
+- Progress Graphs:
+    - Visualize progress and procrastination trends to make informed planning decisions.
+
+- Daily To-Do List:
+    - Generate a daily list of tasks based on predefined goals and priorities.
+
+- Time Management:
+    - Set timeframes for tasks and customize Pomodoro sessions for efficient work periods.
+
+- Task Completion:
+    - Users can mark tasks as done with checkboxes and provide reasons for any incomplete tasks.
+
+- Prioritize Remaining Tasks:
+    vDisplay tasks remaining from previous days to facilitate daily planning.
+
+- Visual Progress Tracking:
+    - Rocket assembly metaphor for task completion, visually symbolizing progress towards goals.<br />
+    *Procket's visual design aims to reinforce its mission of overcoming procrastination and achieving goals by incorporating imagery of assembling a rocket. Users will encounter a visually engaging interface where completing tasks is represented as assembling small parts of a rocket. Each task completed represents fitting another piece into the rocket body, visually symbolizing progress towards the user's goal. Additionally, upcoming tasks will be visualized as small steps leading to the rocket's launch, reinforcing the idea that commitment to completing these tasks propels the user closer to their target. This visual metaphor serves as a constant reminder of the journey towards productivity and goal achievement, inspiring users to stay committed and focused on their tasks.*
+
