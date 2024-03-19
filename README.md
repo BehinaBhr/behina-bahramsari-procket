@@ -89,3 +89,64 @@ Procket is for anyone looking to enhance their productivity and better understan
 ### APIs
 <!-- List any external sources of data that will be used in your app. -->
 - No external APIs will be used for the first sprint
+
+
+### Sitemap
+<!-- List the pages of your app with brief descriptions. You can show this visually, or write it out. -->
+- Header
+   - Procket Logo
+   - Navbar: Home, Create Goal, Goals, Statistics
+
+- Home Page
+   - Uncompleted Tasks
+   - Today's Tasks
+   - Future Tasks
+   - Daily Mood Tracker
+
+- Create Your Goal Page
+   - Goal Description
+   - Frequency (Daily, Weekly, Monthly)
+   - Start and End Dates
+   - Option to Never End
+
+- Task Details Page
+   - Task Info
+   - Related Goals
+   - Pomodoro Timer
+   - Mark Task as Done/Delayed
+
+- Goals Page
+   - List of Created Goals
+     - Goal Name
+     - Planned Commitment
+     - Start and End Dates
+     - Progress Status
+     - Actions (Edit, Delete)
+
+- Statistics and Analytics Page
+   - Daily Mood Analysis
+     - Graph of Daily Mood
+   - Procrastination Analysis
+     - Patterns and Reasons for Procrastination
+
+   - Navigation to Other Pages (Back Arrow)
+
+
+### Mockups
+#### Home Page
+![](home-page.png)
+#### Create Goal Page
+![](create-your-goal.png)
+#### Goals Page
+![](goals-page.png)
+#### Task Details Page
+![](a-task.png)
+#### Stats Page
+![](stats-page.png)
+#### Delete Goal Popup Modal
+![](delete-goal.png)
+
+
+### Data
+<!-- Describe your data and the relationships between them. You can show this visually using diagrams, or write it out.  -->
+![](sql-diagram.png)
