@@ -50,3 +50,42 @@ Procket is for anyone looking to enhance their productivity and better understan
     - Rocket assembly metaphor for task completion, visually symbolizing progress towards goals.<br />
     *Procket's visual design aims to reinforce its mission of overcoming procrastination and achieving goals by incorporating imagery of assembling a rocket. Users will encounter a visually engaging interface where completing tasks is represented as assembling small parts of a rocket. Each task completed represents fitting another piece into the rocket body, visually symbolizing progress towards the user's goal. Additionally, upcoming tasks will be visualized as small steps leading to the rocket's launch, reinforcing the idea that commitment to completing these tasks propels the user closer to their target. This visual metaphor serves as a constant reminder of the journey towards productivity and goal achievement, inspiring users to stay committed and focused on their tasks.*
 
+
+## Implementation
+### Tech Stack
+<!-- List technologies that will be used in your app, including any libraries to save time or provide more functionality. Be sure to research any potential limitations. -->
+- Frontend Framework:
+    - **React.js**
+    - **react-router**
+    - **axios**
+
+- Data Visualization:
+    - **Chart.js** - A versatile charting library for creating interactive and customizable charts to visualize progress, procrastination patterns, and mood trends.
+    - **React Charts** - Provides React components for integrating Chart.js with React applications, offering seamless integration and enhanced flexibility.
+    - **React Circular Progressbar** - Offers customizable circular progress bars for visualizing task completion and goal progress.
+
+- UI Components:
+    - **React Slider** - Allows users to set custom timeframes for tasks or adjust settings with intuitive slider components.
+    - **React Calendar** - Provides a calendar component for scheduling tasks, setting deadlines, and planning events.
+    - **Input Type Date** - Utilizes HTML input types for selecting dates, offering native support and familiarity for users.
+    - **Date Range Picker** - Enables users to select date ranges for planning tasks and analyzing productivity over specific time periods.
+    - **React Date Picker** - Offers a user-friendly date picker component with customizable options for selecting dates and timeframes.
+
+- UI/UX Design Tools: 
+    - Utilize design tools like **Figma** or **excalidraw** for creating wireframes, and UI mockups.
+
+- Backend Framework:
+    - **Express.js** (**Node.js**) with **knex**
+
+- Database:
+    - Use a relational database like **PostgreSQL** or **MySQL** for storing user data, task information, mood logs, and analytics.
+
+- Authentication:
+    - **JSON Web Tokens (JWT)**: A compact, URL-safe means of representing claims to be transferred between two parties, commonly used for secure authentication and authorization.
+
+- Testing:
+    **Jest**: A JavaScript testing framework developed by Facebook for unit testing React applications, providing a simple and intuitive testing experience.
+    **React Testing Library**: A testing utility for React that encourages best practices for testing user interfaces, focusing on testing components in a way that simulates user behavior.
+### APIs
+<!-- List any external sources of data that will be used in your app. -->
+- No external APIs will be used for the first sprint
