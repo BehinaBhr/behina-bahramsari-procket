@@ -84,8 +84,9 @@ Procket is for anyone looking to enhance their productivity and better understan
     - **JSON Web Tokens (JWT)**: A compact, URL-safe means of representing claims to be transferred between two parties, commonly used for secure authentication and authorization.
 
 - Testing:
-    **Jest**: A JavaScript testing framework developed by Facebook for unit testing React applications, providing a simple and intuitive testing experience.
-    **React Testing Library**: A testing utility for React that encourages best practices for testing user interfaces, focusing on testing components in a way that simulates user behavior.
+    - **Jest**: A JavaScript testing framework developed by Facebook for unit testing React applications, providing a simple and intuitive testing experience.
+    - **React Testing Library**: A testing utility for React that encourages best practices for testing user interfaces, focusing on testing components in a way that simulates user behavior.
+    
 ### APIs
 <!-- List any external sources of data that will be used in your app. -->
 - No external APIs will be used for the first sprint
