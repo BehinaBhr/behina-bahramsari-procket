@@ -150,3 +150,213 @@ Procket is for anyone looking to enhance their productivity and better understan
 ### Data
 <!-- Describe your data and the relationships between them. You can show this visually using diagrams, or write it out.  -->
 ![](sql-diagram.png)
+
+### Endpoints
+<!-- List endpoints that your server will implement, including HTTP methods, parameters, and example responses. -->
+**GET /tasks**
+- Retrieve all tasks.
+- Response:
+    - Status Code: 200 OK
+    - Body:
+        ```
+        [
+            {
+                "taskId": 1,
+                "description": "Complete project proposal",
+                "goalId": 1,
+                "startDate": "2024-03-20",
+                "endDate": "2024-03-25",
+                "completionStatus": false,
+                "procrastinationReason": null,
+                "mood": "Neutral"
+            },
+            {
+                "taskId": 2,
+                "description": "Prepare presentation slides",
+                "goalId": 1,
+                "startDate": "2024-03-22",
+                "endDate": "2024-03-24",
+                "completionStatus": true,
+                "procrastinationReason": null,
+                "mood": "Happy"
+            }
+        ]
+        ```
+
+    
+**PUT /tasks/{taskId}**
+- Update an existing task with following parameters: 
+    - taskId (integer): Identifier of the task to update.
+    - Any task attributes to update except for *created_at* and *updated_at*.
+- Request Body: (Attributes to update)
+    ```
+    {
+        "description": "Research market trends",
+        "goalId": 2,
+        "date": "2024-03-23",
+        "completionStatus": false,
+        "procrastinationReason": null,
+        "mood": null
+    }
+    ```
+- Response:
+    - Status Code: 200 OK
+    - Body:
+        ```
+        {
+            "taskId": 3,
+            "description": "Research market trends",
+            "goalId": 2,
+            "date": "2024-03-23",
+            "completionStatus": false,
+            "procrastinationReason": null,
+            "mood": null
+        }
+        ```
+
+**DELETE /tasks/{taskId}**
+- Delete a task with following parameters:
+    - taskId (integer): Identifier of the task to delete.
+-Response:
+    - Status Code: 204 No Content
+
+**GET /goals**
+- Retrieve all goals.
+- Response:
+    - Status Code: 200 OK
+    - Body:
+        ```
+        [
+            {
+                "goalId": 1,
+                "description": "Complete project milestones",
+                "frequency": "Weekly",
+                "startDate": "2024-03-20",
+                "endDate": "2024-04-20",
+                "completionStatus": false,
+                "plannedCommitment": "High"
+            },
+            {
+                "goalId": 2,
+                "description": "Learn new programming language",
+                "frequency": "Monthly",
+                "startDate": "2024-03-01",
+                "endDate": null,
+                "completionStatus": true,
+                "plannedCommitment": "Medium"
+            }
+        ]
+        ```
+
+**POST /goals**
+- Create a new goal with following parameters:
+    - description (string): Description of the goal.
+    - frequency (string): Frequency of working on the goal (e.g., daily, weekly, monthly).
+    - startDate (date): Start date of the goal.
+    - endDate (date, optional): End date of the goal (nullable for ongoing goals).
+    - plannedCommitment (string): Planned commitment level towards the goal.
+- Request Body:
+    {
+        "description": "Read 10 books by the end of the year",
+        "frequency": "Yearly",
+        "startDate": "2024-01-01",
+        "endDate": "2024-12-31",
+        "plannedCommitment": "Medium"
+    }
+- Response:
+    - Status Code: 201 Created
+    - Body:
+        ```
+        {
+            "goalId": 3,
+            "description": "Read 10 books by the end of the year",
+            "frequency": "Yearly",
+            "startDate": "2024-01-01",
+            "endDate": "2024-12-31",
+            "completionStatus": false,
+            "plannedCommitment": "Medium"
+        }
+        ```
+
+**PUT /goals/{goalId}**
+- Update an existing goal with following parameters:
+    - goalId (integer): Identifier of the goal to update.
+    - Any goal attributes to update.
+- Request Body: (Attributes to update)
+    ```
+    {
+        "description": "Read 15 books by the end of the year",
+        "plannedCommitment": "High"
+    }
+    ```
+- Response:
+    - Status Code: 200 OK
+    - Body:
+        ```
+        {
+            "goalId": 3,
+            "description": "Read 10 books by the end of the year",
+            "frequency": "Yearly",
+            "startDate": "2024-01-01",
+            "endDate": "2024-12-31",
+            "completionStatus": false,
+            "plannedCommitment": "Medium"
+        }
+        ```
+
+**DELETE /goals/{goalId}**
+- Delete a goal with following parameters:
+    - goalId (integer): Identifier of the goal to delete.
+- Response:
+    - Status Code: 204 No Content
+
+**GET /moods**
+- Retrieve all daily moods.
+- Response:
+    - Status Code: 200 OK
+    - Body:
+        ```
+        [
+            {
+                "moodId": 1,
+                "mood": "Happy"
+                "created_at": "2024-03-01"
+            },
+            {
+                "moodId": 2,
+                "mood": "Sad",
+                "created_at": "2024-03-02"
+            }
+        ]
+        ```
+
+**POST /goals**
+- Create a new daily mood with following parameters:
+    - mood (string): Title of the mood.
+- Request Body:
+    ```
+    {
+        "mood": "Happy"
+    }
+    ```
+- Response:
+    - Status Code: 201 Created
+    - Body:
+        ```
+        {
+            "moodId": 3,
+            "mood": "Happy",
+            created_at: "2024-03-03"
+        }
+        ```
+
+
+### Error Handling:
+The API should provide thorough error handling to guide developers in correcting issues encountered during requests.
+For invalid requests or missing parameters, the API will respond with a status code of 400 Bad Request, accompanied by detailed error messages explaining the reason for the failure.
+In cases where the requested resource cannot be found, such as attempting to update or delete a nonexistent task or goal, the API will return a status code of 404 Not Found.
+Error responses will be designed to be informative, aiding developers in understanding and rectifying the encountered issues effectively.
+
+### Auth
+<!-- Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented. -->
+No, the project does not include any login or user profile functionality. Authentication and authorization features are not implemented in this version of the app.
