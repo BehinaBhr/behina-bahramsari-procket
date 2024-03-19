@@ -361,6 +361,95 @@ Error responses will be designed to be informative, aiding developers in underst
 <!-- Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented. -->
 No, the project does not include any login or user profile functionality. Authentication and authorization features are not implemented in this version of the app.
 
+## Roadmap
+<!-- Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation. Think about what you can reasonably complete before the due date. The more detail you provide, the easier it will be to build. -->
+- Setup Development Environment
+    - Initialize React project with necessary dependencies and folder structure
+    - Set up routing for different pages
+    - Create basic boilerplate pages for Home, Task Creation, Mood Tracking Procrastination Analysis, Progress Graphs, and Daily To-Do List
+
+- Set up backend server
+    - Initialize Express.js project with routing and middleware setup
+    Create placeholder routes with mock responses for tasks and goals endpoints
+
+- Database setup
+    - Design the database schema for storing tasks, goals, and user data
+    - Set up PostgreSQL or MySQL database with necessary tables and relationships
+    - Set up migrations for database changes.
+    - Generate seeds with sample data.
+    
+- Implement CRUD operations for tasks and goals
+    - Create endpoints for retrieving, creating, updating, and deleting goals and tasks
+    - Implement error handling and status codes for each endpoint to handle invalid requests or missing parameters
+
+- Data visualization
+    - Integrate data visualization libraries such as Chart.js to create interactive graphs and charts for visualizing progress, procrastination patterns, and mood trends
+    - Design and implement UI components for displaying visualizations
+
+- Frontend Feature Branches:
+
+    - task-creation-page:
+        - Implement UI components and functionality for creating tasks.
+        - Includes form inputs for task description, goals, start/end dates, and reminders.
+
+    - mood-tracking-page:
+        - Develop UI components and logic for logging daily mood.
+        - Implement mood selection options and store mood data.
+
+    - procrastination-analysis-page:
+        - Integrate data visualization libraries to display procrastination patterns.
+        - Create UI components to visualize procrastination trends over time.
+
+    - progress-graphs-page:
+        - Implement UI components for displaying progress graphs.
+        - Utilize Chart.js or similar libraries to visualize task completion and goal progress.
+
+    - daily-to-do-list-page:
+        - Develop UI components for generating daily to-do lists.
+        - Display tasks based on predefined goals and priorities.
+
+    - time-management
+        - Implement time management features such as setting task timeframes and customizing Pomodoro sessions.
+        - Integrate React components for managing countdowns and Pomodoro sessions effectively.
+
+    - visual-progress-tracking:
+        - Develop UI components for visual progress tracking using a rocket assembly metaphor.
+        - Implement visual elements to symbolize task completion and progress towards goals.
+
+- Backend Feature Branches:
+
+    - task-endpoints:
+        - Implement CRUD operations for tasks endpoints (/tasks).
+        - Develop controllers and services for retrieving, creating, updating, and deleting tasks.
+
+    - goal-endpoints:
+        - Implement CRUD operations for goals endpoints (/goals).
+        - Create controllers and services for managing goals data.
+
+    - data-visualization:
+        - Set up routes and controllers for retrieving data for visualization.
+        - Ensure data retrieval endpoints are optimized for efficient visualization rendering.
+
+    - error-handling:
+        - Implement error handling middleware to handle invalid requests and internal server errors.
+        - Ensure consistent error responses are returned for different scenarios.
+
+    - database-setup:
+        - Set up database connections and migrations for creating tables and relationships.
+        - Ensure database schema aligns with application requirements.
+
+    - integration-testing:
+        - Write integration tests for endpoints to ensure proper functionality and data integrity.
+        - Test CRUD operations and error handling scenarios.
+
+    - deployment-setup:
+        - Configure deployment settings for deploying the backend server.
+        - Choose a suitable hosting platform and set up deployment pipelines if applicable.
+
+- Bug fixes
+
+- DEMO DAY
+
 ## Nice-to-haves
 <!-- Your project will be marked based on what you committed to in the above document. Under nice-to-haves, you can list any additional features you may complete if you have extra time, or after finishing. -->
 
