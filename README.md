@@ -360,3 +360,28 @@ Error responses will be designed to be informative, aiding developers in underst
 ### Auth
 <!-- Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented. -->
 No, the project does not include any login or user profile functionality. Authentication and authorization features are not implemented in this version of the app.
+
+## Nice-to-haves
+<!-- Your project will be marked based on what you committed to in the above document. Under nice-to-haves, you can list any additional features you may complete if you have extra time, or after finishing. -->
+
+- Dark Theme:
+    - Implement a dark theme option for the app's interface, providing users with a visually appealing alternative and reducing eye strain during nighttime usage.
+
+- Authentication and User Profile:
+    - Integrate authentication functionality to allow users to create accounts, log in securely, and manage their profiles. This feature enhances security and personalization within the app.
+
+- Pomodoro Technique Page:
+    - Create a dedicated Pomodoro page where users can utilize the Pomodoro technique to enhance their productivity. This feature includes timers for work periods and breaks, helping users stay focused and manage their time effectively.
+
+- Independent Tasks:
+    - Enable users to add independent tasks that are not related to specific goals. Upon completing these tasks, visualize their achievement with a dart icon 🎯, providing a sense of accomplishment and progress.
+
+- Calendar View:
+    - Implement a calendar view displaying scheduled tasks, deadlines, and events.
+    This feature allows users to visualize their plans and manage their schedules effectively, enhancing organization and productivity.
+
+- About Us Page:
+    - Create an About Us page providing a clear and concise description of the insight behind the app. Explain the facts about procrastination and how the app approaches solving it, helping users understand the purpose and mission of the app.
+
+- Goal Planning and Realistic Expectations:
+    - Provide guidance on setting realistic goals and managing expectations based on the user's history of procrastination and productivity. Utilize insights from the app's analytics to offer personalized recommendations, helping users overcome perfectionism and stress.
