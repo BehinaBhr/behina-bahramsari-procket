@@ -135,22 +135,22 @@ Procket is for anyone looking to enhance their productivity and better understan
 
 ### Mockups
 #### Home Page
-![](home-page.png)
+![](./asset/images/home-page.png)
 #### Create Goal Page
-![](create-your-goal.png)
+![](./asset/images/create-your-goal.png)
 #### Goals Page
-![](goals-page.png)
+![](./asset/images/goals-page.png)
 #### Task Details Page
-![](a-task.png)
+![](./asset/images/a-task.png)
 #### Stats Page
-![](stats-page.png)
+![](./asset/images/stats-page.png)
 #### Delete Goal Popup Modal
-![](delete-goal.png)
+![](./asset/images/delete-goal.png)
 
 
 ### Data
 <!-- Describe your data and the relationships between them. You can show this visually using diagrams, or write it out.  -->
-![](sql-diagram.png)
+![](./asset/images/sql-diagram.png)
 
 ### Endpoints
 <!-- List endpoints that your server will implement, including HTTP methods, parameters, and example responses. -->
