@@ -1,0 +1,78 @@
+@use "./_mixins" as *;
+
+//default font size, height and weight for different devices and sections of page
+@mixin page-header {
+    font-size: 1.75rem;
+    line-height: 2.25rem;
+    font-weight: 600;
+
+    @include tablet {
+        font-size: 2rem;
+        line-height: 2.5rem;
+    }
+}
+
+@mixin subheader {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+
+    @include tablet {
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+}
+
+@mixin labels-links-button {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+
+    @include tablet {
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+    }
+}
+
+@mixin table-header {
+    font-size: 0.6875rem;
+    line-height: 1rem;
+
+    @include tablet {
+        font-size: 0.75rem;
+        line-height: 1.125rem;
+    }
+}
+
+@mixin body-large {
+    font-size: 0.9375rem;
+    line-height: 1.625rem;
+    font-weight: 400;
+
+    @include tablet {
+        font-size: 1rem;
+        line-height: 1.75rem;
+    }
+}
+
+@mixin body-medium {
+    font-size: 0.8125rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+
+    @include tablet {
+        font-size: 0.875rem;
+        line-height: 1.375rem;
+    }
+}
+
+@mixin body-small {
+    font-size: 0.6875rem;
+    line-height: 1rem;
+    font-weight: 400;
+
+    @include tablet {
+        font-size: 0.75rem;
+        line-height: 1.125rem;
+    }
+}

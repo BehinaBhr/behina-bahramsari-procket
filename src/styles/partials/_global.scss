@@ -1,0 +1,17 @@
+//remove default settings
+@use "../partials/variables" as *;
+
+*,
+*::before,
+*::after,
+a
+ {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Titillium Web';
+}
+
+a {
+    text-decoration: none;
+}
