@@ -1,0 +1,29 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/_typography-mixins" as *;
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/_mixins" as *;
+
+//styling for adding button
+.add-button {
+  @include body-medium;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 2.25rem;
+  background-color: $blue;
+  border: none;
+  border-radius: 1.25rem;
+  color: $white;
+  padding: .5rem 1rem;
+  cursor: pointer;
+
+  @include tablet {
+    width: fit-content;
+  }
+
+  &:hover {
+    background-color: $graphite;
+  }
+}
