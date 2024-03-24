@@ -6,6 +6,7 @@ import { Tasks } from "./pages/Tasks/Tasks";
 import { Stats } from "./pages/Stats/Stats";
 import { NotFound } from "./pages/NotFound/NotFound";
 import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/stats" element={<Stats />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
