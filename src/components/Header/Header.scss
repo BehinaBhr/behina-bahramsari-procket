@@ -10,6 +10,7 @@
   font-size: 13px;
   line-height: 20px;
   padding: 1rem;
+  align-items: center;
 
   @include tablet {
     flex-direction: row;
@@ -26,20 +27,21 @@
 
   &__logo {
     display: flex;
-    padding-top: 1rem;
     align-self: center;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 
     @include tablet {
-      padding-top: 0;
       justify-content: flex-start;
     }
+
     &-image {
       margin: 0;
-      width: 85px;
-      height: 70px;
+      width: 40px;
+      height: auto;
+      margin-right: 4px;
     }
+
     &-text {
       color: $orange;
     }
