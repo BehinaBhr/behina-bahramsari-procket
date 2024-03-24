@@ -5,12 +5,11 @@
 .footer {
   display: flex;
   justify-content: center;
-  background-color: $lightblue;
   width: 100%;
-  padding-bottom: 2.5rem;
+  padding: 2.5rem 0;
 
   @include desktop {
-    padding-bottom: 3rem;
+    padding: 3rem 0;
   }
 
   &__rights {

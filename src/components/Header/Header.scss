@@ -4,25 +4,32 @@
 @import "../../styles/partials/colors";
 
 .header {
+  width: 100%;
   background-color: $darknavy;
-  display: flex;
-  flex-direction: column;
   font-size: 13px;
   line-height: 20px;
   padding: 1rem;
-  align-items: center;
 
   @include tablet {
-    flex-direction: row;
-    justify-content: space-between;
     padding: $tablet-padding;
     font-size: 14px;
     line-height: 22px;
   }
 
-  @include desktop {
-    padding-left: $desktop-padding;
-    padding-right: $desktop-padding;
+  &__center-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @include desktop {
+      max-width: $breakpoint-desktop;
+    }
   }
 
   &__logo {
