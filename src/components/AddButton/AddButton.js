@@ -1,9 +1,12 @@
 import "./AddButton.scss";
+import { Link } from "react-router-dom";
 
 //add a new item
-function AddButton({message}) {
+function AddButton({ target, link_to }) {
   return (
-    <button className="add-button">{message}</button>
+    <Link to={link_to}>
+      <button className="add-button">+ Add New {target}</button>
+    </Link>
   );
 }
 
