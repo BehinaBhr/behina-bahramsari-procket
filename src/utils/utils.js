@@ -1,17 +1,15 @@
 export function DocumentTitle(title) {
-    if (title){
-      document.title =title
-    }
-    else{
-      document.title = "Procket";
-    }
+  if (title) {
+    document.title = title;
+  } else {
+    document.title = "Procket";
+  }
 }
 
-export function timestampToDate(timestamp) {
-  let date = new Date(timestamp);
+export function dateFormatter(stringDate) {
+  let date = new Date(stringDate);
   let y = date.getFullYear();
   let m = date.getMonth() + 1;
   let d = date.getDate();
-  return `${m}/${d}/${y}`;
+  return `${y}-${m}-${d}`;
 }
-

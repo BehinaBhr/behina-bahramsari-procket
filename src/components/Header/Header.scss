@@ -4,42 +4,51 @@
 @import "../../styles/partials/colors";
 
 .header {
+  width: 100%;
   background-color: $darknavy;
-  display: flex;
-  flex-direction: column;
   font-size: 13px;
   line-height: 20px;
   padding: 1rem;
 
   @include tablet {
-    flex-direction: row;
-    justify-content: space-between;
     padding: $tablet-padding;
     font-size: 14px;
     line-height: 22px;
   }
 
-  @include desktop {
-    padding-left: $desktop-padding;
-    padding-right: $desktop-padding;
+  &__center-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @include desktop {
+      max-width: $breakpoint-desktop;
+    }
   }
 
   &__logo {
     display: flex;
-    padding-top: 1rem;
     align-self: center;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 
     @include tablet {
-      padding-top: 0;
       justify-content: flex-start;
     }
+
     &-image {
       margin: 0;
-      width: 85px;
-      height: 70px;
+      width: 40px;
+      height: auto;
+      margin-right: 4px;
     }
+
     &-text {
       color: $orange;
     }
