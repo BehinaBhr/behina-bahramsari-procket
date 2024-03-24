@@ -5,12 +5,14 @@ import { Goals } from "./pages/Goals/Goals";
 import { Tasks } from "./pages/Tasks/Tasks";
 import { Stats } from "./pages/Stats/Stats";
 import { NotFound } from "./pages/NotFound/NotFound";
+import Header from "./components/Header/Header";
 
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
        <BrowserRouter>
+       <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/goals" element={<Goals />} />
