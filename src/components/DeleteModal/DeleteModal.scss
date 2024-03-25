@@ -55,7 +55,7 @@
 
     &-cancel {
       background-color: $white;
-      border: 1px solid rgba(189, 197, 213, 1);
+      border: 1px solid $cloud;
 
       &:hover {
         color: $blue;
@@ -69,7 +69,8 @@
       color: $white;
 
       &:hover {
-        background-color: brown;
+        background-color: $darkred;
+        border: 1.5px solid $graphite;
       }
     }
   }
