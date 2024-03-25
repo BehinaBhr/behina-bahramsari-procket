@@ -1,7 +1,8 @@
 import "./Table.scss";
 import { useState } from "react";
+import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
-function Table({ items, attrs, ItemComponent }) {
+function Table({ target, items, attrs, ItemComponent, deleteSelectedItem }) {
   const [deleteItemId, setDeleteItemId] = useState(null);
 
   return (
@@ -24,6 +25,16 @@ function Table({ items, attrs, ItemComponent }) {
           </>
         );
       })}
+      {deleteItemId && (
+        <DeleteModal
+          target={target}
+          onCancel={() => setDeleteItemId(null)}
+          onDelete={() => {
+            deleteSelectedItem(deleteItemId);
+            setDeleteItemId(null);
+          }}
+        />
+      )}
     </section>
   );
 }

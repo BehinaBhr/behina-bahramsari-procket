@@ -25,6 +25,16 @@ const Goals = () => {
     }
   };
 
+  const deleteSelectedItem = async (goalId) => {
+    try {
+      await axios.delete(`${BASE_URL}/api/goals/${goalId}`);
+      // Fetching updated goals on delete
+      fetchGoals();
+    } catch {
+      setHasError(true);
+    }
+  };
+
   if (hasError) {
     return <p>Unable to access goals right now. Please try again later.</p>;
   }
@@ -46,9 +56,11 @@ const Goals = () => {
       />
 
       <Table
+        target={"Goal"}
         items={goals}
         ItemComponent={GoalItem}
         attrs={["Goal", "Start Date", "End Date", "Progress", "Actions"]}
+        deleteSelectedItem={deleteSelectedItem}
       />
     </>
   );

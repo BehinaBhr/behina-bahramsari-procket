@@ -16,8 +16,8 @@ export const GoalDetails = () => {
   const { goalId } = useParams();
 
   useEffect(() => {
-    fetchGoal(goalId);
-    fetchGoalsTasks(goalId);
+    fetchGoal();
+    fetchGoalsTasks();
   }, [goalId]);
 
   const fetchData = async (path, dataSetter) => {
@@ -33,12 +33,23 @@ export const GoalDetails = () => {
     }
   };
 
-  const fetchGoalsTasks = async (goalId) => {
+  const fetchGoalsTasks = async () => {
     fetchData(`${BASE_URL}/api/goals/${goalId}/tasks`, setTasks);
   };
 
-  const fetchGoal = async (goalId) => {
+  const fetchGoal = async () => {
     fetchData(`${BASE_URL}/api/goals/${goalId}`, setGoal);
+  };
+
+  const deleteSelectedItem = async (taskId) => {
+    // console.log(taskId)
+    try {
+      await axios.delete(`${BASE_URL}/api/tasks/${taskId}`);
+      // Fetching updated goals on delete
+      fetchGoalsTasks();
+    } catch {
+      setHasError(true);
+    }
   };
 
   if (hasError) {
@@ -83,9 +94,11 @@ export const GoalDetails = () => {
       </section>
       <hr className="goal-details__divider" />
       <Table
+        target="Task"
         items={tasks}
         ItemComponent={TaskItem}
         attrs={["Tasks", "Due Date", "Status", "Actions"]}
+        deleteSelectedItem={deleteSelectedItem}
       />
     </div>
   );

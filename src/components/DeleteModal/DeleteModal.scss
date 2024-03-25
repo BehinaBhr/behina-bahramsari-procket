@@ -1,0 +1,76 @@
+@use "../../styles/partials/_colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+.delete-modal {
+  background-color: $white;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  padding: 3rem 4rem;
+
+  @include tablet {
+    padding: 3rem 3rem;
+    width: 40rem;
+    height: 16rem;
+    margin: 12rem auto;
+  }
+
+  &__background {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: $fadeblack;
+  }
+
+  &__content {
+    &-header {
+      font-weight: 600;
+      font-size: 1.75rem;
+      line-height: 2.25rem;
+    }
+
+    &-body {
+      padding-top: 1rem;
+      font-weight: 400;
+      font-size: 0.938rem;
+      line-height: 1.625rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+  }
+
+  &__button {
+    cursor: pointer;
+    border-radius: 1.25rem;
+    width: calc(50% - 0.5rem);
+    height: 2.375rem;
+
+    &-cancel {
+      background-color: $white;
+      border: 1px solid rgba(189, 197, 213, 1);
+
+      &:hover {
+        color: $blue;
+        border: 0.063rem solid $blue;
+      }
+    }
+
+    &-delete {
+      background-color: $red;
+      border: 0;
+      color: $white;
+
+      &:hover {
+        background-color: brown;
+      }
+    }
+  }
+}
