@@ -8,6 +8,10 @@ export default function TaskItem({
   due_date,
   onDelete,
 }) {
+  // Function to convert is_completed value from 0, 1 to text "Not Done", "Done"
+  const statusText = () => {
+    return is_completed ? "Done" : "Not Done";
+  };
   return (
     <section className="task-item">
       <div className="task-item__attr task-item__attr--description">
@@ -20,7 +24,7 @@ export default function TaskItem({
       </div>
       <div className="task-item__attr">
         <h4 className="task-item__attr-label">Status</h4>
-        <p className="task-item__attr-value">{is_completed} </p>
+        <p className="task-item__attr-value">{statusText()} </p>
       </div>
       <div className="task-item__actions">
         <DeleteButton onClick={onDelete} />
