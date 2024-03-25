@@ -42,7 +42,6 @@ export const GoalDetails = () => {
   };
 
   const deleteSelectedItem = async (taskId) => {
-    // console.log(taskId)
     try {
       await axios.delete(`${BASE_URL}/api/tasks/${taskId}`);
       // Fetching updated goals on delete
