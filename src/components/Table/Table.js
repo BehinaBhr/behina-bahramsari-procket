@@ -18,7 +18,7 @@ function Table({ items, attrs, ItemComponent }) {
             <hr className="table__divider" />
             <ItemComponent
               key={item.id}
-              item={item}
+              {...item}
               onDelete={() => setDeleteItemId(item.id)}
             />
           </>

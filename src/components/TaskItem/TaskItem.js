@@ -2,8 +2,12 @@ import "./TaskItem.scss";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import { dateFormatter } from "../../utils/utils.js";
 
-export default function TaskItem({ item, onDelete }) {
-  const { description, is_completed, due_date } = item;
+export default function TaskItem({
+  description,
+  is_completed,
+  due_date,
+  onDelete,
+}) {
   return (
     <section className="task-item">
       <div className="task-item__attr task-item__attr--description">
