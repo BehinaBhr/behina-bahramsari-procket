@@ -4,8 +4,7 @@
 @use "../../styles/partials/_mixins" as *;
 @use "../../styles/partials/_variables" as *;
 
-//css styling for goal table to be responsive on various devices
-.goals-table {
+.table {
   display: flex;
   flex-direction: column;
   background-color: $white;

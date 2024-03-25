@@ -2,8 +2,8 @@ import "../GoalItem/GoalItem.scss";
 import DeleteButton from "../DeleteButton/DeleteButton.js";
 import { dateFormatter } from "../../utils/utils.js";
 
-function GoalItem({ goalInfo, onDelete }) {
-  const { description, start_date, end_date, progress } = goalInfo;
+function GoalItem({ item, onDelete }) {
+  const { description, start_date, end_date, progress } = item;
 
   return (
     <section className="goal-item">
