@@ -1,8 +1,9 @@
-import GoalsTable from "../../components/GoalsTable/GoalsTable.js";
+import Table from "../../components/Table/Table.js";
 import { SearchAndAddButtonHeader } from "../../components/SearchAndAddButtonHeader/SearchAndAddButtonHeader";
 import { BASE_URL } from "../../utils/constant-variables";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import GoalItem from "../../components/GoalItem/GoalItem.js";
 
 const Goals = () => {
   const [goals, setGoals] = useState([]);
@@ -44,7 +45,11 @@ const Goals = () => {
         add_button_link="goals/new"
       />
 
-      <GoalsTable goals={goals} />
+      <Table
+        items={goals}
+        ItemComponent={GoalItem}
+        attrs={["Goal", "Start Date", "End Date", "Progress", "Actions"]}
+      />
     </>
   );
 };

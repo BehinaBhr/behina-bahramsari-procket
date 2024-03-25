@@ -7,6 +7,7 @@ import { Stats } from "./pages/Stats/Stats";
 import { NotFound } from "./pages/NotFound/NotFound";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
+import { GoalDetails } from "./pages/GoalDetails/GoalDetails";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/goals" element={<Goals />} />
+            <Route path="/goals/:goalId" element={<GoalDetails />} />
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/stats" element={<Stats />} />
             <Route path="*" element={<NotFound />} />

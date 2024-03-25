@@ -1,0 +1,33 @@
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/_breakpoints" as *;
+@use "../../styles/partials/_variables" as *;
+@use "../../styles/partials/_colors" as *;
+
+.edit_and_back_button_header {
+  display: flex;
+  justify-content: space-between;
+  padding: $mobile-padding;
+  padding-top: 2rem;
+  padding-bottom: 1.5rem;
+  align-items: center;
+
+  @include tablet {
+    padding: $tablet-padding;
+    padding-bottom: 1.65rem;
+  }
+
+  &__name {
+    @include page-header;
+    padding-left: 0.5rem;
+
+    @include tablet {
+      margin-right: 5rem;
+    }
+  }
+
+  &__section {
+    display: flex;
+  }
+}

@@ -1,0 +1,44 @@
+@import "../../styles/partials/mixins";
+@import "../../styles/partials/breakpoints";
+@import "../../styles/partials/variables";
+@import "../../styles/partials/colors";
+@import "../../styles/partials/typography-mixins";
+
+.edit-button {
+  display: flex;
+  height: 2rem;
+  width: 2rem;
+  background-color: $blue;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @include tablet {
+    padding: 0.5rem 1rem;
+    border-radius: $oval-border-radius;
+    width: auto;
+    &:hover {
+      background-color: $graphite;
+      cursor: pointer;
+    }
+  }
+
+  &__icon {
+    width: 1.2rem;
+  }
+
+  &__text {
+    @include labels-links-button;
+    display: none;
+    color: $white;
+    margin-left: 0.25rem;
+
+    @include tablet {
+      display: inline;
+    }
+  }
+}

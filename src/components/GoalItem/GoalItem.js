@@ -1,15 +1,23 @@
 import "../GoalItem/GoalItem.scss";
 import DeleteButton from "../DeleteButton/DeleteButton.js";
 import { dateFormatter } from "../../utils/utils.js";
+import DetailsLink from "../DetailsLink/DetailsLink.js";
 
-function GoalItem({ goalInfo, onDelete }) {
-  const { description, start_date, end_date, progress } = goalInfo;
-
+function GoalItem({
+  id,
+  description,
+  start_date,
+  end_date,
+  progress,
+  onDelete,
+}) {
   return (
     <section className="goal-item">
       <div className="goal-item__attr goal-item__attr--description">
         <h4 className="goal-item__attr-label">Goal</h4>
-        <p className="goal-item__attr-value">{description}</p>
+        <p className="goal-item__attr-value">
+          <DetailsLink text={description} to={`/goals/${id}`} />
+        </p>
       </div>
       <div className="goal-item__attr">
         <h4 className="goal-item__attr-label">From</h4>

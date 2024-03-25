@@ -4,15 +4,20 @@
 @use "../../styles/partials/_mixins" as *;
 @use "../../styles/partials/_variables" as *;
 
-//css styling for goal table to be responsive on various devices
-.goals-table {
+.table {
   display: flex;
   flex-direction: column;
-  background-color: $white;
 
   &__divider {
     width: 100%;
     border: 0.0625rem solid $cloud;
+
+    &:nth-child(2) {
+      display: none;
+      @include tablet {
+        display: inline;
+      }
+    }
   }
 
   &__labels {
@@ -51,6 +56,12 @@
     &:last-child {
       text-align: end;
       width: 5%;
+    }
+  }
+
+  > * {
+    &:hover {
+      background-color: $fadenavy;
     }
   }
 }
