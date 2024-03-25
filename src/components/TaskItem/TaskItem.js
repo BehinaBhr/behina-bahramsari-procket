@@ -1,8 +1,10 @@
 import "./TaskItem.scss";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import { dateFormatter } from "../../utils/utils.js";
+import DetailsLink from "../DetailsLink/DetailsLink.js";
 
 export default function TaskItem({
+  id,
   description,
   is_completed,
   due_date,
@@ -16,7 +18,9 @@ export default function TaskItem({
     <section className="task-item">
       <div className="task-item__attr task-item__attr--description">
         <h4 className="task-item__attr-label">Task</h4>
-        <p className="task-item__attr-value">{description}</p>
+        <p className="task-item__attr-value">
+          <DetailsLink text={description} to={`/tasks/${id}`} />
+        </p>
       </div>
       <div className="task-item__attr">
         <h4 className="task-item__attr-label">Due Date</h4>
