@@ -5,7 +5,7 @@ import "./EditButton.scss";
 function EditButton(to) {
   return (
     <Link to={to} className="edit-button">
-      <img className="edit-button__icon" src={editIcon} alt="edit icon" />
+      <img className="edit-button__icon" src={editIcon} alt="circle-edit" />
       <span className="edit-button__text">Edit</span>
     </Link>
   );
