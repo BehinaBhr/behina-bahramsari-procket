@@ -7,12 +7,11 @@
 .table {
   display: flex;
   flex-direction: column;
-  background-color: $white;
 
   &__divider {
     width: 100%;
     border: 0.0625rem solid $cloud;
-    
+
     &:nth-child(2) {
       display: none;
       @include tablet {
@@ -57,6 +56,12 @@
     &:last-child {
       text-align: end;
       width: 5%;
+    }
+  }
+
+  > * {
+    &:hover {
+      background-color: $fadenavy;
     }
   }
 }
