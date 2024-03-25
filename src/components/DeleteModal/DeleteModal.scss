@@ -23,7 +23,7 @@
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: $fadeblack;
+    background-color: $fadeblack !important;
   }
 
   &__content {
