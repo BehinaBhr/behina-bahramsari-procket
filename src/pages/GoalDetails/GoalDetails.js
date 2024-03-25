@@ -52,7 +52,7 @@ export const GoalDetails = () => {
     <div className="goal-details">
       <EditAndBackButtonHeader
         title={goal.description}
-        back_button_to={"/"}
+        back_button_to={"/goals"}
         edit_button_to={`/goal/${goalId}/edit`}
       />
 
