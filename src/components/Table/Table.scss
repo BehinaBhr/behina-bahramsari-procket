@@ -12,6 +12,13 @@
   &__divider {
     width: 100%;
     border: 0.0625rem solid $cloud;
+    
+    &:nth-child(2) {
+      display: none;
+      @include tablet {
+        display: inline;
+      }
+    }
   }
 
   &__labels {
