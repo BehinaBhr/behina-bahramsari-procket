@@ -1,4 +1,3 @@
-import "./Tasks.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { SearchAndAddButtonHeader } from "../../components/SearchAndAddButtonHeader/SearchAndAddButtonHeader";
