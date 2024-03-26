@@ -52,7 +52,7 @@ export const GoalDetails = () => {
   };
 
   if (hasError) {
-    return <p>Unable to access goals right now. Please try again later.</p>;
+    return <p>Unable to access details of goal with id {goalId} right now. Please try again later.</p>;
   }
 
   if (isLoading) {
@@ -62,6 +62,7 @@ export const GoalDetails = () => {
   if (tasks.length === 0) {
     return <p>No task available for this goal</p>;
   }
+
   return (
     <div className="goal-details">
       <EditAndBackButtonHeader

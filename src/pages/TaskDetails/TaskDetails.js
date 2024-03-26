@@ -6,9 +6,11 @@ import EditAndBackButtonHeader from "../../components/EditAndBackButtonHeader/Ed
 import { BASE_URL } from "../../utils/constant-variables.js";
 import { dateFormatter } from "../../utils/utils.js";
 import Table from "../../components/Table/Table.js";
-import TaskItem from "../../components/TaskItem/TaskItem.js";
+import ProcrastinationItem from "../../components/ProcrastinationItem/ProcrastinationItem.js";
+import { DocumentTitle } from "../../utils/utils";
 
 export const TaskDetails = () => {
+  DocumentTitle("TaskDetails Page");
   const [task, setTask] = useState({});
   const [procrastinations, setProcrastinations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -44,11 +46,23 @@ export const TaskDetails = () => {
     );
   };
 
+  const deleteSelectedItem = async (procrastinationId) => {
+    try {
+      await axios.delete(
+        `${BASE_URL}/api/procrastinations/${procrastinationId}`
+      );
+      // Fetching updated procrastinationss on delete
+      fetchTaskProcrastinations();
+    } catch {
+      setHasError(true);
+    }
+  };
+
   if (hasError) {
     return (
       <p>
-        Unable to access task with id {taskId} right now. Please try again
-        later.
+        Unable to access details of task with id {taskId} right now. Please try
+        again later.
       </p>
     );
   }
@@ -84,8 +98,6 @@ export const TaskDetails = () => {
           <h4 className="task-details__label">Goal</h4>
           <div className="task-details__value">{task.goal_description}</div>
         </div>
-        <hr className="task-details__section-divider" />
-
         <div className="task-details__sub-item">
           <h4 className="task-details__label">Due Date</h4>
           <div className="task-details__value">
@@ -96,8 +108,15 @@ export const TaskDetails = () => {
           <h4 className="task-details__label">Status</h4>
           <div className="task-details__value">{statusText()}</div>
         </div>
-        <hr className="task-details__divider" />
       </section>
+      <hr className="task-details__divider" />
+      <Table
+        target="Procrastination"
+        items={procrastinations}
+        ItemComponent={ProcrastinationItem}
+        attrs={["Tasks", "Due Date", "Actions"]}
+        deleteSelectedItem={deleteSelectedItem}
+      />
     </div>
   );
 };
