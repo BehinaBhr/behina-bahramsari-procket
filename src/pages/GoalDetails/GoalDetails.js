@@ -58,6 +58,10 @@ export const GoalDetails = () => {
   if (isLoading) {
     return <p>Is Loading...</p>;
   }
+
+  if (tasks.length === 0) {
+    return <p>No task available for this goal</p>;
+  }
   return (
     <div className="goal-details">
       <EditAndBackButtonHeader
