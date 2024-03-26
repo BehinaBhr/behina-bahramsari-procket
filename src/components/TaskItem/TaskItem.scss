@@ -6,19 +6,11 @@
 
 .task-item {
   width: 100%;
-  padding: $mobile-padding;
+  padding: $mobile-padding 1.5rem;
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-
-  @include tablet {
-    padding: 1rem $tablet-padding;
-  }
-
-  @include desktop {
-    padding: 1rem 3rem;
-  }
 
   &__attr {
     padding-bottom: $mobile-padding;
@@ -41,6 +33,22 @@
 
     &-value {
       @include body-medium;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-sub-value {
+      @include body-small;
+      color: $blue !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      @include tablet {
+        display: inline;
+        padding-top: 0.25rem;
+        padding-left: 1.2rem;
+      }
     }
 
     &--description {
@@ -60,7 +68,6 @@
   &__actions {
     display: flex;
     align-items: center;
-    cursor: pointer;
     justify-content: space-between;
 
     @include tablet {

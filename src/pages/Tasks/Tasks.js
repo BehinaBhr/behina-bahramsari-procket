@@ -10,7 +10,7 @@ const Tasks = () => {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  
+
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -47,7 +47,7 @@ const Tasks = () => {
   }
   return (
     <div>
-       <SearchAndAddButtonHeader
+      <SearchAndAddButtonHeader
         title="Tasks"
         add_button_target="Task"
         add_button_link="tasks/new"
@@ -56,7 +56,7 @@ const Tasks = () => {
         target="Task"
         items={tasks}
         ItemComponent={TaskItem}
-        attrs={["Tasks", "Due Date", "Status", "Actions"]}
+        attrs={["Task (goal)", "Due Date", "Status", "Actions"]}
         deleteSelectedItem={deleteSelectedItem}
       />
     </div>
