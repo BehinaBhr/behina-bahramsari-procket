@@ -2,14 +2,14 @@ import "./Table.scss";
 import { useState } from "react";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
-function Table({ target, items, attrs, ItemComponent, deleteSelectedItem }) {
+function Table({ target, items, columns, ItemComponent, deleteSelectedItem }) {
   const [deleteItemId, setDeleteItemId] = useState(null);
 
   return (
     <section className="table">
       <section className="table__labels">
-        {attrs.map((attr) => {
-          return <h4 className="table__label">{attr}</h4>;
+        {columns.map((column) => {
+          return <h4 className="table__label">{column}</h4>;
         })}
       </section>
 

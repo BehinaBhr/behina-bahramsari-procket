@@ -55,7 +55,7 @@ const Tasks = () => {
         target="Task"
         items={tasks}
         ItemComponent={TaskItem}
-        attrs={["Task (goal)", "Due Date", "Status", "Actions"]}
+        columns={["Task (goal)", "Due Date", "Status", "Actions"]}
         deleteSelectedItem={deleteSelectedItem}
       />
     </div>

@@ -59,7 +59,7 @@ const Goals = () => {
         target={"Goal"}
         items={goals}
         ItemComponent={GoalItem}
-        attrs={["Goal", "Start Date", "End Date", "Progress", "Actions"]}
+        columns={["Goal", "Start Date", "End Date", "Progress", "Actions"]}
         deleteSelectedItem={deleteSelectedItem}
       />
     </>

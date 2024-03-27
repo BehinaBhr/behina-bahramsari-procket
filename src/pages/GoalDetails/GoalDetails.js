@@ -101,7 +101,7 @@ export const GoalDetails = () => {
         target="Task"
         items={tasks}
         ItemComponent={TaskItem}
-        attrs={["Tasks", "Due Date", "Status", "Actions"]}
+        columns={["Tasks", "Due Date", "Status", "Actions"]}
         deleteSelectedItem={deleteSelectedItem}
       />
     </div>
