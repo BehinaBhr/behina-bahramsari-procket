@@ -1,8 +1,7 @@
-@use "../../styles/partials/_typography-mixins" as *;
-@use "../../styles/partials/_mixins" as *;
-@use "../../styles/partials/_global" as *;
-@use "../../styles/partials/_variables" as *;
-@use "../../styles/partials/_colors" as *;
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
 
 .procrastination-item {
   width: 100%;

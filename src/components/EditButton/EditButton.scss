@@ -1,8 +1,8 @@
-@import "../../styles/partials/mixins";
-@import "../../styles/partials/breakpoints";
-@import "../../styles/partials/variables";
-@import "../../styles/partials/colors";
-@import "../../styles/partials/typography-mixins";
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/typography-mixins" as *;
 
 .edit-button {
   display: flex;

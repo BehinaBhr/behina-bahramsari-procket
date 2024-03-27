@@ -1,9 +1,8 @@
-@use "../../styles/partials/_global" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography-mixins" as *;
-@use "../../styles/partials/_breakpoints" as *;
-@use "../../styles/partials/_variables" as *;
-@use "../../styles/partials/_colors" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
 
 .goal-details {
   display: flex;

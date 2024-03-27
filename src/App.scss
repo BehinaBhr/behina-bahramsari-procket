@@ -1,8 +1,8 @@
-@import "./styles/partials/typography";
-@import "./styles/partials/_colors.scss";
-@import "./styles/partials/mixins";
-@import "./styles/partials/breakpoints";
-@import "./styles/partials/_variables";
+@use "./styles/partials/typography" as *;
+@use "./styles/partials/colors.scss" as *;
+@use "./styles/partials/mixins" as *;
+@use "./styles/partials/breakpoints" as *;
+@use "./styles/partials/variables" as *;
 
 //default styling for website
 *,

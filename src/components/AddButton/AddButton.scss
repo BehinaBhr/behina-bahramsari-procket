@@ -1,8 +1,7 @@
 @use "../../styles/partials/colors" as *;
-@use "../../styles/partials/_typography-mixins" as *;
-@use "../../styles/partials/_global" as *;
-@use "../../styles/partials/_mixins" as *;
-@import "../../styles/partials/variables";
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
 
 //styling for adding button
 .add-button {
