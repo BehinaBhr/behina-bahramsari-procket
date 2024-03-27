@@ -14,9 +14,11 @@ export default function EditAndBackButtonHeader({
         <ArrowBack to={back_button_to} />
         <div className="edit_and_back_button_header__name">{title}</div>
       </div>
-      <div className="edit_and_back_button_header__section">
-        <EditButton to={edit_button_to} />
-      </div>
+      {edit_button_to && (
+        <div className="edit_and_back_button_header__section">
+          <EditButton to={edit_button_to} />
+        </div>
+      )}
     </section>
   );
 }
