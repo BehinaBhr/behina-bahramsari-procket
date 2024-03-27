@@ -7,9 +7,5 @@ export function DocumentTitle(title) {
 }
 
 export function dateFormatter(stringDate) {
-  let date = new Date(stringDate);
-  let y = date.getFullYear();
-  let m = date.getMonth() + 1;
-  let d = date.getDate();
-  return `${y}-${m}-${d}`;
+  return stringDate.split(" ")[0];
 }
