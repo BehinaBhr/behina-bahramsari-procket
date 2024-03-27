@@ -2,7 +2,7 @@ import "./FormField.scss";
 import FieldError from "../FieldError/FieldError";
 import "./FormField.scss";
 
-const FormField = ({ field_name, errors, errorSetter, value, valueSetter, className = "" }) => {
+const FormField = ({ field_name, errors, errorSetter, value, valueSetter, type="text", className = "" }) => {
   const field_label = field_name;
   function onChange(e) {
     valueSetter(e.target.value);
@@ -17,7 +17,7 @@ const FormField = ({ field_name, errors, errorSetter, value, valueSetter, classN
       <input
         className={`${errors[field_name] !== undefined ? "form-field__error" : ""} form-field__input`}
         placeholder={field_label}
-        type="text"
+        type={type}
         id="warehouse-name"
         value={value}
         onChange={onChange}

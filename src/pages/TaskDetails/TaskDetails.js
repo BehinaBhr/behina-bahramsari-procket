@@ -59,9 +59,6 @@ export const TaskDetails = () => {
   if (isLoading) {
     return <p>Is Loading...</p>;
   }
-  if (procrastinations.length === 0) {
-    return <p>No procrastination available for this task</p>;
-  }
 
   // Function to convert is_completed value from 0, 1 to text "Not Done", "Done"
   const statusText = () => {
@@ -98,7 +95,7 @@ export const TaskDetails = () => {
       </section>
       <hr className="task-details__divider" />
       <Table
-        target="Procrastination"
+        target="procrastination"
         items={procrastinations}
         ItemComponent={ProcrastinationItem}
         columns={["Procrastinations", "Created at", "Actions"]}

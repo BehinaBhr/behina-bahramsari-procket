@@ -4,6 +4,13 @@ import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
 function Table({ target, items, columns, ItemComponent, deleteSelectedItem }) {
   const [deleteItemId, setDeleteItemId] = useState(null);
+  if (items.length === 0) {
+    return (
+      <div className="no-children">
+        No {target} created yet
+      </div>
+    );
+  }
 
   return (
     <section className="table">

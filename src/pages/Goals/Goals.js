@@ -52,11 +52,11 @@ const Goals = () => {
       <SearchAndAddButtonHeader
         title="Goals"
         add_button_target="Goal"
-        add_button_link="goals/new"
+        add_button_link="/goals/new"
       />
 
       <Table
-        target={"Goal"}
+        target={"goal"}
         items={goals}
         ItemComponent={GoalItem}
         columns={["Goal", "Start Date", "End Date", "Progress", "Actions"]}

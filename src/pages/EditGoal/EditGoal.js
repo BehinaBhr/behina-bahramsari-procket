@@ -33,11 +33,10 @@ const EditGoal = () => {
   }
 
   const handleSubmit = async (goalData) => {
-    console.log(goalData);
     await axios.put(`${BASE_URL}/api/goals/${goalId}`, goalData);
   };
 
-  return <GoalForm formSubmitHandler={handleSubmit} goal={goal} />;
+  return <GoalForm title="Edit Goal" formSubmitHandler={handleSubmit} goal={goal} />;
 };
 
 export { EditGoal };

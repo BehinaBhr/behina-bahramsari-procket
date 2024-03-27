@@ -52,7 +52,7 @@ const Tasks = () => {
         add_button_link="tasks/new"
       />
       <Table
-        target="Task"
+        target="task"
         items={tasks}
         ItemComponent={TaskItem}
         columns={["Task (goal)", "Due Date", "Status", "Actions"]}

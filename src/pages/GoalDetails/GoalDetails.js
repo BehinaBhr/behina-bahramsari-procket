@@ -58,10 +58,6 @@ export const GoalDetails = () => {
     return <p>Is Loading...</p>;
   }
 
-  if (tasks.length === 0) {
-    return <p>No task available for this goal</p>;
-  }
-
   return (
     <div className="goal-details">
       <EditAndBackButtonHeader
@@ -69,9 +65,7 @@ export const GoalDetails = () => {
         back_button_to={"/goals"}
         edit_button_to={`/goals/${goalId}/edit`}
       />
-
       <hr className="goal-details__divider" />
-
       <section className="goal-details__body">
         <div className="goal-details__sub-item goal-details__sub-item-description">
           <h4 className="goal-details__label">Description</h4>
@@ -93,7 +87,7 @@ export const GoalDetails = () => {
       </section>
       <hr className="goal-details__divider" />
       <Table
-        target="Task"
+        target="task"
         items={tasks}
         ItemComponent={TaskItem}
         columns={["Tasks", "Due Date", "Status", "Actions"]}

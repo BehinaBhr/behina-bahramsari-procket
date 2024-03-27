@@ -64,3 +64,10 @@
     }
   }
 }
+
+.no-children {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $mobile-padding;
+}
