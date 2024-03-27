@@ -69,6 +69,7 @@ export const TaskDetails = () => {
     <div className="task-details">
       <EditAndBackButtonHeader
         title="Task Details"
+        back_button_to={"/tasks"}
         edit_button_to={`/tasks/${taskId}/edit`}
       />
 
