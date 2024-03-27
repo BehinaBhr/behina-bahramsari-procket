@@ -67,7 +67,7 @@ export const GoalDetails = () => {
       <EditAndBackButtonHeader
         title="Goal Details"
         back_button_to={"/goals"}
-        edit_button_to={`/goal/${goalId}/edit`}
+        edit_button_to={`/goals/${goalId}/edit`}
       />
 
       <hr className="goal-details__divider" />

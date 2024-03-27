@@ -1,0 +1,90 @@
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/component_mixins" as *;
+
+.goal-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__divider {
+    @include divider;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1.5rem;
+    border-color: $cloud;
+  }
+
+  &__input-group {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 1rem;
+
+      > * {
+        width: 100%;
+      }
+    }
+  }
+
+  &__buttons-group {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    justify-content: space-around;
+    background-color: $lightgray;
+
+    @include tablet {
+      border-top: 0.0625rem solid $cloud;
+      justify-content: flex-end;
+    }
+  }
+
+  &__button {
+    @include button;
+    width: 100%;
+
+    @include tablet {
+      width: 10rem;
+    }
+
+    &-cancel {
+      color: $black;
+      border: 0.0625rem solid $cloud;
+      background-color: $white;
+
+      &:hover {
+        border-color: $navy;
+        color: $navy;
+      }
+    }
+
+    &-add {
+      background-color: $blue;
+      color: $white;
+      border: none;
+
+      &:hover {
+        background-color: $navy;
+      }
+    }
+  }
+
+  &__success-message {
+    @include body-medium;
+    width: 100%;
+    padding: 1rem;
+    background-color: $lightgray;
+  }
+}
