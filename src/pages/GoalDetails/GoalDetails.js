@@ -80,15 +80,11 @@ export const GoalDetails = () => {
         <hr className="goal-details__section-divider" />
         <div className="goal-details__sub-item">
           <h4 className="goal-details__label">Start Date</h4>
-          <div className="goal-details__value">
-            {goal.start_date}
-          </div>
+          <div className="goal-details__value">{goal.start_date}</div>
         </div>
         <div className="goal-details__sub-item">
           <h4 className="goal-details__label">End Date</h4>
-          <div className="goal-details__value">
-            {goal.end_date}
-          </div>
+          <div className="goal-details__value">{goal.end_date}</div>
         </div>
         <div className="goal-details__sub-item">
           <h4 className="goal-details__label">progress</h4>

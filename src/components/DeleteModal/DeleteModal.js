@@ -14,14 +14,12 @@ function DeleteModal({ target, onDelete, onCancel }) {
         <div className="delete-modal__buttons">
           <button
             className="delete-modal__button delete-modal__button-cancel"
-            onClick={onCancel}
-          >
+            onClick={onCancel}>
             Cancel
           </button>
           <button
             className="delete-modal__button delete-modal__button-delete"
-            onClick={onDelete}
-          >
+            onClick={onDelete}>
             Delete
           </button>
         </div>

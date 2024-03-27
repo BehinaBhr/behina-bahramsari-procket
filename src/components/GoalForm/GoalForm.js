@@ -9,6 +9,7 @@ const GoalForm = ({ formSubmitHandler, goal }) => {
   const [description, setDescription] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
+  const [errors, setErrors] = useState({});
 
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const navigate = useNavigate();
@@ -19,36 +20,43 @@ const GoalForm = ({ formSubmitHandler, goal }) => {
       setStartDate(goal.start_date);
       setEndDate(goal.end_date);
     }
-  }, []);
+  }, [goal]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    if (!description || !startDate || !endDate) {
-      console.error(
-        "Please fill out all fields and provide a valid email address and phone number."
-      );
-      return;
+    let errors = {};
+    if (description === "") {
+      errors["description"] = ["This field is required"];
+    }
+    if (startDate === "") {
+      errors["start_date"] = ["This field is required"];
+    }
+    if (endDate === "") {
+      errors["end_date"] = ["This field is required"];
     }
 
-    try {
-      formSubmitHandler({ description, startDate, endDate });
-      setSubmitSuccess(true);
-      setTimeout(() => {
-        navigate(`/goals/${goalId}`);
-      }, 3000);
-    } catch (error) {
-      console.error(error);
-      setSubmitSuccess(false);
+    setErrors(errors);
+    if (Object.keys(errors).length === 0) {
+      try {
+        await formSubmitHandler({
+          description: description,
+          start_date: startDate,
+          end_date: endDate,
+        });
+        setSubmitSuccess(true);
+        setTimeout(() => {
+          navigate(`/goals/${goalId}`);
+        }, 3000);
+      } catch (error) {
+        console.error(error);
+        setSubmitSuccess(false);
+      }
     }
   };
 
   return (
     <section className="goal-form">
-      <EditAndBackButtonHeader
-        title="Edit Goal"
-        back_button_to={`/goals/${goalId}`}
-        edit_button_to={null}
-      />
+      <EditAndBackButtonHeader title="Edit Goal" back_button_to={`/goals/${goalId}`} edit_button_to={null} />
 
       <hr className="goal-form__divider" />
 
@@ -57,23 +65,29 @@ const GoalForm = ({ formSubmitHandler, goal }) => {
           <h2>Warehouse Details</h2>
           <FormField
             className="goal-form__input"
+            key="description"
             field_name="description"
-            errors={[]}
+            errors={errors}
+            errorSetter={setErrors}
             value={description}
             valueSetter={setDescription}
           />
           <div className="goal-form__input-group">
             <FormField
               className="goal-form__input"
+              key="start_date"
               field_name="start_date"
-              errors={[]}
+              errors={errors}
+              errorSetter={setErrors}
               value={startDate}
               valueSetter={setStartDate}
             />
             <FormField
               className="goal-form__input"
+              key="end_date"
               field_name="end_date"
-              errors={[]}
+              errors={errors}
+              errorSetter={setErrors}
               value={endDate}
               valueSetter={setEndDate}
             />
@@ -81,22 +95,12 @@ const GoalForm = ({ formSubmitHandler, goal }) => {
         </div>
 
         <div className="goal-form__buttons-group">
-          <Link
-            className="goal-form__button goal-form__button-cancel"
-            onClick={() => navigate(-1)}
-          >
-            {" "}
+          <Link className="goal-form__button goal-form__button-cancel" onClick={() => navigate(-1)}>
             Cancel
           </Link>
-          <button className="goal-form__button goal-form__button-add">
-            Save
-          </button>
+          <button className="goal-form__button goal-form__button-add">Save</button>
         </div>
-        {submitSuccess && (
-          <div className="goal-form__success-message">
-            The goal is successfully updated!
-          </div>
-        )}
+        {submitSuccess && <div className="goal-form__success-message">The goal is successfully updated!</div>}
       </form>
     </section>
   );

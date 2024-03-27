@@ -8,21 +8,19 @@ function Table({ target, items, columns, ItemComponent, deleteSelectedItem }) {
   return (
     <section className="table">
       <section className="table__labels">
-        {columns.map((column) => {
-          return <h4 className="table__label">{column}</h4>;
-        })}
+        {columns.map((column) => (
+          <h4 className="table__label" key={column}>
+            {column}
+          </h4>
+        ))}
       </section>
 
       {items.map((item) => {
         return (
-          <>
+          <div key={`table-row-${item.id}`}>
             <hr className="table__divider" />
-            <ItemComponent
-              key={item.id}
-              {...item}
-              onDelete={() => setDeleteItemId(item.id)}
-            />
-          </>
+            <ItemComponent {...item} onDelete={() => setDeleteItemId(item.id)} />
+          </div>
         );
       })}
       {deleteItemId && (

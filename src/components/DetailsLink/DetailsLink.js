@@ -7,7 +7,7 @@ function DetailsLink({ text, to }) {
   return (
     <Link className="details-link" to={to}>
       <img src={iconAttribute} alt="link" />
-      <div>{text}</div>
+      <span>{text}</span>
     </Link>
   );
 }

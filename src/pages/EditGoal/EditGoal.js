@@ -13,15 +13,8 @@ const EditGoal = () => {
   useEffect(() => {
     const fetchGoal = async () => {
       try {
-        // const response = await axios.get(
-        //     `${BASE_URL}/api/warehouses/${goalId}`
-        // );
-        // const { description, start_date, end_date } = response.data
-        setGoal({
-          description: "description",
-          start_date: "start_date",
-          end_date: "end_date",
-        });
+        const response = await axios.get(`${BASE_URL}/api/goals/${goalId}`);
+        setGoal(response.data);
         setIsLoading(false);
       } catch (error) {
         setIsLoading(false);
@@ -40,13 +33,11 @@ const EditGoal = () => {
   }
 
   const handleSubmit = async (goalData) => {
-    await axios.put(
-      `${BASE_URL}/api/goals/${goalId}`,
-      JSON.stringify(goalData)
-    );
+    console.log(goalData);
+    await axios.put(`${BASE_URL}/api/goals/${goalId}`, goalData);
   };
 
-  return <GoalForm submitFormHandler={handleSubmit} goal={goal} />;
+  return <GoalForm formSubmitHandler={handleSubmit} goal={goal} />;
 };
 
 export { EditGoal };
