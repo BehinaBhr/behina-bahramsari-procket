@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import EditAndBackButtonHeader from "../../components/EditAndBackButtonHeader/EditAndBackButtonHeader";
 import { BASE_URL } from "../../utils/constant-variables";
-import { dateFormatter } from "../../utils/utils.js";
 import Table from "../../components/Table/Table.js";
 import TaskItem from "../../components/TaskItem/TaskItem.js";
 
@@ -82,13 +81,13 @@ export const GoalDetails = () => {
         <div className="goal-details__sub-item">
           <h4 className="goal-details__label">Start Date</h4>
           <div className="goal-details__value">
-            {dateFormatter(goal.start_date)}
+            {goal.start_date}
           </div>
         </div>
         <div className="goal-details__sub-item">
           <h4 className="goal-details__label">End Date</h4>
           <div className="goal-details__value">
-            {dateFormatter(goal.end_date)}
+            {goal.end_date}
           </div>
         </div>
         <div className="goal-details__sub-item">

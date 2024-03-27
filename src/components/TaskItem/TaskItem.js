@@ -1,6 +1,5 @@
 import "./TaskItem.scss";
 import DeleteButton from "../DeleteButton/DeleteButton";
-import { dateFormatter } from "../../utils/utils.js";
 import DetailsLink from "../DetailsLink/DetailsLink.js";
 import { Link } from "react-router-dom";
 
@@ -32,7 +31,7 @@ export default function TaskItem({
       </div>
       <div className="task-item__attr">
         <h4 className="task-item__attr-label">Due Date</h4>
-        <p className="task-item__attr-value">{dateFormatter(due_date)}</p>
+        <p className="task-item__attr-value">{due_date}</p>
       </div>
       <div className="task-item__attr">
         <h4 className="task-item__attr-label">Status</h4>
