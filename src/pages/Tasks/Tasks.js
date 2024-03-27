@@ -1,4 +1,3 @@
-import "./Tasks.scss";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { SearchAndAddButtonHeader } from "../../components/SearchAndAddButtonHeader/SearchAndAddButtonHeader";
@@ -56,7 +55,7 @@ const Tasks = () => {
         target="Task"
         items={tasks}
         ItemComponent={TaskItem}
-        attrs={["Task (goal)", "Due Date", "Status", "Actions"]}
+        columns={["Task (goal)", "Due Date", "Status", "Actions"]}
         deleteSelectedItem={deleteSelectedItem}
       />
     </div>

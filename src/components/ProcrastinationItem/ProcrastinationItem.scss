@@ -1,0 +1,78 @@
+@use "../../styles/partials/_typography-mixins" as *;
+@use "../../styles/partials/_mixins" as *;
+@use "../../styles/partials/_global" as *;
+@use "../../styles/partials/_variables" as *;
+@use "../../styles/partials/_colors" as *;
+
+.procrastination-item {
+  width: 100%;
+  padding: $mobile-padding 1.5rem;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &__attr {
+    padding-bottom: $mobile-padding;
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      padding-bottom: 0;
+      width: 15%;
+    }
+
+    &-label {
+      @include table-header;
+      color: $slate;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &-value {
+      @include body-medium;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-sub-value {
+      @include body-small;
+      color: $blue !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      @include tablet {
+        display: inline;
+        padding-top: 0.25rem;
+        padding-left: 1.2rem;
+      }
+    }
+
+    &--description {
+      width: 100%;
+
+      a {
+        color: $black;
+      }
+
+      @include tablet {
+        width: 45%;
+        margin-right: 5%;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include tablet {
+      justify-content: flex-end;
+      width: 5%;
+    }
+  }
+}

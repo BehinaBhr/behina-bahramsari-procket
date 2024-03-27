@@ -8,6 +8,8 @@ import { NotFound } from "./pages/NotFound/NotFound";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import { GoalDetails } from "./pages/GoalDetails/GoalDetails";
+import { TaskDetails } from "./pages/TaskDetails/TaskDetails";
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
             <Route path="/goals" element={<Goals />} />
             <Route path="/goals/:goalId" element={<GoalDetails />} />
             <Route path="/tasks" element={<Tasks />} />
+            <Route path="/tasks/:taskId" element={<TaskDetails />} />
             <Route path="/stats" element={<Stats />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

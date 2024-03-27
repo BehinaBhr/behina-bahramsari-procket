@@ -52,12 +52,17 @@ export const GoalDetails = () => {
   };
 
   if (hasError) {
-    return <p>Unable to access goals right now. Please try again later.</p>;
+    return <p>Unable to access details of goal with id {goalId} right now. Please try again later.</p>;
   }
 
   if (isLoading) {
     return <p>Is Loading...</p>;
   }
+
+  if (tasks.length === 0) {
+    return <p>No task available for this goal</p>;
+  }
+
   return (
     <div className="goal-details">
       <EditAndBackButtonHeader
@@ -96,7 +101,7 @@ export const GoalDetails = () => {
         target="Task"
         items={tasks}
         ItemComponent={TaskItem}
-        attrs={["Tasks", "Due Date", "Status", "Actions"]}
+        columns={["Tasks", "Due Date", "Status", "Actions"]}
         deleteSelectedItem={deleteSelectedItem}
       />
     </div>

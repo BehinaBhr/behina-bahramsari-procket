@@ -23,9 +23,11 @@ export default function TaskItem({
         <h4 className="task-item__attr-label">Task</h4>
         <p className="task-item__attr-value">
           <DetailsLink text={description} to={`/tasks/${id}`} />
+          {goal_description && (
           <Link className="task-item__attr-sub-value" to={`/goals/${goal_id}`}>
             ( {goal_description} )
           </Link>
+          )}
         </p>
       </div>
       <div className="task-item__attr">
