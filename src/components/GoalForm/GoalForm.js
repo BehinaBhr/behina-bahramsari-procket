@@ -81,6 +81,7 @@ const GoalForm = ({ title, formSubmitHandler, goal=null }) => {
               errorSetter={setErrors}
               value={startDate}
               valueSetter={setStartDate}
+              type="date"
             />
             <FormField
               className="goal-form__input"
@@ -90,6 +91,7 @@ const GoalForm = ({ title, formSubmitHandler, goal=null }) => {
               errorSetter={setErrors}
               value={endDate}
               valueSetter={setEndDate}
+              type="date"
             />
           </div>
         </div>
