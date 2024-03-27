@@ -67,7 +67,7 @@ export const GoalDetails = () => {
       <EditAndBackButtonHeader
         title="Goal Details"
         back_button_to={"/goals"}
-        edit_button_to={`/goal/${goalId}/edit`}
+        edit_button_to={`/goals/${goalId}/edit`}
       />
 
       <hr className="goal-details__divider" />
@@ -80,15 +80,11 @@ export const GoalDetails = () => {
         <hr className="goal-details__section-divider" />
         <div className="goal-details__sub-item">
           <h4 className="goal-details__label">Start Date</h4>
-          <div className="goal-details__value">
-            {goal.start_date}
-          </div>
+          <div className="goal-details__value">{goal.start_date}</div>
         </div>
         <div className="goal-details__sub-item">
           <h4 className="goal-details__label">End Date</h4>
-          <div className="goal-details__value">
-            {goal.end_date}
-          </div>
+          <div className="goal-details__value">{goal.end_date}</div>
         </div>
         <div className="goal-details__sub-item">
           <h4 className="goal-details__label">progress</h4>

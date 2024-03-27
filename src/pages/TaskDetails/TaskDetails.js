@@ -39,17 +39,12 @@ export const TaskDetails = () => {
   };
 
   const fetchTaskProcrastinations = async () => {
-    fetchData(
-      `${BASE_URL}/api/tasks/${taskId}/procrastinations`,
-      setProcrastinations
-    );
+    fetchData(`${BASE_URL}/api/tasks/${taskId}/procrastinations`, setProcrastinations);
   };
 
   const deleteSelectedItem = async (procrastinationId) => {
     try {
-      await axios.delete(
-        `${BASE_URL}/api/procrastinations/${procrastinationId}`
-      );
+      await axios.delete(`${BASE_URL}/api/procrastinations/${procrastinationId}`);
       // Fetching updated procrastinationss on delete
       fetchTaskProcrastinations();
     } catch {
@@ -58,12 +53,7 @@ export const TaskDetails = () => {
   };
 
   if (hasError) {
-    return (
-      <p>
-        Unable to access details of task with id {taskId} right now. Please try
-        again later.
-      </p>
-    );
+    return <p>Unable to access details of task with id {taskId} right now. Please try again later.</p>;
   }
 
   if (isLoading) {
@@ -99,9 +89,7 @@ export const TaskDetails = () => {
         </div>
         <div className="task-details__sub-item">
           <h4 className="task-details__label">Due Date</h4>
-          <div className="task-details__value">
-            {task.due_date}
-          </div>
+          <div className="task-details__value">{task.due_date}</div>
         </div>
         <div className="task-details__sub-item">
           <h4 className="task-details__label">Status</h4>

@@ -1,0 +1,47 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/typography-mixins" as *;
+
+.form-field {
+  &__label {
+    margin-top: 1rem;
+    @include labels-links-button;
+
+    @include tablet {
+      margin-top: 1.5rem;
+    }
+  }
+
+  &__input {
+    height: 2.25rem;
+    width: 100%;
+    border-radius: 1.25rem;
+    margin-top: 0.25rem;
+    padding: 0 1rem 0 1rem;
+    border: 0.0625rem solid $cloud;
+    background-color: $white;
+    color: $slate;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+      height: 2.375rem;
+    }
+
+    &:focus {
+      border: 0.1rem solid $blue;
+    }
+
+    @include tablet {
+      height: 2.375rem;
+    }
+  }
+
+  &__error {
+    border: 0.0625rem solid red;
+  }
+}

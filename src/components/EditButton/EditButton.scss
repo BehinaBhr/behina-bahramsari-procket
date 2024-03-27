@@ -1,29 +1,25 @@
-@import "../../styles/partials/mixins";
-@import "../../styles/partials/breakpoints";
-@import "../../styles/partials/variables";
-@import "../../styles/partials/colors";
-@import "../../styles/partials/typography-mixins";
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/component_mixins" as *;
 
 .edit-button {
   display: flex;
-  height: 2rem;
-  width: 2rem;
+  height: $button-height;
   background-color: $blue;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
-
-  &:hover {
-    cursor: pointer;
-  }
+  aspect-ratio: 1 / 1;
 
   @include tablet {
-    padding: 0.5rem 1rem;
-    border-radius: $oval-border-radius;
-    width: auto;
+    @include button;
+    aspect-ratio: auto;
+
     &:hover {
       background-color: $graphite;
-      cursor: pointer;
     }
   }
 
