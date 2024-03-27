@@ -4,7 +4,7 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import FormField from "../../components/FormField/FormField";
 import EditAndBackButtonHeader from "../../components/EditAndBackButtonHeader/EditAndBackButtonHeader";
 
-const GoalForm = ({ formSubmitHandler, goal }) => {
+const GoalForm = ({ title, formSubmitHandler, goal=null }) => {
   const { goalId } = useParams();
   const [description, setDescription] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -38,14 +38,15 @@ const GoalForm = ({ formSubmitHandler, goal }) => {
     setErrors(errors);
     if (Object.keys(errors).length === 0) {
       try {
-        await formSubmitHandler({
+        const response = await formSubmitHandler({
           description: description,
           start_date: startDate,
           end_date: endDate,
         });
+
         setSubmitSuccess(true);
         setTimeout(() => {
-          navigate(`/goals/${goalId}`);
+          goal ? navigate(`/goals/${goalId}`) : navigate(`/goals`);
         }, 3000);
       } catch (error) {
         console.error(error);
@@ -56,16 +57,15 @@ const GoalForm = ({ formSubmitHandler, goal }) => {
 
   return (
     <section className="goal-form">
-      <EditAndBackButtonHeader title="Edit Goal" back_button_to={`/goals/${goalId}`} edit_button_to={null} />
+      <EditAndBackButtonHeader title={title} edit_button_to={null} />
 
       <hr className="goal-form__divider" />
 
       <form onSubmit={onSubmit}>
         <div className="goal-form__details">
-          <h2>Warehouse Details</h2>
+          <h2>Goal Details</h2>
           <FormField
             className="goal-form__input"
-            key="description"
             field_name="description"
             errors={errors}
             errorSetter={setErrors}

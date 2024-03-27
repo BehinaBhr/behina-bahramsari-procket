@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import { GoalDetails } from "./pages/GoalDetails/GoalDetails";
 import { EditGoal } from "./pages/EditGoal/EditGoal";
 import { TaskDetails } from "./pages/TaskDetails/TaskDetails";
+import { NewGoal } from "./pages/NewGoal/NewGoal";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/goals" element={<Goals />} />
             <Route path="/goals/:goalId" element={<GoalDetails />} />
+            <Route path="/goals/new" element={<NewGoal />} />
             <Route path="/goals/:goalId/edit" element={<EditGoal />} />
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/tasks/:taskId" element={<TaskDetails />} />
