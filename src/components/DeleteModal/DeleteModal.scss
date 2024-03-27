@@ -1,5 +1,7 @@
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/component_mixins" as *;
 
 .delete-modal {
   background-color: $white;
@@ -45,13 +47,11 @@
     display: flex;
     justify-content: space-between;
     padding-top: 2rem;
+    gap: 1rem;
   }
 
   &__button {
-    cursor: pointer;
-    border-radius: 1.25rem;
-    width: calc(50% - 0.5rem);
-    height: 2.375rem;
+    @include button;
 
     &-cancel {
       background-color: $white;

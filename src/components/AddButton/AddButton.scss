@@ -2,28 +2,21 @@
 @use "../../styles/partials/typography-mixins" as *;
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/component_mixins" as *;
+
 
 //styling for adding button
 .add-button {
-  @include body-medium;
-  margin-bottom: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 2.25rem;
-  background-color: $blue;
-  border: none;
-  border-radius: $oval-border-radius;
-  color: $white;
-  padding: .5rem 1rem;
-  cursor: pointer;
+    @include button;
+    background-color: $blue;
+    border: none;
+    color: $white;
 
-  @include tablet {
-    width: fit-content;
-  }
+    @include tablet {
+        width: fit-content;
+    }
 
-  &:hover {
-    background-color: $graphite;
-  }
+    &:hover {
+        background-color: $graphite;
+    }
 }

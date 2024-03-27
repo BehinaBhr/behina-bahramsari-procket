@@ -1,0 +1,20 @@
+@use "./typography-mixins" as *;
+@use "./colors" as colors;
+@use "./variables" as *;
+
+@mixin divider {
+    width: 100%;
+    border: 0.0625rem solid colors.$cloud;
+}
+
+@mixin button {
+    @include labels-links-button;
+    cursor: pointer;
+    border-radius: $oval-border-radius;
+    width: 100%;
+    height: $button-height;
+    padding: 0.5rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
