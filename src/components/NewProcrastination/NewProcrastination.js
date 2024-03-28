@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./NewProcrastination.scss";
 import { BASE_URL } from "../../utils/constant-variables";
 import axios from "axios";
@@ -12,6 +12,10 @@ function NewProcrastination({ task, onCancel, onSuccess }) {
   const [errors, setErrors] = useState(false);
   const navigate = useNavigate();
   const { taskId } = useParams();
+
+  useEffect(() => {
+    setDueDate(task.due_date);
+  }, [task]);
 
   const onSubmit = async (e) => {
     e.preventDefault();

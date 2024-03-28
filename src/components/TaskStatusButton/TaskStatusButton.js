@@ -4,19 +4,19 @@ import axios from "axios";
 import { useState } from "react";
 import NewProcrastination from "../NewProcrastination/NewProcrastination";
 
-const TaskStatusButton = ({ task, fetchTask, className = "" }) => {
+const TaskStatusButton = ({ task, triggerReload, className = "" }) => {
   const [newProcrastination, setNewProcrastination] = useState(false);
 
   async function onDone() {
     if (!task.is_completed) {
       await updateTask(true);
-      fetchTask();
+      triggerReload();
     }
   }
   async function onUnDone() {
     if (task.is_completed) {
       await updateTask(false);
-      fetchTask();
+      triggerReload();
     }
   }
   async function updateTask(is_completed) {
@@ -62,7 +62,7 @@ const TaskStatusButton = ({ task, fetchTask, className = "" }) => {
           onCancel={() => setNewProcrastination(false)}
           task={task}
           onSuccess={() => {
-            fetchTask();
+            triggerReload();
             setNewProcrastination(false);
           }}
         />

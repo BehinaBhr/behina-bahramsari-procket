@@ -2,14 +2,10 @@ import "./Table.scss";
 import { useState } from "react";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
-function Table({ target, items, columns, ItemComponent, deleteSelectedItem }) {
+function Table({ target, items, columns, ItemComponent, deleteSelectedItem, triggerReload = null }) {
   const [deleteItemId, setDeleteItemId] = useState(null);
   if (items.length === 0) {
-    return (
-      <div className="no-children">
-        No {target} created yet
-      </div>
-    );
+    return <div className="no-children">No {target} created yet</div>;
   }
 
   return (
@@ -26,7 +22,7 @@ function Table({ target, items, columns, ItemComponent, deleteSelectedItem }) {
         return (
           <div key={`table-row-${item.id}`}>
             <hr className="table__divider" />
-            <ItemComponent {...item} onDelete={() => setDeleteItemId(item.id)} />
+            <ItemComponent item={item} onDelete={() => setDeleteItemId(item.id)} triggerReload={triggerReload} />
           </div>
         );
       })}

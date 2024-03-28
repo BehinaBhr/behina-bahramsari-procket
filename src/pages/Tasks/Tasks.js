@@ -9,10 +9,16 @@ const Tasks = () => {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     fetchTasks();
-  }, []);
+  }, [reload]);
+
+  const triggerReload = () => {
+    console.log("here");
+    setReload(!reload);
+  };
 
   const fetchTasks = async () => {
     try {
@@ -27,8 +33,7 @@ const Tasks = () => {
   const deleteSelectedItem = async (taskId) => {
     try {
       await axios.delete(`${BASE_URL}/api/tasks/${taskId}`);
-      // Fetching updated goals on delete
-      fetchTasks();
+      triggerReload();
     } catch {
       setHasError(true);
     }
@@ -53,6 +58,7 @@ const Tasks = () => {
         ItemComponent={TaskItem}
         columns={["Task (goal)", "Due Date", "Status", "Actions"]}
         deleteSelectedItem={deleteSelectedItem}
+        triggerReload={triggerReload}
       />
     </div>
   );

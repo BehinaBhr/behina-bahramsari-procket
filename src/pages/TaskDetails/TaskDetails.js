@@ -84,7 +84,7 @@ export const TaskDetails = () => {
         </div>
         <div className="task-details__sub-item">
           <h4 className="task-details__label">Status</h4>
-          <TaskStatusButton className="task-details__value" task={task} fetchTask={fetchTask} />
+          <TaskStatusButton className="task-details__value" task={task} triggerReload={fetchTask} />
         </div>
       </section>
       <hr className="task-details__divider" />
