@@ -5,7 +5,7 @@
 
 @mixin divider {
   width: 100%;
-  border: .25px solid colors.$darknavy;
+  border: 0.25px solid colors.$darknavy;
 }
 
 @mixin button {
@@ -52,7 +52,7 @@
 
 @mixin red_button {
   background-color: colors.$red;
-  border: 0; 
+  border: 0;
   color: colors.$white;
 
   &:hover {
@@ -62,25 +62,27 @@
 
 @mixin form-field {
   &__input {
-    height: 2.25rem;
+    height: $button-height;
     width: 100%;
-    border-radius: 1.25rem;
-    margin-top: 0.25rem;
     padding: 0 1rem;
-    border: 0.0625rem solid colors.$cloud;
+    border: 0.0625rem solid colors.$darknavy;
+    border-radius: $oval-border-radius;
     background-color: colors.$white;
     color: colors.$darknavy;
 
-    @include tablet {
-      height: 2.375rem;
+    &::placeholder {
+      color: colors.$darknavy;
+      opacity: 0.5;
+    }
+
+    &::-ms-input-placeholder {
+      color: colors.$darknavy;
+      opacity: 0.5;
     }
 
     &:focus {
-      border: 0.1rem solid colors.$blue;
-    }
-
-    @include tablet {
-      height: 2.375rem;
+      outline: none;
+      box-shadow: 0 0 0.25rem colors.$navy;
     }
   }
 

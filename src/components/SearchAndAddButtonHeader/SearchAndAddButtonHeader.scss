@@ -6,31 +6,28 @@
 //button styling for search and add header
 .search_and_add_button_header {
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
   padding: $mobile-padding;
-  padding-top: 2rem;
-  padding-bottom: 0.5rem;
+  gap: $mobile-padding;
 
   @include tablet {
     padding: $tablet-padding;
     flex-direction: row;
-    padding-bottom: 0.7rem;
     align-items: center;
   }
+
   &__title {
     @include page-header;
-    padding-bottom: 1rem;
-
-    @include tablet {
-      margin-right: 5rem;
-    }
+    text-align: center;
   }
   &__actions {
+    display: flex;
+    flex-direction: column;
+    gap: $mobile-padding;
+
     @include tablet {
-      gap: $mobile-padding;
-      display: flex;
+      flex-direction: row;
     }
   }
 }

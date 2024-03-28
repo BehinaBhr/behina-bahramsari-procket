@@ -2,37 +2,18 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/component_mixins" as *;
 
 //styling for search bar
 .search {
+  @include form-field;
   @include body-medium;
-  padding-bottom: 1rem;
 
-  &__field {
-    width: 100%;
-    height: 2.25rem;
-    border: 0.0625rem solid $darknavy;
-    border-radius: $oval-border-radius;
-    padding: 1rem;
+  &__input {
     background: transparent url("../../assets/images/search-24px.svg") no-repeat right;
     background-position-x: calc(100% - 0.625rem);
-    color: $darknavy;
+    padding: 1rem;
 
-    &::placeholder {
-      color: $darknavy;
-      opacity: .5;
-    }
-
-    &::-ms-input-placeholder {
-      /* Edge 12 -18 */
-      color: $darknavy;
-      opacity: .5;
-    }
-
-    &:focus {
-      outline: none;
-      box-shadow: 0 0 .25rem $navy;
-    }
     @include tablet {
       width: 11.5625rem;
     }

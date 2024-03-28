@@ -9,7 +9,7 @@ function SearchInput() {
         id="search-bar"
         name="searchBar"
         placeholder="Search..."
-        className="search__field"
+        className="search__input"
       />
     </form>
   );
