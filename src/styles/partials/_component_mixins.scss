@@ -21,7 +21,7 @@
   border: none;
 }
 
-@mixin blue_button {
+@mixin blue-button {
   background-color: colors.$darknavy;
   color: colors.$lightblue;
 
@@ -30,30 +30,30 @@
   }
 }
 
-@mixin green_button {
+@mixin green-button {
   background-color: colors.$green;
-  color: colors.$white;
+  color: colors.$lightblue;
 
   &:hover {
     background-color: colors.$darkgreen;
   }
 }
 
-@mixin white_button {
+@mixin white-button {
+  background-color: colors.$lightgray;
   color: colors.$darknavy;
-  background-color: colors.$white;
-  border: 0.0625rem solid colors.$cloud;
+  border: 0.0625rem solid colors.$fadeblack;
 
   &:hover {
-    border-color: colors.$navy;
-    color: colors.$navy;
+    border-color: colors.$darknavy;
+    color: colors.$darknavy;
   }
 }
 
-@mixin red_button {
+@mixin red-button {
   background-color: colors.$red;
   border: 0;
-  color: colors.$white;
+  color: colors.$lightblue;
 
   &:hover {
     background-color: colors.$darkred;
@@ -61,6 +61,9 @@
 }
 
 @mixin form-field {
+  display: flex;
+  flex-direction: column;
+
   &__input {
     height: $button-height;
     width: 100%;
@@ -103,9 +106,7 @@
   &__details {
     display: flex;
     flex-direction: column;
-    width: 100%;
     padding: 1.5rem;
-    border-color: colors.$cloud;
   }
 
   &__input-group {
@@ -129,10 +130,8 @@
     padding: 1rem 1.5rem;
     gap: 1rem;
     justify-content: space-around;
-    background-color: colors.$lightgray;
 
     @include tablet {
-      border-top: 0.0625rem solid colors.$cloud;
       justify-content: flex-end;
     }
   }
@@ -146,11 +145,11 @@
     }
 
     &-cancel {
-      @include white_button();
+      @include white-button();
     }
 
     &-add {
-      @include blue_button();
+      @include blue-button();
       border: none;
     }
   }
@@ -214,7 +213,7 @@
     @include button;
 
     &-cancel {
-      @include white_button;
+      @include white-button;
     }
   }
 }

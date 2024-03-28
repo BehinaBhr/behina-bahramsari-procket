@@ -4,9 +4,6 @@
 
 .form-label {
   @include labels-links-button;
-  margin-top: $mobile-padding;
-
-  @include tablet {
-    margin-top: $tablet-space-between;
-  }
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
 }
