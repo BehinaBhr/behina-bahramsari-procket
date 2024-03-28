@@ -1,0 +1,12 @@
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.form-label {
+  @include labels-links-button;
+  margin-top: $mobile-padding;
+
+  @include tablet {
+    margin-top: $tablet-space-between;
+  }
+}
