@@ -12,6 +12,7 @@
   padding: $mobile-padding;
   padding-top: 2rem;
   padding-bottom: 0.5rem;
+
   @include tablet {
     padding: $tablet-padding;
     flex-direction: row;

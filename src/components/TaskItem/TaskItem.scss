@@ -4,12 +4,24 @@
 @use "../../styles/partials/colors" as *;
 
 .task-item {
-  width: 100%;
   padding: $mobile-padding 1.5rem;
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  border: solid $darknavy 1px;
+  border-radius: $oval-border-radius;
+  margin: 0.5rem;
+  background-color: $cream;
+
+  &:hover {
+    background-color: $darkcream;
+  }
+
+  &--done {
+    margin-bottom: 0;
+    opacity: 0.5;
+  }
 
   &__attr {
     padding-bottom: $mobile-padding;
@@ -23,7 +35,7 @@
 
     &-label {
       @include table-header;
-      color: $slate;
+      color: $darknavy;
 
       @include tablet {
         display: none;
@@ -38,7 +50,7 @@
 
     &-sub-value {
       @include body-small;
-      color: $blue !important;
+      color: $navy !important;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -54,7 +66,7 @@
       width: 100%;
 
       a {
-        color: $black;
+        color: $darknavy;
       }
 
       @include tablet {

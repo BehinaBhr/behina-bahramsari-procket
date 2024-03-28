@@ -5,7 +5,7 @@
 
 @mixin divider {
   width: 100%;
-  border: 0.0625rem solid colors.$cloud;
+  border: .25px solid colors.$darknavy;
 }
 
 @mixin button {
@@ -22,11 +22,11 @@
 }
 
 @mixin blue_button {
-  background-color: colors.$blue;
-  color: colors.$white;
+  background-color: colors.$darknavy;
+  color: colors.$lightblue;
 
   &:hover {
-    background-color: colors.$graphite;
+    background-color: colors.$navy;
   }
 }
 
@@ -35,12 +35,12 @@
   color: colors.$white;
 
   &:hover {
-    background-color: colors.$firooze;
+    background-color: colors.$darkgreen;
   }
 }
 
 @mixin white_button {
-  color: colors.$black;
+  color: colors.$darknavy;
   background-color: colors.$white;
   border: 0.0625rem solid colors.$cloud;
 
@@ -52,7 +52,7 @@
 
 @mixin red_button {
   background-color: colors.$red;
-  border: 0;
+  border: 0; 
   color: colors.$white;
 
   &:hover {
@@ -69,7 +69,7 @@
     padding: 0 1rem;
     border: 0.0625rem solid colors.$cloud;
     background-color: colors.$white;
-    color: colors.$slate;
+    color: colors.$darknavy;
 
     @include tablet {
       height: 2.375rem;

@@ -21,7 +21,6 @@ function Table({ target, items, columns, ItemComponent, deleteSelectedItem, trig
       {items.map((item) => {
         return (
           <div key={`table-row-${item.id}`}>
-            <hr className="table__divider" />
             <ItemComponent item={item} onDelete={() => setDeleteItemId(item.id)} triggerReload={triggerReload} />
           </div>
         );

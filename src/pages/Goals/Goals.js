@@ -48,13 +48,12 @@ const Goals = () => {
   }
 
   return (
-    <>
+    <div>
       <SearchAndAddButtonHeader
         title="Goals"
         add_button_target="Goal"
         add_button_link="/goals/new"
       />
-
       <Table
         target={"goal"}
         items={goals}
@@ -62,7 +61,7 @@ const Goals = () => {
         columns={["Goal", "Start Date", "End Date", "Progress", "Actions"]}
         deleteSelectedItem={deleteSelectedItem}
       />
-    </>
+    </div>
   );
 };
 

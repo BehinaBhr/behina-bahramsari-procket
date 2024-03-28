@@ -1,22 +1,36 @@
 @use "../../styles/partials/typography-mixins" as *;
 @use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/component_mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/colors" as *;
 
 .goal-item {
-  width: 100%;
-  padding: $mobile-padding;
-  justify-content: space-between;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-
-  @include tablet {
-    padding: 1rem $tablet-padding;
+  &__divider {
+    @include divider;
+    margin-left: $mobile-padding;
+    margin-right: $mobile-padding;
+    width: auto;
   }
 
-  @include desktop {
-    padding: 1rem 3rem;
+  &__body {
+    width: 100%;
+    padding: $mobile-padding;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    &:hover {
+      background-color: $fadenavy;
+    }
+
+    @include tablet {
+      padding: 1rem $tablet-padding;
+    }
+
+    @include desktop {
+      padding: 1rem 3rem;
+    }
   }
 
   &__attr {
