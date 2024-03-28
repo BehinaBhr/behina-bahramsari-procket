@@ -65,11 +65,7 @@ export const TaskDetails = () => {
 
   return (
     <div className="task-details">
-      <EditAndBackButtonHeader
-        title="Task Details"
-        back_button_to={"/tasks"}
-        edit_button_to={`/tasks/${taskId}/edit`}
-      />
+      <EditAndBackButtonHeader title="Task Details" edit_button_to={`/tasks/${taskId}/edit`} />
 
       <hr className="task-details__divider" />
 

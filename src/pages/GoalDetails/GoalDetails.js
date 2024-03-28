@@ -60,11 +60,7 @@ export const GoalDetails = () => {
 
   return (
     <div className="goal-details">
-      <EditAndBackButtonHeader
-        title="Goal Details"
-        back_button_to={"/goals"}
-        edit_button_to={`/goals/${goalId}/edit`}
-      />
+      <EditAndBackButtonHeader title="Goal Details" edit_button_to={`/goals/${goalId}/edit`} />
       <hr className="goal-details__divider" />
       <section className="goal-details__body">
         <div className="goal-details__sub-item goal-details__sub-item-description">
