@@ -7,8 +7,9 @@ const FormField = ({ field_name, errors, errorSetter, value, valueSetter, type =
 
   function onChange(e) {
     valueSetter(e.target.value);
-    delete errors[field_name];
-    errorSetter(errors);
+    const updatedErrors = { ...errors };
+    delete updatedErrors[field_name];
+    errorSetter(updatedErrors);
   }
   return (
     <div className={`form-field ${className}`}>

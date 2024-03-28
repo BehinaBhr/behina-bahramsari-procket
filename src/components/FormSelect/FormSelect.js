@@ -2,21 +2,22 @@ import "./FormSelect.scss";
 import FieldError from "../FieldError/FieldError";
 import FormLabel from "../FormLabel/FormLabel";
 
-const FormSelect = ({ field_name, options, errors, errorSetter, valueSetter, className = "" }) => {
+const FormSelect = ({ field_name, options, errors, errorSetter, valueSetter, className = "", with_title = true }) => {
   const onOptionChangeHandler = (event) => {
     valueSetter(event.target.value);
-    delete errors[field_name];
-    errorSetter(errors);
+    const updatedErrors = { ...errors };
+    delete updatedErrors[field_name];
+    errorSetter(updatedErrors);
   };
 
   return (
     <div className={`form-select ${className}`}>
-      <FormLabel field_name={field_name} />
+      {with_title && <FormLabel field_name={field_name} />}
       <select
         onChange={onOptionChangeHandler}
         className={`${errors[field_name] !== undefined ? "form-select__error" : ""} form-select__input`}
       >
-        <option>Please choose one option</option>
+        <option value="">Please choose one option</option>
         {options.map((option, index) => {
           return (
             <option key={index} value={option.value}>

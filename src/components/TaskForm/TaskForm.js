@@ -3,14 +3,13 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import FormField from "../FormField/FormField";
 import FormSelect from "../FormSelect/FormSelect";
-import TaskStatusButton from "../TaskStatusButton/TaskStatusButton";
 import EditAndBackButtonHeader from "../EditAndBackButtonHeader/EditAndBackButtonHeader";
 
 const TaskForm = ({ title, formSubmitHandler, task = null, options = null }) => {
   const { taskId } = useParams();
   const [description, setDescription] = useState("");
   const [dueDate, setDueDate] = useState("");
-  const [isCompleted, setIsCompleted] = useState(null);
+  const [isCompleted, setIsCompleted] = useState(false);
   const [goalId, setGoalId] = useState(null);
   const [errors, setErrors] = useState({});
 
@@ -71,7 +70,6 @@ const TaskForm = ({ title, formSubmitHandler, task = null, options = null }) => 
 
       <form onSubmit={onSubmit}>
         <div className="task-form__details">
-          <h2>Goal Details</h2>
           <FormField
             className="task-form__input"
             field_name="description"
@@ -90,15 +88,6 @@ const TaskForm = ({ title, formSubmitHandler, task = null, options = null }) => 
               value={dueDate}
               valueSetter={setDueDate}
               type="date"
-            />
-            <TaskStatusButton
-              className="task-form__input"
-              key="is_completed"
-              field_name="is_completed"
-              errors={errors}
-              errorSetter={setErrors}
-              value={isCompleted}
-              valueSetter={setIsCompleted}
             />
             {options && (
               <FormSelect
