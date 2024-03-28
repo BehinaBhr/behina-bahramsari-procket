@@ -91,7 +91,7 @@ export const GoalDetails = () => {
         target="task"
         items={tasks}
         ItemComponent={TaskItem}
-        columns={["Tasks", "Due Date", "Status", "Actions"]}
+        columns={["Tasks", "Due Date", "Actions"]}
         deleteSelectedItem={deleteSelectedItem}
         triggerReload={triggerReload}
       />

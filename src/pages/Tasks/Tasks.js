@@ -56,7 +56,7 @@ const Tasks = () => {
         target="task"
         items={tasks}
         ItemComponent={TaskItem}
-        columns={["Task (goal)", "Due Date", "Status", "Actions"]}
+        columns={["Task (goal)", "Due Date", "Actions"]}
         deleteSelectedItem={deleteSelectedItem}
         triggerReload={triggerReload}
       />
