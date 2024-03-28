@@ -54,24 +54,11 @@
     @include button;
 
     &-cancel {
-      background-color: $white;
-      border: 1px solid $cloud;
-
-      &:hover {
-        color: $blue;
-        border: 0.063rem solid $blue;
-      }
+      @include white_button;
     }
 
     &-delete {
-      background-color: $red;
-      border: 0;
-      color: $white;
-
-      &:hover {
-        background-color: $darkred;
-        border: 1.5px solid $graphite;
-      }
+      @include red_button;
     }
   }
 }

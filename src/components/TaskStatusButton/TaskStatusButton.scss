@@ -15,10 +15,10 @@
     width: fit-content;
 
     &-done {
-      background-color: $green;
+      @include green_button;
     }
     &-postpone {
-      background-color: $red;
+      @include red_button;
     }
   }
 }

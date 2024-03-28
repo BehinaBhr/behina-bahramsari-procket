@@ -7,15 +7,9 @@
 //styling for adding button
 .add-button {
   @include button;
-
-  background-color: $blue;
-  color: $white;
+  @include blue_button;
 
   @include tablet {
     width: fit-content;
-  }
-
-  &:hover {
-    background-color: $graphite;
   }
 }
