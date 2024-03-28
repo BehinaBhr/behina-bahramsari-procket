@@ -29,6 +29,7 @@ function App() {
             <Route path="/tasks" element={<Tasks />} />
             <Route path="/tasks/new" element={<NewTask />} />
             <Route path="/tasks/:taskId" element={<TaskDetails />} />
+            <Route path="/tasks/:taskId/edit" element={<EditTask />} />
             <Route path="/stats" element={<Stats />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

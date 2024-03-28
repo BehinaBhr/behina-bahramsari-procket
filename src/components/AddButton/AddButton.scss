@@ -4,19 +4,18 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/component_mixins" as *;
 
-
 //styling for adding button
 .add-button {
-    @include button;
-    background-color: $blue;
-    border: none;
-    color: $white;
+  @include button;
 
-    @include tablet {
-        width: fit-content;
-    }
+  background-color: $blue;
+  color: $white;
 
-    &:hover {
-        background-color: $graphite;
-    }
+  @include tablet {
+    width: fit-content;
+  }
+
+  &:hover {
+    background-color: $graphite;
+  }
 }

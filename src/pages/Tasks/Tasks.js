@@ -46,11 +46,7 @@ const Tasks = () => {
   }
   return (
     <div>
-      <SearchAndAddButtonHeader
-        title="Tasks"
-        add_button_target="Task"
-        add_button_link="tasks/new"
-      />
+      <SearchAndAddButtonHeader title="Tasks" add_button_target="Task" add_button_link="/tasks/new" />
       <Table
         target="task"
         items={tasks}
