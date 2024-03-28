@@ -17,7 +17,7 @@ const ColumnChart = () => {
       const response = await axios.get(`${BASE_URL}/api/goals`);
       const goals = response.data;
       // Prepare data for chart
-      const chartData = goals.map((goal) => [goal.description, goal.progress]);
+      const chartData = goals.map((goal) => [goal.description, goal.progress, goal.procastinations]);
       setGoalData(chartData);
       setIsLoading(false);
     } catch (error) {
@@ -39,16 +39,25 @@ const ColumnChart = () => {
         chartType="ColumnChart"
         width="100%"
         height="100%"
-        data={[["Goal", "Progress"], ...goalData]}
+        data={[["Goal", "Progress", "Procrastinations"], ...goalData]}
         options={{
-          title: "Progress Goals",
+          title: "Progress and Procrastinations for Goals",
           hAxis: {
             title: "Goal",
           },
           vAxis: {
-            title: "Progress (%)",
+            title: "Value",
             minValue: 0,
-            maxValue: 100,
+          },
+          series: {
+            0: { axis: "Progress" },
+            1: { axis: "Procrastinations" },
+          },
+          axes: {
+            y: {
+              Progress: { label: "Progress (%)" },
+              Procrastinations: { label: "Procrastinations" },
+            },
           },
         }}
       />

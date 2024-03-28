@@ -1,7 +1,8 @@
 import "./Stats.scss";
 import PieChart from "../../components/PieChart/PieChart";
 import ColumnChart from "../../components/ColumnChart/ColumnChart";
-import CalenderChart from "../../components/CalenderChart/CalenderChart";
+import BarChart from "../../components/BarChart/BarChart";
+
 
 const Stats = () => {
   return (
@@ -9,7 +10,7 @@ const Stats = () => {
       <h1>Stats Page</h1>
       <PieChart />
       <ColumnChart />
-      <CalenderChart />
+      <BarChart />
     </div>
   );
 };
