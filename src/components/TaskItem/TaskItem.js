@@ -2,20 +2,14 @@ import "./TaskItem.scss";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import DetailsLink from "../DetailsLink/DetailsLink.js";
 import { Link } from "react-router-dom";
+import TaskStatusButton from "../../components/TaskStatusButton/TaskStatusButton";
 
-export default function TaskItem({
-  id,
-  description,
-  is_completed,
-  due_date,
-  goal_description,
-  goal_id,
-  onDelete,
-}) {
+export default function TaskItem({ item, onDelete, triggerReload }) {
+  const { id, description, is_completed, due_date, goal_description, goal_id } = item;
   // Function to convert is_completed value from 0, 1 to text "Not Done", "Done"
-  const statusText = () => {
-    return is_completed ? "Done" : "Not Done";
-  };
+  // const statusText = () => {
+  //   return is_completed ? "Done" : "Not Done";
+  // };
   return (
     <section className="task-item">
       <div className="task-item__attr task-item__attr--description">
@@ -23,9 +17,9 @@ export default function TaskItem({
         <p className="task-item__attr-value">
           <DetailsLink text={description} to={`/tasks/${id}`} />
           {goal_description && (
-          <Link className="task-item__attr-sub-value" to={`/goals/${goal_id}`}>
-            ( {goal_description} )
-          </Link>
+            <Link className="task-item__attr-sub-value" to={`/goals/${goal_id}`}>
+              ( {goal_description} )
+            </Link>
           )}
         </p>
       </div>
@@ -35,7 +29,7 @@ export default function TaskItem({
       </div>
       <div className="task-item__attr">
         <h4 className="task-item__attr-label">Status</h4>
-        <p className="task-item__attr-value">{statusText()} </p>
+        <TaskStatusButton className="task-item__attr-value" task={item} triggerReload={triggerReload} />
       </div>
       <div className="task-item__actions">
         <DeleteButton onClick={onDelete} />

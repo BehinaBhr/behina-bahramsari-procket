@@ -1,5 +1,5 @@
 @use "../../styles/partials/component_mixins" as *;
 
-.form-field {
-  @include form-field;
+.task-form {
+  @include from;
 }

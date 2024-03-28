@@ -2,14 +2,8 @@ import "../GoalItem/GoalItem.scss";
 import DeleteButton from "../DeleteButton/DeleteButton.js";
 import DetailsLink from "../DetailsLink/DetailsLink.js";
 
-function GoalItem({
-  id,
-  description,
-  start_date,
-  end_date,
-  progress,
-  onDelete,
-}) {
+function GoalItem({ item, onDelete }) {
+  const { id, description, start_date, end_date, progress } = item;
   return (
     <section className="goal-item">
       <div className="goal-item__attr goal-item__attr--description">

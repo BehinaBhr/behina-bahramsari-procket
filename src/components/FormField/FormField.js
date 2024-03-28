@@ -1,24 +1,24 @@
 import "./FormField.scss";
 import FieldError from "../FieldError/FieldError";
-import "./FormField.scss";
+import FormLabel from "../FormLabel/FormLabel";
 
-const FormField = ({ field_name, errors, errorSetter, value, valueSetter, type="text", className = "" }) => {
+const FormField = ({ field_name, errors, errorSetter, value, valueSetter, type = "text", className = "" }) => {
   const field_label = field_name;
+
   function onChange(e) {
     valueSetter(e.target.value);
-    delete errors[field_name]
-    errorSetter(errors)
+    const updatedErrors = { ...errors };
+    delete updatedErrors[field_name];
+    errorSetter(updatedErrors);
   }
   return (
     <div className={`form-field ${className}`}>
-      <label htmlFor={field_name} className="form-field__label">
-        {field_label}
-      </label>
+      <FormLabel field_name={field_name} />
       <input
         className={`${errors[field_name] !== undefined ? "form-field__error" : ""} form-field__input`}
         placeholder={field_label}
         type={type}
-        id="warehouse-name"
+        id={field_name}
         value={value}
         onChange={onChange}
       />

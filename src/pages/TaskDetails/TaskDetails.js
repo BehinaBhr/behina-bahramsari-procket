@@ -7,6 +7,7 @@ import { BASE_URL } from "../../utils/constant-variables.js";
 import Table from "../../components/Table/Table.js";
 import ProcrastinationItem from "../../components/ProcrastinationItem/ProcrastinationItem.js";
 import { DocumentTitle } from "../../utils/utils";
+import TaskStatusButton from "../../components/TaskStatusButton/TaskStatusButton";
 
 export const TaskDetails = () => {
   DocumentTitle("TaskDetails Page");
@@ -61,17 +62,10 @@ export const TaskDetails = () => {
   }
 
   // Function to convert is_completed value from 0, 1 to text "Not Done", "Done"
-  const statusText = () => {
-    return task.is_completed ? "Done" : "Not Done";
-  };
 
   return (
     <div className="task-details">
-      <EditAndBackButtonHeader
-        title="Task Details"
-        back_button_to={"/tasks"}
-        edit_button_to={`/tasks/${taskId}/edit`}
-      />
+      <EditAndBackButtonHeader title="Task Details" edit_button_to={`/tasks/${taskId}/edit`} />
 
       <hr className="task-details__divider" />
 
@@ -90,7 +84,7 @@ export const TaskDetails = () => {
         </div>
         <div className="task-details__sub-item">
           <h4 className="task-details__label">Status</h4>
-          <div className="task-details__value">{statusText()}</div>
+          <TaskStatusButton className="task-details__value" task={task} triggerReload={fetchTask} />
         </div>
       </section>
       <hr className="task-details__divider" />

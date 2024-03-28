@@ -1,20 +1,162 @@
 @use "./typography-mixins" as *;
 @use "./colors" as colors;
 @use "./variables" as *;
+@use "./mixins" as *;
 
 @mixin divider {
-    width: 100%;
-    border: 0.0625rem solid colors.$cloud;
+  width: 100%;
+  border: 0.0625rem solid colors.$cloud;
 }
 
 @mixin button {
-    @include labels-links-button;
-    cursor: pointer;
-    border-radius: $oval-border-radius;
+  @include labels-links-button;
+  cursor: pointer;
+  border-radius: $oval-border-radius;
+  width: 100%;
+  height: $button-height;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+@mixin blue_button {
+  background-color: colors.$blue;
+  color: colors.$white;
+
+  &:hover {
+    background-color: colors.$graphite;
+  }
+}
+
+@mixin green_button {
+  background-color: colors.$green;
+  color: colors.$white;
+
+  &:hover {
+    background-color: colors.$firooze;
+  }
+}
+
+@mixin white_button {
+  color: colors.$black;
+  background-color: colors.$white;
+  border: 0.0625rem solid colors.$cloud;
+
+  &:hover {
+    border-color: colors.$navy;
+    color: colors.$navy;
+  }
+}
+
+@mixin red_button {
+  background-color: colors.$red;
+  border: 0;
+  color: colors.$white;
+
+  &:hover {
+    background-color: colors.$darkred;
+  }
+}
+
+@mixin form-field {
+  &__input {
+    height: 2.25rem;
     width: 100%;
-    height: $button-height;
-    padding: 0.5rem 1rem;
+    border-radius: 1.25rem;
+    margin-top: 0.25rem;
+    padding: 0 1rem;
+    border: 0.0625rem solid colors.$cloud;
+    background-color: colors.$white;
+    color: colors.$slate;
+
+    @include tablet {
+      height: 2.375rem;
+    }
+
+    &:focus {
+      border: 0.1rem solid colors.$blue;
+    }
+
+    @include tablet {
+      height: 2.375rem;
+    }
+  }
+
+  &__error {
+    border: 0.0625rem solid red;
+  }
+}
+
+@mixin from {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__divider {
+    @include divider;
+  }
+
+  &__details {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    padding: 1.5rem;
+    border-color: colors.$cloud;
+  }
+
+  &__input-group {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 1rem;
+
+      > * {
+        width: 100%;
+      }
+    }
+  }
+
+  &__buttons-group {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    justify-content: space-around;
+    background-color: colors.$lightgray;
+
+    @include tablet {
+      border-top: 0.0625rem solid colors.$cloud;
+      justify-content: flex-end;
+    }
+  }
+
+  &__button {
+    @include button;
+    width: 100%;
+
+    @include tablet {
+      width: 10rem;
+    }
+
+    &-cancel {
+      @include white_button();
+    }
+
+    &-add {
+      @include blue_button();
+      border: none;
+    }
+  }
+
+  &__success-message {
+    @include body-medium;
+    width: 100%;
+    padding: 1rem;
+    background-color: colors.$lightgray;
+  }
 }

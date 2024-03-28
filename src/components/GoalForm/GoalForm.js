@@ -4,7 +4,7 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import FormField from "../../components/FormField/FormField";
 import EditAndBackButtonHeader from "../../components/EditAndBackButtonHeader/EditAndBackButtonHeader";
 
-const GoalForm = ({ title, formSubmitHandler, goal=null }) => {
+const GoalForm = ({ title, formSubmitHandler, goal = null }) => {
   const { goalId } = useParams();
   const [description, setDescription] = useState("");
   const [startDate, setStartDate] = useState("");
@@ -63,7 +63,6 @@ const GoalForm = ({ title, formSubmitHandler, goal=null }) => {
 
       <form onSubmit={onSubmit}>
         <div className="goal-form__details">
-          <h2>Goal Details</h2>
           <FormField
             className="goal-form__input"
             field_name="description"

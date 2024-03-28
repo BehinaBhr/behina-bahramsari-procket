@@ -1,14 +1,13 @@
 @use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/breakpoints" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/typography-mixins" as *;
 @use "../../styles/partials/component_mixins" as *;
 
 .edit-button {
+  @include blue_button;
   display: flex;
   height: $button-height;
-  background-color: $blue;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
@@ -17,10 +16,6 @@
   @include tablet {
     @include button;
     aspect-ratio: auto;
-
-    &:hover {
-      background-color: $graphite;
-    }
   }
 
   &__icon {
@@ -30,7 +25,6 @@
   &__text {
     @include labels-links-button;
     display: none;
-    color: $white;
     margin-left: 0.25rem;
 
     @include tablet {
