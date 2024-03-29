@@ -4,6 +4,7 @@ import { SearchAndAddButtonHeader } from "../../components/SearchAndAddButtonHea
 import { BASE_URL } from "../../utils/constant-variables";
 import Table from "../../components/Table/Table.js";
 import TaskItem from "../../components/TaskItem/TaskItem.js";
+import Loading from "../../components/Loading/Loading";
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -42,9 +43,7 @@ const Tasks = () => {
     return <p>Unable to access tasks right now. Please try again later.</p>;
   }
 
-  if (isLoading) {
-    return <p>Is Loading...</p>;
-  }
+  if (isLoading) return <Loading />;
 
   if (tasks.length === 0) {
     return <p>No tasks available</p>;

@@ -3,6 +3,7 @@ import { GoalForm } from "../../components/GoalForm/GoalForm";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Loading from "../../components/Loading/Loading";
 
 const EditGoal = () => {
   const { goalId } = useParams();
@@ -25,12 +26,10 @@ const EditGoal = () => {
   }, [goalId]);
 
   if (hasError) {
-    return <p>Unable to access the goal right now. Please try again later.</p>;
+    return <p>Unable to access the goal with {goalId} right now. Please try again later.</p>;
   }
 
-  if (isLoading) {
-    return <p>Is Loading...</p>;
-  }
+  if (isLoading) return <Loading />;
 
   const handleSubmit = async (goalData) => {
     await axios.put(`${BASE_URL}/api/goals/${goalId}`, goalData);

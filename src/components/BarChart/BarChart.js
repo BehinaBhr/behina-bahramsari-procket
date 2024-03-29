@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
 import axios from "axios";
 import { BASE_URL } from "../../utils/constant-variables";
+import Loading from "../../components/Loading/Loading";
 
 const BarChart = () => {
   const [selectedGoal, setSelectedGoal] = useState(null);
@@ -50,7 +51,7 @@ const BarChart = () => {
   return (
     <div>
       {isLoading ? (
-        <p>Loading...</p>
+        <Loading />
       ) : (
         <div>
           <select value={selectedGoal ? selectedGoal.description : ""} onChange={handleGoalChange}>

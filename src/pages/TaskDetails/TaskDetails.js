@@ -8,6 +8,7 @@ import Table from "../../components/Table/Table.js";
 import ProcrastinationItem from "../../components/ProcrastinationItem/ProcrastinationItem.js";
 import { DocumentTitle } from "../../utils/utils";
 import TaskStatusButton from "../../components/TaskStatusButton/TaskStatusButton";
+import Loading from "../../components/Loading/Loading";
 
 export const TaskDetails = () => {
   DocumentTitle("TaskDetails Page");
@@ -16,11 +17,16 @@ export const TaskDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const { taskId } = useParams();
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
     fetchTask();
     fetchTaskProcrastinations();
-  }, [taskId]);
+  }, [taskId, reload]);
+
+  const triggerReload = () => {
+    setReload(!reload);
+  };
 
   const fetchData = async (path, dataSetter) => {
     try {
@@ -31,7 +37,6 @@ export const TaskDetails = () => {
     } catch (error) {
       setHasError(true);
       setIsLoading(false);
-      console.error(error);
     }
   };
 
@@ -46,7 +51,6 @@ export const TaskDetails = () => {
   const deleteSelectedItem = async (procrastinationId) => {
     try {
       await axios.delete(`${BASE_URL}/api/procrastinations/${procrastinationId}`);
-      // Fetching updated procrastinationss on delete
       fetchTaskProcrastinations();
     } catch {
       setHasError(true);
@@ -57,11 +61,7 @@ export const TaskDetails = () => {
     return <p>Unable to access details of task with id {taskId} right now. Please try again later.</p>;
   }
 
-  if (isLoading) {
-    return <p>Is Loading...</p>;
-  }
-
-  // Function to convert is_completed value from 0, 1 to text "Not Done", "Done"
+  if (isLoading) return <Loading />;
 
   return (
     <div className="task-details">
@@ -84,7 +84,7 @@ export const TaskDetails = () => {
         </div>
         <div className="task-details__sub-item">
           <h4 className="task-details__label">Status</h4>
-          <TaskStatusButton className="task-details__value" task={task} triggerReload={fetchTask} />
+          <TaskStatusButton className="task-details__value" task={task} triggerReload={triggerReload} />
         </div>
       </section>
       <hr className="task-details__divider" />

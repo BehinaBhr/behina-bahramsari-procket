@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
 import axios from "axios";
 import { BASE_URL } from "../../utils/constant-variables";
+import Loading from "../../components/Loading/Loading";
 
 const PieChart = () => {
   const [procrastinationData, setProcrastinationData] = useState([]);
@@ -26,9 +27,7 @@ const PieChart = () => {
     return <p>Unable to access procrastinations right now. Please try again later.</p>;
   }
 
-  if (isLoading) {
-    return <p>Is Loading...</p>;
-  }
+  if (isLoading) return <Loading />;
 
   // Format data for the pie chart
   const pieChartData = [["Reason", "Frequency"]];

@@ -4,6 +4,7 @@ import { BASE_URL } from "../../utils/constant-variables";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import GoalItem from "../../components/GoalItem/GoalItem.js";
+import Loading from "../../components/Loading/Loading";
 
 const Goals = () => {
   const [goals, setGoals] = useState([]);
@@ -39,9 +40,7 @@ const Goals = () => {
     return <p>Unable to access goals right now. Please try again later.</p>;
   }
 
-  if (isLoading) {
-    return <p>Is Loading...</p>;
-  }
+  if (isLoading) return <Loading />;
 
   if (goals.length === 0) {
     return <p>No goals available</p>;
