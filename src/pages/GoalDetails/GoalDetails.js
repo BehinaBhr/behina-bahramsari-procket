@@ -83,7 +83,7 @@ export const GoalDetails = () => {
         </div>
         <div className="goal-details__sub-item">
           <h4 className="goal-details__label">progress</h4>
-          <div className="goal-details__value">{goal.progress}</div>
+          <div className="goal-details__value goal-details__value-progrees">{goal.progress} %</div>
         </div>
       </section>
       <hr className="goal-details__divider" />

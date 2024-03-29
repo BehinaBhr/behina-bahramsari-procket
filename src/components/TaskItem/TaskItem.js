@@ -6,7 +6,6 @@ import TaskStatusButton from "../../components/TaskStatusButton/TaskStatusButton
 
 export default function TaskItem({ item, onDelete, triggerReload }) {
   const { id, description, is_completed, due_date, goal_description, goal_id } = item;
-  // Function to convert is_completed value from 0, 1 to text "Not Done", "Done"
   return (
     <section className={`task-item ${is_completed ? "task-item--done" : ""}`}>
       <div className="task-item__attr task-item__attr--description">
@@ -22,7 +21,7 @@ export default function TaskItem({ item, onDelete, triggerReload }) {
       </div>
       <div className="task-item__attr">
         <h4 className="task-item__attr-label">Due Date</h4>
-        <p className="task-item__attr-value">{due_date}</p>
+        <p className="task-item__attr-value task-item__attr-value-duedate">{due_date}</p>
       </div>
       <div className="task-item__actions">
         <TaskStatusButton className="task-item__attr-value" task={item} triggerReload={triggerReload} />

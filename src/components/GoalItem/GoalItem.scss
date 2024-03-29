@@ -5,6 +5,9 @@
 @use "../../styles/partials/colors" as *;
 
 .goal-item {
+  &--done {
+    opacity: 0.5;
+  }
   &__divider {
     @include divider;
     margin-left: $mobile-padding;
@@ -54,6 +57,9 @@
 
     &-value {
       @include body-medium;
+      &-progrees {
+        color: $pink;
+      }
     }
 
     &--description {

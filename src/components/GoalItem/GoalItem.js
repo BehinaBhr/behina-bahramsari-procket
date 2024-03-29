@@ -5,7 +5,7 @@ import DetailsLink from "../DetailsLink/DetailsLink.js";
 function GoalItem({ item, onDelete }) {
   const { id, description, start_date, end_date, progress } = item;
   return (
-    <div className="goal-item">
+    <div className={`goal-item ${progress===100 ? "goal-item--done" : ""}`}>
       <hr className="goal-item__divider" />
       <section className="goal-item__body">
         <div className="goal-item__attr goal-item__attr--description">
@@ -24,7 +24,7 @@ function GoalItem({ item, onDelete }) {
         </div>
         <div className="goal-item__attr">
           <h4 className="goal-item__attr-label">Progress</h4>
-          <p className="goal-item__attr-value">{progress} </p>
+          <p className="goal-item__attr-value goal-item__attr-value-progrees">{progress} % </p>
         </div>
         <div className="goal-item__actions">
           <DeleteButton onClick={onDelete} />
