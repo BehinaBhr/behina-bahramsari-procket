@@ -83,7 +83,7 @@ export const TaskDetails = () => {
           <div className="task-details__value">{task.due_date}</div>
         </div>
         <div className="task-details__sub-item">
-          <h4 className="task-details__label">Status</h4>
+          <h4 className="task-details__label">Actions</h4>
           <TaskStatusButton className="task-details__value" task={task} triggerReload={triggerReload} />
         </div>
       </section>

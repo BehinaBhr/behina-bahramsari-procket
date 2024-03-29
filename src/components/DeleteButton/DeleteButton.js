@@ -1,4 +1,4 @@
-import iconDelete from "../../assets/images/delete_outline-24px.svg";
+import iconDelete from "../../assets/images/trash.svg";
 import "./DeleteButton.scss";
 
 function DeleteButton({ onClick }) {
