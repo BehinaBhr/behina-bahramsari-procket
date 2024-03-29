@@ -3,14 +3,12 @@ import PieChart from "../../components/PieChart/PieChart";
 import ColumnChart from "../../components/ColumnChart/ColumnChart";
 import BarChart from "../../components/BarChart/BarChart";
 
-
 const Stats = () => {
   return (
-    <div>
-      <h1>Stats Page</h1>
-      <PieChart />
-      <ColumnChart />
-      <BarChart />
+    <div className="stats">
+      <PieChart className="stats__chart"/>
+      <ColumnChart className="stats__chart" />
+      <BarChart className="stats__chart" />
     </div>
   );
 };

@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
 import axios from "axios";
 import { BASE_URL } from "../../utils/constant-variables";
 import Loading from "../../components/Loading/Loading";
+import ConnectionError from "../../components/ConnectionError/ConnectionError";
+import "./ColumnChart.scss";
 
-const ColumnChart = () => {
+const ColumnChart = ({ className }) => {
   const [goalData, setGoalData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -17,30 +19,31 @@ const ColumnChart = () => {
     try {
       const response = await axios.get(`${BASE_URL}/api/goals`);
       const goals = response.data;
-      // Prepare data for chart
       const chartData = goals.map((goal) => [goal.description, goal.progress, goal.procastinations]);
       setGoalData(chartData);
       setIsLoading(false);
+      // setHasError(true);
     } catch (error) {
       setIsLoading(false);
       setHasError(true);
     }
   };
-  if (hasError) {
-    return <p>Unable to access procrastinations right now. Please try again later.</p>;
-  }
+
+  if (hasError) return <ConnectionError />;
 
   if (isLoading) return <Loading />;
 
   return (
-    <div style={{ width: "100%", height: "400px" }}>
+    <div className={className}>
+      <h3>Progress and Procrastinations for Goals</h3>
+
       <Chart
         chartType="ColumnChart"
         width="100%"
-        height="100%"
+        height="25rem"
         data={[["Goal", "Progress", "Procrastinations"], ...goalData]}
         options={{
-          title: "Progress and Procrastinations for Goals",
+          backgroundColor: "#f5fafe",
           hAxis: {
             title: "Goal",
           },

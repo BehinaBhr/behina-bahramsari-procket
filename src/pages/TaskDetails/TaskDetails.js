@@ -9,6 +9,7 @@ import ProcrastinationItem from "../../components/ProcrastinationItem/Procrastin
 import { DocumentTitle } from "../../utils/utils";
 import TaskStatusButton from "../../components/TaskStatusButton/TaskStatusButton";
 import Loading from "../../components/Loading/Loading";
+import ConnectionError from "../../components/ConnectionError/ConnectionError";
 
 export const TaskDetails = () => {
   DocumentTitle("TaskDetails Page");
@@ -57,9 +58,8 @@ export const TaskDetails = () => {
     }
   };
 
-  if (hasError) {
-    return <p>Unable to access details of task with id {taskId} right now. Please try again later.</p>;
-  }
+  if (hasError) return <ConnectionError error = {`Unable to access details of task with id ${taskId} right now. Please try again later`} />;
+ 
 
   if (isLoading) return <Loading />;
 
