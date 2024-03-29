@@ -33,11 +33,7 @@ const BarChart = ({ className }) => {
   };
 
   const handleGoalChange = async (selectedGoal) => {
-    setSelectedGoal(selectedGoal)
-    // const selectedDescription = event.target.value;
-    // const selectedGoal = goalOptions.find((goal) => goal.description === selectedDescription);
-    // setSelectedGoal(selectedGoal);
-
+    setSelectedGoal(selectedGoal);
     try {
       const response = await axios.get(`${BASE_URL}/api/goals/${selectedGoal}/procrastinations`);
       const procrastinations = response.data;
@@ -56,23 +52,7 @@ const BarChart = ({ className }) => {
   return (
     <div className={className}>
       <h3>Procrastiantions per goal</h3>
-      {/* <select value={selectedGoal ? selectedGoal.description : ""} onChange={handleGoalChange}>
-        
-        
-        <option value="">Please select a goal</option>
-        {goalDescriptions.map((goal, index) => (
-          <option key={index} value={goal.description}>
-            {goal.description}
-          </option>
-        ))}
-      </select> */}
-      <FormSelect
-                // className="task-form__input"
-                // key="goals"
-                field_name="goal"
-                options={goalOptions}
-                valueSetter={handleGoalChange}
-              />
+      <FormSelect field_name="goal" options={goalOptions} valueSetter={handleGoalChange} />
       {selectedGoal && reasonsData.length > 1 && (
         <div style={{ width: "100%", height: "400px" }}>
           <Chart

@@ -6,6 +6,8 @@ import EditAndBackButtonHeader from "../../components/EditAndBackButtonHeader/Ed
 import { BASE_URL } from "../../utils/constant-variables";
 import Table from "../../components/Table/Table.js";
 import TaskItem from "../../components/TaskItem/TaskItem.js";
+import Loading from "../../components/Loading/Loading";
+import ConnectionError from "../../components/ConnectionError/ConnectionError";
 
 export const GoalDetails = () => {
   const [goal, setGoal] = useState({});
@@ -55,13 +57,8 @@ export const GoalDetails = () => {
     }
   };
 
-  if (hasError) {
-    return <p>Unable to access details of goal with id {goalId} right now. Please try again later.</p>;
-  }
-
-  if (isLoading) {
-    return <p>Is Loading...</p>;
-  }
+  if (hasError) return <ConnectionError error = {`Unable to access details of goal with id ${goalId} right now. Please try again later`} />;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="goal-details">

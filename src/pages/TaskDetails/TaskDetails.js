@@ -59,8 +59,6 @@ export const TaskDetails = () => {
   };
 
   if (hasError) return <ConnectionError error = {`Unable to access details of task with id ${taskId} right now. Please try again later`} />;
- 
-
   if (isLoading) return <Loading />;
 
   return (
