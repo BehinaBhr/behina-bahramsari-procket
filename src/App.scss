@@ -20,7 +20,11 @@ a {
 }
 
 .app {
-  background-color: $lightorang;
+  // background-color: $lightorang;
+  background-image: url("./assets//images/background.jpg");
+  background-size: cover; /* Adjust the background size to cover the entire container */
+  background-repeat: no-repeat; /* Ensure the background image doesn't repeat */
+  min-height: 100vh;
   min-height: 100vh;
 
   @include desktop {
