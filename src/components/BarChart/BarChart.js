@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
-import axios from "axios";
-import { BASE_URL } from "../../utils/constant-variables";
 import Loading from "../../components/Loading/Loading";
 import ConnectionError from "../../components/ConnectionError/ConnectionError";
 import FormSelect from "../FormSelect/FormSelect";
+import { fetchGoals, fetchGoalProcrastinations } from "../../utils/apiUtils.js";
 
 const BarChart = ({ className }) => {
   const [selectedGoal, setSelectedGoal] = useState(null);
@@ -19,9 +18,9 @@ const BarChart = ({ className }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/goals`);
+      const goals = await fetchGoals();
       const options = [];
-      response.data.forEach((goal) => {
+      goals.forEach((goal) => {
         options.push({ value: goal.id, text: goal.description });
       });
       setGoalDescriptions(options);
@@ -35,8 +34,7 @@ const BarChart = ({ className }) => {
   const handleGoalChange = async (selectedGoal) => {
     setSelectedGoal(selectedGoal);
     try {
-      const response = await axios.get(`${BASE_URL}/api/goals/${selectedGoal}/procrastinations`);
-      const procrastinations = response.data;
+      const procrastinations = await fetchGoalProcrastinations(selectedGoal);
       const formattedData = Object.entries(procrastinations).map(([reason, count]) => [reason, count]);
       const reasonsChartData = [["Reason", "Count"], ...formattedData];
       setReasonsData(reasonsChartData);

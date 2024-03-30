@@ -1,12 +1,11 @@
 import "./NewProcrastination.scss";
 import { useState, useEffect } from "react";
-import { BASE_URL } from "../../utils/constant-variables";
-import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import FormSelect from "../../components/FormSelect/FormSelect";
 import FormField from "../../components/FormField/FormField";
 import FailedSubmitError from "../FailedSubmitError/FailedSubmitError";
 import SuccessfulSubmitMessage from "../SuccessfulSubmitMessage/SuccessfulSubmitMessage";
+import { createProcrastinations, updateTask } from "../../utils/apiUtils.js";
 
 function NewProcrastination({ task, onCancel, onSuccess }) {
   const [reason, setReason] = useState("");
@@ -38,15 +37,12 @@ function NewProcrastination({ task, onCancel, onSuccess }) {
 
     if (Object.keys(errors).length === 0) {
       try {
-        await axios.put(`${BASE_URL}/api/tasks/${task.id}`, {
+        await updateTask(task.id, {
           description: task.description,
           due_date: dueDate,
           is_completed: task.is_completed,
         });
-        await axios.post(`${BASE_URL}/api/procrastinations/`, {
-          reason: reason,
-          task_id: task.id,
-        });
+        await createProcrastinations({ reason: reason, task_id: task.id });
 
         setSubmitSuccess(true);
         setTimeout(() => {

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
-import axios from "axios";
-import { BASE_URL } from "../../utils/constant-variables";
 import Loading from "../../components/Loading/Loading";
 import ConnectionError from "../ConnectionError/ConnectionError";
+import { fetchProcrastinations } from "../../utils/apiUtils.js";
 
 const PieChart = ({ className }) => {
   const [procrastinationData, setProcrastinationData] = useState([]);
@@ -16,8 +15,8 @@ const PieChart = ({ className }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/procrastinations/grouped`);
-      setProcrastinationData(response.data);
+      const procrastinations = await fetchProcrastinations();
+      setProcrastinationData(procrastinations);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
@@ -26,7 +25,6 @@ const PieChart = ({ className }) => {
   };
 
   if (hasError) return <ConnectionError />;
-
   if (isLoading) return <Loading />;
 
   // Format data for the pie chart

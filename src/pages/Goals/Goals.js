@@ -3,10 +3,10 @@ import Table from "../../components/Table/Table.js";
 import { SearchAndAddButtonHeader } from "../../components/SearchAndAddButtonHeader/SearchAndAddButtonHeader";
 import { BASE_URL } from "../../utils/constant-variables";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import GoalItem from "../../components/GoalItem/GoalItem.js";
 import Loading from "../../components/Loading/Loading";
 import ConnectionError from "../../components/ConnectionError/ConnectionError";
+import { deleteGoal, fetchGoals, fetchRocketImages } from "../../utils/apiUtils.js";
 
 const Goals = () => {
   const [goals, setGoals] = useState([]);
@@ -15,37 +15,18 @@ const Goals = () => {
   const [rocketImages, setRocketImages] = useState([]);
 
   useEffect(() => {
-    fetchGoals();
-    fetchRocketImages();
+    fetchData();
   }, []);
 
-  const fetchData = async (path, dataSetter) => {
+  const fetchData = async () => {
     try {
-      const response = await axios.get(path);
+      const goals = await fetchGoals();
+      const rocketInages = await fetchRocketImages();
+      setGoals(goals);
+      setRocketImages(rocketInages);
       setIsLoading(false);
-      dataSetter(response.data);
-      setHasError(false);
     } catch (error) {
-      setHasError(true);
       setIsLoading(false);
-      setHasError(true);
-    }
-  };
-
-  const fetchGoals = async () => {
-    fetchData(`${BASE_URL}/api/goals`, setGoals);
-  };
-
-  const fetchRocketImages = async () => {
-    fetchData(`${BASE_URL}/api/rockets`, setRocketImages);
-  };
-
-  const deleteSelectedItem = async (goalId) => {
-    try {
-      await axios.delete(`${BASE_URL}/api/goals/${goalId}`);
-      // Fetching updated goals on delete
-      fetchGoals();
-    } catch {
       setHasError(true);
     }
   };
@@ -65,7 +46,9 @@ const Goals = () => {
         items={goals}
         ItemComponent={GoalItem}
         columns={["Goal", "Start Date", "End Date", "Progress", "Actions"]}
-        deleteSelectedItem={deleteSelectedItem}
+        deleteSelectedItem={(goalId) => {
+          deleteGoal(goalId, fetchGoals, setHasError);
+        }}
       />
       <section className="goals-collection">
         <h3 className="goals-collection__header">Recoket Collection</h3>
