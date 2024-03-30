@@ -9,6 +9,11 @@
   flex-direction: column;
   padding: $mobile-padding;
   
+  @include tablet {
+      padding-left: $tablet-padding;
+      padding-right: $tablet-padding;
+  }
+  
   &__divider {
     @include divider;
 
