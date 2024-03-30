@@ -1,5 +1,4 @@
 import "./EditAndBackButtonHeader.scss";
-
 import ArrowBack from "../../components/ArrowBack/ArrowBack";
 import EditButton from "../../components/EditButton/EditButton";
 

@@ -38,10 +38,7 @@ export const GoalDetails = () => {
     setReload(!reload);
   };
 
-  if (hasError)
-    return (
-      <ConnectionError error={`Unable to access details of goal with id ${goalId} right now. Please try again later`} />
-    );
+  if (hasError)return (<ConnectionError error={`Unable to access details of goal with id ${goalId} right now. Please try again later`} />);
   if (isLoading) return <Loading />;
 
   return (

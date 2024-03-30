@@ -1,11 +1,77 @@
 import "./Home.scss";
+import { useEffect, useState } from "react";
+import TaskItem from "../../components/TaskItem/TaskItem.js";
+import Table from "../../components/Table/Table.js";
+import Loading from "../../components/Loading/Loading";
+import ConnectionError from "../../components/ConnectionError/ConnectionError";
+import { deleteTask, fetchPastTasks, fetchOnGoingTasks } from "../../utils/apiUtils.js";
+import AddButton from "../../components/AddButton/AddButton";
 
 const Home = () => {
-    return (
-        <div>
-            <h1>Home Page</h1>
-        </div>
-    );
+  const [pastTasks, setPastTasks] = useState([]);
+  const [onGoingTasks, setOngoingTasks] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [reload, setReload] = useState(false);
+  const [hasError, setHasError] = useState(false);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const pastTasks = await fetchPastTasks();
+        const onGoingTasks = await fetchOnGoingTasks();
+        setPastTasks(pastTasks);
+        setOngoingTasks(onGoingTasks);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        setHasError(true);
+      }
+    };
+    fetchData();
+  }, []);
+
+  const triggerReload = () => {
+    setReload(!reload);
+  };
+
+  if (hasError) return <ConnectionError error={`Unable to access tasks right now. Please try again later`} />;
+  if (isLoading) return <Loading />;
+
+  return (
+    <div className="home">
+      <section className="home-actions">
+        <AddButton target="Task" link_to="/tasks/new" className="home-actions__add-task" />
+        <AddButton target="Goal" link_to="/goals/new" className="home-actions__add-goal" />
+      </section>
+      <hr className="home__divider" />
+      <section className="home-section">
+        <h2 className="home-section__header">Ongoing Tasks</h2>
+        <Table
+          target="task"
+          items={onGoingTasks}
+          ItemComponent={TaskItem}
+          columns={["Task (goal)", "Due Date", "Actions"]}
+          deleteSelectedItem={(taskId) => {
+            deleteTask(taskId, triggerReload, setHasError);
+          }}
+          triggerReload={triggerReload}
+        />
+      </section>
+      <section className="home-section">
+        <h2 className="home-section__header">Past Tasks</h2>
+        <Table
+          target="task"
+          items={pastTasks}
+          ItemComponent={TaskItem}
+          columns={["Task (goal)", "Due Date", "Actions"]}
+          deleteSelectedItem={(taskId) => {
+            deleteTask(taskId, triggerReload, setHasError);
+          }}
+          triggerReload={triggerReload}
+        />
+      </section>
+    </div>
+  );
 };
 
 export { Home };
