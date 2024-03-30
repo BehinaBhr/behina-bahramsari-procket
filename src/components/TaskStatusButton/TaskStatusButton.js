@@ -54,7 +54,7 @@ const TaskStatusButton = ({ task, triggerReload, className = "" }) => {
             </button>
           </div>
         )}
-        {task.is_completed == 1 && (
+        {task.is_completed === 1 && (
           <button className="task-status-button__button" type="button" onClick={onUnDone}>
             <img src={iconUndone} alt="undone" />
           </button>

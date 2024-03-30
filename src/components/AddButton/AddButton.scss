@@ -7,7 +7,7 @@
 //styling for adding button
 .add-button {
   @include button;
-  @include blue-button;
+  @include green-button;
 
   @include tablet {
     width: fit-content;

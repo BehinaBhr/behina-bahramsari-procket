@@ -12,6 +12,11 @@
   &__section-divider {
     @include divider;
     margin: $mobile-padding;
+
+    @include tablet {
+      margin-top: $tablet-padding;
+      margin-bottom: $tablet-padding;
+    }
   }
 
   &__divider {
@@ -64,6 +69,32 @@
     &-progrees {
       color: $pink;
       font-weight: 700;
+    }
+  }
+  
+  &__tasks{
+    display: flex;
+    width: 100%;
+    padding: $mobile-padding;
+    padding-bottom: 0;
+    justify-content: space-between;
+    align-items: center;
+    
+    @include tablet{
+      padding-right: $tablet-padding;
+      padding-left: $tablet-padding;
+    }
+
+    &-header {
+      font-size: 24px;
+    }
+  }
+
+  &__add-task {
+    align-self: end;
+
+    @include tablet {
+      width: fit-content;
     }
   }
 }

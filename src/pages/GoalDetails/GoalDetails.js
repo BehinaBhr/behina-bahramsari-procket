@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import EditAndBackButtonHeader from "../../components/EditAndBackButtonHeader/EditAndBackButtonHeader";
+import AddButton from "../../components/AddButton/AddButton";
 import { BASE_URL } from "../../utils/constant-variables";
 import Table from "../../components/Table/Table.js";
 import TaskItem from "../../components/TaskItem/TaskItem.js";
@@ -84,6 +85,10 @@ export const GoalDetails = () => {
         </div>
       </section>
       <hr className="goal-details__divider" />
+      <div className="goal-details__tasks"> 
+        <h3 className="goal-details__tasks-header">Tasks</h3>
+        <AddButton target="Task" link_to="/tasks/new" className="goal-details__add-task" />
+      </div>
       <Table
         target="task"
         items={tasks}
