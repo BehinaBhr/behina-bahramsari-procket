@@ -20,28 +20,30 @@ export const TaskDetails = () => {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const task = await fetchTask(taskId);
+        const procrastinations = await fetchTaskProcrastinations(taskId);
+        setTask(task);
+        setProcrastinations(procrastinations);
+        setIsLoading(false);
+        setHasError(false);
+      } catch (error) {
+        setHasError(true);
+        setIsLoading(false);
+      }
+    };
     fetchData();
   }, [taskId, reload]);
-
-  const fetchData = async () => {
-    try {
-      const task = await fetchTask(taskId);
-      const procrastinations = await fetchTaskProcrastinations(taskId);
-      setTask(task);
-      setProcrastinations(procrastinations);
-      setIsLoading(false);
-      setHasError(false);
-    } catch (error) {
-      setHasError(true);
-      setIsLoading(false);
-    }
-  };
 
   const triggerReload = () => {
     setReload(!reload);
   };
 
-  if (hasError) return <ConnectionError error = {`Unable to access details of task with id ${taskId} right now. Please try again later`} />;
+  if (hasError)
+    return (
+      <ConnectionError error={`Unable to access details of task with id ${taskId} right now. Please try again later`} />
+    );
   if (isLoading) return <Loading />;
 
   return (
