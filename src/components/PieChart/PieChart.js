@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
 import axios from "axios";
 import { BASE_URL } from "../../utils/constant-variables";
+import Loading from "../../components/Loading/Loading";
+import ConnectionError from "../ConnectionError/ConnectionError";
 
-const PieChart = () => {
+const PieChart = ({ className }) => {
   const [procrastinationData, setProcrastinationData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -22,13 +24,10 @@ const PieChart = () => {
       setHasError(true);
     }
   };
-  if (hasError) {
-    return <p>Unable to access procrastinations right now. Please try again later.</p>;
-  }
 
-  if (isLoading) {
-    return <p>Is Loading...</p>;
-  }
+  if (hasError) return <ConnectionError />;
+
+  if (isLoading) return <Loading />;
 
   // Format data for the pie chart
   const pieChartData = [["Reason", "Frequency"]];
@@ -38,16 +37,16 @@ const PieChart = () => {
   console.log(pieChartData);
 
   return (
-    <div style={{ width: "100%", height: "400px" }}>
+    <div className={className}>
+      <h3>Procrastinations Stats</h3>
       <Chart
         chartType="PieChart"
         width="100%"
         height="400px"
         data={pieChartData}
         options={{
-          title: "Procrastinations Stats",
           is3D: true,
-          pieHole: 0.3,
+          backgroundColor: "#f5fafe",
         }}
       />
     </div>

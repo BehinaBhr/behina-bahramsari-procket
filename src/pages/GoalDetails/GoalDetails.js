@@ -6,6 +6,8 @@ import EditAndBackButtonHeader from "../../components/EditAndBackButtonHeader/Ed
 import { BASE_URL } from "../../utils/constant-variables";
 import Table from "../../components/Table/Table.js";
 import TaskItem from "../../components/TaskItem/TaskItem.js";
+import Loading from "../../components/Loading/Loading";
+import ConnectionError from "../../components/ConnectionError/ConnectionError";
 
 export const GoalDetails = () => {
   const [goal, setGoal] = useState({});
@@ -55,13 +57,8 @@ export const GoalDetails = () => {
     }
   };
 
-  if (hasError) {
-    return <p>Unable to access details of goal with id {goalId} right now. Please try again later.</p>;
-  }
-
-  if (isLoading) {
-    return <p>Is Loading...</p>;
-  }
+  if (hasError) return <ConnectionError error = {`Unable to access details of goal with id ${goalId} right now. Please try again later`} />;
+  if (isLoading) return <Loading />;
 
   return (
     <div className="goal-details">
@@ -83,7 +80,7 @@ export const GoalDetails = () => {
         </div>
         <div className="goal-details__sub-item">
           <h4 className="goal-details__label">progress</h4>
-          <div className="goal-details__value">{goal.progress}</div>
+          <div className="goal-details__value goal-details__value-progrees">{goal.progress} %</div>
         </div>
       </section>
       <hr className="goal-details__divider" />
@@ -91,7 +88,7 @@ export const GoalDetails = () => {
         target="task"
         items={tasks}
         ItemComponent={TaskItem}
-        columns={["Tasks", "Due Date", "Status", "Actions"]}
+        columns={["Tasks", "Due Date", "Actions"]}
         deleteSelectedItem={deleteSelectedItem}
         triggerReload={triggerReload}
       />

@@ -3,6 +3,9 @@ import { BASE_URL } from "../../utils/constant-variables";
 import axios from "axios";
 import { useState } from "react";
 import NewProcrastination from "../NewProcrastination/NewProcrastination";
+import iconPostpone from "../../assets/images/postpone.svg";
+import iconComplete from "../../assets/images/complete.svg";
+import iconUndone from "../../assets/images/undone.svg";
 
 const TaskStatusButton = ({ task, triggerReload, className = "" }) => {
   const [newProcrastination, setNewProcrastination] = useState(false);
@@ -40,20 +43,20 @@ const TaskStatusButton = ({ task, triggerReload, className = "" }) => {
               type="button"
               onClick={onDone}
             >
-              done
+              <img src={iconComplete} alt="complete" />
             </button>
             <button
               className="task-status-button__button task-status-button__button-postpone"
               type="button"
               onClick={onPostponse}
             >
-              postpone
+              <img src={iconPostpone} alt="postone" />
             </button>
           </div>
         )}
         {task.is_completed == 1 && (
           <button className="task-status-button__button" type="button" onClick={onUnDone}>
-            unDone
+            <img src={iconUndone} alt="undone" />
           </button>
         )}
       </div>

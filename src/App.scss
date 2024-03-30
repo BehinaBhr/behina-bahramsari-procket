@@ -20,8 +20,10 @@ a {
 }
 
 .app {
-  background-color: $lightblue;
+  background-image: url("./assets//images/background.jpg");
+  background-size: cover;
   min-height: 100vh;
+  background-attachment: fixed;
 
   @include desktop {
     display: flex;
@@ -34,17 +36,21 @@ a {
 }
 
 main {
-  padding: 0 $mobile-padding;
-
+  margin-left: $mobile-padding;
+  margin-right: $mobile-padding;
   @include tablet {
-    padding: 0 $tablet-padding;
+    margin-left: $tablet-padding;
+    margin-right: $tablet-padding;
   }
   @include desktop {
     max-width: $breakpoint-desktop;
   }
 
   > * {
-    background-color: $white;
-    box-shadow: 0 0 0.3rem $fadeblack;
+    color: $darknavy;
+    background-color: $lightblue;
+    margin-top: $mobile-padding;
+    border-radius: $oval-border-radius;
+    border: 0.1px solid;
   }
 }

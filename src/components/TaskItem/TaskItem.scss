@@ -4,12 +4,25 @@
 @use "../../styles/partials/colors" as *;
 
 .task-item {
-  width: 100%;
   padding: $mobile-padding 1.5rem;
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  border: solid $darknavy 1px;
+  border-radius: $oval-border-radius;
+  margin: 0.5rem;
+  background-color: $lavender;
+
+  &:hover {
+    background-color: $darklavender;
+  }
+
+  &--done {
+    margin-bottom: 0;
+    margin-top: 0.25rem;
+    opacity: 0.5;
+  }
 
   &__attr {
     padding-bottom: $mobile-padding;
@@ -23,7 +36,7 @@
 
     &-label {
       @include table-header;
-      color: $slate;
+      color: $darknavy;
 
       @include tablet {
         display: none;
@@ -34,18 +47,21 @@
       @include body-medium;
       display: flex;
       flex-direction: column;
+      &-duedate {
+        color: $pink;
+        font-weight: 700;
+      }
     }
 
     &-sub-value {
-      @include body-small;
-      color: $blue !important;
+      color: $navy !important;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
 
       @include tablet {
         display: inline;
-        padding-top: 0.25rem;
+        margin-top: 0.6rem;
         padding-left: 1.2rem;
       }
     }
@@ -54,7 +70,8 @@
       width: 100%;
 
       a {
-        color: $black;
+        color: $darknavy;
+        width: fit-content;
       }
 
       @include tablet {
@@ -68,6 +85,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    width: 100%;
 
     @include tablet {
       justify-content: flex-end;

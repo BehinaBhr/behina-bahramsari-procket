@@ -2,20 +2,18 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/colors" as *;
 @use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/component_mixins" as *;
 
 //styling for search bar
 .search {
+  @include form-field;
   @include body-medium;
-  padding-bottom: 1rem;
-  &__field {
-    width: 100%;
-    height: 2.25rem;
-    border: 0.0625rem solid $cloud;
-    border-radius: $oval-border-radius;
-    padding-left: 0.625rem;
-    background: transparent url("../../assets/images/search-24px.svg") no-repeat
-      right;
+
+  &__input {
+    background: transparent url("../../assets/images/search-24px.svg") no-repeat right;
     background-position-x: calc(100% - 0.625rem);
+    padding: 1rem;
+
     @include tablet {
       width: 11.5625rem;
     }

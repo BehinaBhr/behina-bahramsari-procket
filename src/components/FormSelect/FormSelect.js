@@ -2,7 +2,7 @@ import "./FormSelect.scss";
 import FieldError from "../FieldError/FieldError";
 import FormLabel from "../FormLabel/FormLabel";
 
-const FormSelect = ({ field_name, options, errors, errorSetter, valueSetter, className = "", with_title = true }) => {
+const FormSelect = ({ field_name, options, errors=[], errorSetter=()=>{}, valueSetter, className = "", with_title = true }) => {
   const onOptionChangeHandler = (event) => {
     valueSetter(event.target.value);
     const updatedErrors = { ...errors };

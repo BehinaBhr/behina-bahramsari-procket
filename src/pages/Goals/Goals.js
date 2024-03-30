@@ -4,6 +4,7 @@ import { BASE_URL } from "../../utils/constant-variables";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import GoalItem from "../../components/GoalItem/GoalItem.js";
+import Loading from "../../components/Loading/Loading";
 
 const Goals = () => {
   const [goals, setGoals] = useState([]);
@@ -39,22 +40,19 @@ const Goals = () => {
     return <p>Unable to access goals right now. Please try again later.</p>;
   }
 
-  if (isLoading) {
-    return <p>Is Loading...</p>;
-  }
+  if (isLoading) return <Loading />;
 
   if (goals.length === 0) {
     return <p>No goals available</p>;
   }
 
   return (
-    <>
+    <div>
       <SearchAndAddButtonHeader
         title="Goals"
         add_button_target="Goal"
         add_button_link="/goals/new"
       />
-
       <Table
         target={"goal"}
         items={goals}
@@ -62,7 +60,7 @@ const Goals = () => {
         columns={["Goal", "Start Date", "End Date", "Progress", "Actions"]}
         deleteSelectedItem={deleteSelectedItem}
       />
-    </>
+    </div>
   );
 };
 

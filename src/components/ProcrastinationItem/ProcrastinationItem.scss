@@ -23,7 +23,7 @@
 
     &-label {
       @include table-header;
-      color: $slate;
+      color: $darknavy;
 
       @include tablet {
         display: none;
@@ -36,26 +36,8 @@
       flex-direction: column;
     }
 
-    &-sub-value {
-      @include body-small;
-      color: $blue !important;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-
-      @include tablet {
-        display: inline;
-        padding-top: 0.25rem;
-        padding-left: 1.2rem;
-      }
-    }
-
     &--description {
       width: 100%;
-
-      a {
-        color: $black;
-      }
 
       @include tablet {
         width: 45%;

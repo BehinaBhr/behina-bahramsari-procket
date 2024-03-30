@@ -2,6 +2,7 @@ import { BASE_URL } from "../../utils/constant-variables";
 import { TaskForm } from "../../components/TaskForm/TaskForm";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Loading from "../../components/Loading/Loading";
 
 const NewTask = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,9 +31,7 @@ const NewTask = () => {
     return <p>Unable to access goals right now. Please try again later.</p>;
   }
 
-  if (isLoading) {
-    return <p>Is Loading...</p>;
-  }
+  if (isLoading) return <Loading />;
 
   const handleSubmit = async (taskData) => {
     await axios.post(`${BASE_URL}/api/tasks`, taskData);

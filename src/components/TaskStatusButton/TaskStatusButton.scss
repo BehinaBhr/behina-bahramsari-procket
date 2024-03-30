@@ -1,24 +1,26 @@
 @use "../../styles/partials/component_mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
 
 .task-status-button {
   &__button-group {
     width: 100%;
     display: flex;
     flex-wrap: nowrap;
-    gap: 0.25rem;
+    align-items: center;
   }
 
   &__button {
-    @include button;
-    width: fit-content;
-
-    &-done {
-      @include green_button;
-    }
-    &-postpone {
-      @include red_button;
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    display: flex;
+    flex-direction: column;
+        
+    img {
+      width: 24px;
     }
   }
 }

@@ -1,0 +1,23 @@
+@use "../../styles/partials/colors.scss" as *;
+@use "../../styles/partials/typography-mixins" as *;
+
+.error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: none;
+  padding-bottom: 2rem;
+  margin-bottom: 6rem;
+
+  &__image {
+    height: 15rem;
+  }
+  
+  &__message {
+    @include body-large;
+    color: $darknavy;
+    position: relative;
+    color: $darknavy;
+    padding: 2rem;
+  }
+}

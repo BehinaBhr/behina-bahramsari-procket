@@ -5,7 +5,7 @@
 @use "../../styles/partials/component_mixins" as *;
 
 .edit-button {
-  @include blue_button;
+  @include blue-button;
   display: flex;
   height: $button-height;
   border-radius: 50%;

@@ -3,6 +3,7 @@ import { TaskForm } from "../../components/TaskForm/TaskForm";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import Loading from "../../components/Loading/Loading";
 
 const EditTask = () => {
   const { taskId } = useParams();
@@ -28,9 +29,7 @@ const EditTask = () => {
     return <p>Unable to access the task right now. Please try again later.</p>;
   }
 
-  if (isLoading) {
-    return <p>Is Loading...</p>;
-  }
+  if (isLoading) return <Loading />;
 
   const handleSubmit = async (taskData) => {
     await axios.put(`${BASE_URL}/api/tasks/${taskId}`, taskData);
