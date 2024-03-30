@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
 import "./NewProcrastination.scss";
+import { useState, useEffect } from "react";
 import { BASE_URL } from "../../utils/constant-variables";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import FormSelect from "../../components/FormSelect/FormSelect";
 import FormField from "../../components/FormField/FormField";
+import FailedSubmitError from "../FailedSubmitError/FailedSubmitError";
+import SuccessfulSubmitMessage from "../SuccessfulSubmitMessage/SuccessfulSubmitMessage";
 
 function NewProcrastination({ task, onCancel, onSuccess }) {
   const [reason, setReason] = useState("");
@@ -12,12 +14,16 @@ function NewProcrastination({ task, onCancel, onSuccess }) {
   const [errors, setErrors] = useState(false);
   const navigate = useNavigate();
   const { taskId } = useParams();
+  const [submitError, setSubmitError] = useState("");
+  const [submitSuccess, setSubmitSuccess] = useState(false);
 
   useEffect(() => {
     setDueDate(task.due_date);
   }, [task]);
 
   const onSubmit = async (e) => {
+    setSubmitError("");
+
     e.preventDefault();
     let errors = {};
 
@@ -41,12 +47,15 @@ function NewProcrastination({ task, onCancel, onSuccess }) {
           reason: reason,
           task_id: task.id,
         });
+
+        setSubmitSuccess(true);
         setTimeout(() => {
           taskId ? navigate(`/tasks/${task.id}`) : navigate(`/tasks`);
           onSuccess();
         }, 3000);
       } catch (error) {
-        console.error(error);
+        setSubmitError(error.response.data.message);
+        setSubmitSuccess(false);
       }
     }
   };
@@ -70,8 +79,10 @@ function NewProcrastination({ task, onCancel, onSuccess }) {
     <section className="new-procrastination-modal__background">
       <section className="new-procrastination-modal">
         <section className="new-procrastination-modal__content">
-          <h1 className="new-procrastination-modal__content-header">Why do you want to postpone this task?</h1>
-          <p className="new-procrastination-modal__content-body">Select from one of the following reasons</p>
+          <h1 className="new-procrastination-modal__content-header">Postpone 😥</h1>
+          <p className="new-procrastination-modal__content-body">
+            Please select your reason for postponing this task and the new due date.
+          </p>
         </section>
         <form onSubmit={onSubmit}>
           <FormSelect
@@ -82,9 +93,7 @@ function NewProcrastination({ task, onCancel, onSuccess }) {
             errorSetter={setErrors}
             value={reason}
             valueSetter={setReason}
-            with_title={false}
           />
-
           <FormField
             className="goal-form__input"
             key="due_date"
@@ -105,6 +114,13 @@ function NewProcrastination({ task, onCancel, onSuccess }) {
             <button className="new-procrastination-modal__button new-procrastination-modal__button-save">Save</button>
           </div>
         </form>
+        {submitSuccess && (
+          <SuccessfulSubmitMessage
+            className="new-procrastination-modal__message"
+            message="Your task is successfully updated!"
+          />
+        )}
+        {submitError && <FailedSubmitError className="new-procrastination-modal__message" error={submitError} />}
       </section>
     </section>
   );
