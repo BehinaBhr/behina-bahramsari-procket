@@ -1,25 +1,23 @@
-
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/colors" as *;
 
-
 .error {
-    &__image{
-        height: 5rem !important;
-    }
+  &__image {
+    height: 5rem !important;
+  }
 }
-.stats{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 1rem;
+  gap: 1rem;
+  &__chart {
+    width: 90%;
+    border: 0.1px solid;
     padding: 1rem;
-    gap: 1rem;
-    &__chart {
-        width: 90%;
-        border: 0.1px solid;
-        padding: 1rem;
-        border-radius: $oval-border-radius;
-    }
+    border-radius: $oval-border-radius;
+  }
 }
-  

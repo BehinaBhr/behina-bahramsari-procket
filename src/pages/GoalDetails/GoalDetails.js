@@ -24,7 +24,6 @@ export const GoalDetails = () => {
   }, [goalId, reload]);
 
   const triggerReload = () => {
-    console.log("here");
     setReload(!reload);
   };
 

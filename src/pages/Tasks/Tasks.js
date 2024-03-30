@@ -5,6 +5,7 @@ import { BASE_URL } from "../../utils/constant-variables";
 import Table from "../../components/Table/Table.js";
 import TaskItem from "../../components/TaskItem/TaskItem.js";
 import Loading from "../../components/Loading/Loading";
+import ConnectionError from "../../components/ConnectionError/ConnectionError";
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
@@ -17,7 +18,6 @@ const Tasks = () => {
   }, [reload]);
 
   const triggerReload = () => {
-    console.log("here");
     setReload(!reload);
   };
 
@@ -39,10 +39,8 @@ const Tasks = () => {
       setHasError(true);
     }
   };
-  if (hasError) {
-    return <p>Unable to access tasks right now. Please try again later.</p>;
-  }
 
+  if (hasError) return <ConnectionError error = {`Unable to access tasks right now. Please try again later`} />;
   if (isLoading) return <Loading />;
 
   if (tasks.length === 0) {
