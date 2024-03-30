@@ -1,9 +1,8 @@
-import { BASE_URL } from "../../utils/constant-variables";
 import { GoalForm } from "../../components/GoalForm/GoalForm";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import Loading from "../../components/Loading/Loading";
+import { fetchGoal, updateGoal } from "../../utils/apiUtils.js";
 
 const EditGoal = () => {
   const { goalId } = useParams();
@@ -12,18 +11,19 @@ const EditGoal = () => {
   const [goal, setGoal] = useState({});
 
   useEffect(() => {
-    const fetchGoal = async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/api/goals/${goalId}`);
-        setGoal(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        setIsLoading(false);
-        setHasError(true);
-      }
-    };
-    fetchGoal();
+    fetchData();
   }, [goalId]);
+
+  const fetchData = async () => {
+    try {
+      const goal = await fetchGoal(goalId);
+      setGoal(goal);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      setHasError(true);
+    }
+  };
 
   if (hasError) {
     return <p>Unable to access the goal with {goalId} right now. Please try again later.</p>;
@@ -32,7 +32,7 @@ const EditGoal = () => {
   if (isLoading) return <Loading />;
 
   const handleSubmit = async (goalData) => {
-    await axios.put(`${BASE_URL}/api/goals/${goalId}`, goalData);
+    await updateGoal(goalId, goalData);
   };
 
   return <GoalForm title="Edit Goal" formSubmitHandler={handleSubmit} goal={goal} />;

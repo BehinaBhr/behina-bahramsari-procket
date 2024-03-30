@@ -1,9 +1,8 @@
-import { BASE_URL } from "../../utils/constant-variables";
 import { TaskForm } from "../../components/TaskForm/TaskForm";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import Loading from "../../components/Loading/Loading";
+import { fetchTask, updateTask } from "../../utils/apiUtils.js";
 
 const EditTask = () => {
   const { taskId } = useParams();
@@ -12,18 +11,19 @@ const EditTask = () => {
   const [task, setTask] = useState({});
 
   useEffect(() => {
-    const fetchTask = async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/api/tasks/${taskId}`);
-        setTask(response.data);
-        setIsLoading(false);
-      } catch (error) {
-        setIsLoading(false);
-        setHasError(true);
-      }
-    };
-    fetchTask();
+    fetchData();
   }, [taskId]);
+
+  const fetchData = async () => {
+    try {
+      const task = await fetchTask(taskId);
+      setTask(task);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      setHasError(true);
+    }
+  };
 
   if (hasError) {
     return <p>Unable to access the task right now. Please try again later.</p>;
@@ -32,7 +32,7 @@ const EditTask = () => {
   if (isLoading) return <Loading />;
 
   const handleSubmit = async (taskData) => {
-    await axios.put(`${BASE_URL}/api/tasks/${taskId}`, taskData);
+    await updateTask(taskId, taskData);
   };
 
   return <TaskForm title="Edit Task" formSubmitHandler={handleSubmit} task={task} />;

@@ -1,14 +1,13 @@
 import "./GoalDetails.scss";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import EditAndBackButtonHeader from "../../components/EditAndBackButtonHeader/EditAndBackButtonHeader";
 import AddButton from "../../components/AddButton/AddButton";
-import { BASE_URL } from "../../utils/constant-variables";
 import Table from "../../components/Table/Table.js";
 import TaskItem from "../../components/TaskItem/TaskItem.js";
 import Loading from "../../components/Loading/Loading";
 import ConnectionError from "../../components/ConnectionError/ConnectionError";
+import { fetchGoalsTasks, fetchGoal, deleteTask } from "../../utils/apiUtils.js";
 
 export const GoalDetails = () => {
   const [goal, setGoal] = useState({});
@@ -19,42 +18,25 @@ export const GoalDetails = () => {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    fetchGoal();
-    fetchGoalsTasks();
+    fetchData();
   }, [goalId, reload]);
 
-  const triggerReload = () => {
-    setReload(!reload);
-  };
-
-  const fetchData = async (path, dataSetter) => {
+  const fetchData = async () => {
     try {
-      const response = await axios.get(path);
+      const goal = await fetchGoal(goalId);
+      const tasks = await fetchGoalsTasks(goalId);
+      setGoal(goal);
+      setTasks(tasks);
       setIsLoading(false);
-      dataSetter(response.data);
       setHasError(false);
     } catch (error) {
       setHasError(true);
       setIsLoading(false);
-      console.error(error);
     }
   };
 
-  const fetchGoalsTasks = async () => {
-    fetchData(`${BASE_URL}/api/goals/${goalId}/tasks`, setTasks);
-  };
-
-  const fetchGoal = async () => {
-    fetchData(`${BASE_URL}/api/goals/${goalId}`, setGoal);
-  };
-
-  const deleteSelectedItem = async (taskId) => {
-    try {
-      await axios.delete(`${BASE_URL}/api/tasks/${taskId}`);
-      triggerReload();
-    } catch {
-      setHasError(true);
-    }
+  const triggerReload = () => {
+    setReload(!reload);
   };
 
   if (hasError) return <ConnectionError error = {`Unable to access details of goal with id ${goalId} right now. Please try again later`} />;
@@ -93,7 +75,9 @@ export const GoalDetails = () => {
         items={tasks}
         ItemComponent={TaskItem}
         columns={["Tasks", "Due Date", "Actions"]}
-        deleteSelectedItem={deleteSelectedItem}
+        deleteSelectedItem={(taskId) => {
+          deleteTask(taskId, triggerReload, setHasError);
+        }}
         triggerReload={triggerReload}
       />
     </div>

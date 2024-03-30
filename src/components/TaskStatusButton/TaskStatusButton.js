@@ -1,29 +1,28 @@
 import "./TaskStatusButton.scss";
-import { BASE_URL } from "../../utils/constant-variables";
-import axios from "axios";
 import { useState } from "react";
 import NewProcrastination from "../NewProcrastination/NewProcrastination";
 import iconPostpone from "../../assets/images/postpone.svg";
 import iconComplete from "../../assets/images/complete.svg";
 import iconUndone from "../../assets/images/undone.svg";
+import { updateTask } from "../../utils/apiUtils.js";
 
 const TaskStatusButton = ({ task, triggerReload, className = "" }) => {
   const [newProcrastination, setNewProcrastination] = useState(false);
 
   async function onDone() {
     if (!task.is_completed) {
-      await updateTask(true);
+      await setTaskStatus(true);
       triggerReload();
     }
   }
   async function onUnDone() {
     if (task.is_completed) {
-      await updateTask(false);
+      await setTaskStatus(false);
       triggerReload();
     }
   }
-  async function updateTask(is_completed) {
-    await axios.put(`${BASE_URL}/api/tasks/${task.id}`, {
+  async function setTaskStatus(is_completed) {
+    await updateTask(task.id, {
       description: task.description,
       due_date: task.due_date,
       is_completed: is_completed,

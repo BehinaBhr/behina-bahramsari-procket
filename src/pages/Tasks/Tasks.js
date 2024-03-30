@@ -1,10 +1,9 @@
-import axios from "axios";
 import { useState, useEffect } from "react";
 import { SearchAndAddButtonHeader } from "../../components/SearchAndAddButtonHeader/SearchAndAddButtonHeader";
-import { BASE_URL } from "../../utils/constant-variables";
 import Table from "../../components/Table/Table.js";
 import TaskItem from "../../components/TaskItem/TaskItem.js";
 import Loading from "../../components/Loading/Loading";
+import { deleteTask, fetchTasks } from "../../utils/apiUtils.js";
 import ConnectionError from "../../components/ConnectionError/ConnectionError";
 
 const Tasks = () => {
@@ -14,32 +13,23 @@ const Tasks = () => {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    fetchTasks();
+    fetchData();
   }, [reload]);
 
   const triggerReload = () => {
     setReload(!reload);
   };
 
-  const fetchTasks = async () => {
+  const fetchData = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/tasks`);
-      setTasks(response.data);
+      const tasks = await fetchTasks();
+      setTasks(tasks);
       setIsLoading(false);
     } catch (error) {
       setIsLoading(false);
       setHasError(true);
     }
   };
-  const deleteSelectedItem = async (taskId) => {
-    try {
-      await axios.delete(`${BASE_URL}/api/tasks/${taskId}`);
-      triggerReload();
-    } catch {
-      setHasError(true);
-    }
-  };
-
   if (hasError) return <ConnectionError error={`Unable to access tasks right now. Please try again later`} />;
   if (isLoading) return <Loading />;
 
@@ -54,7 +44,9 @@ const Tasks = () => {
         items={tasks}
         ItemComponent={TaskItem}
         columns={["Task (goal)", "Due Date", "Actions"]}
-        deleteSelectedItem={deleteSelectedItem}
+        deleteSelectedItem={(taskId) => {
+          deleteTask(taskId, triggerReload, setHasError);
+        }}
         triggerReload={triggerReload}
       />
     </div>

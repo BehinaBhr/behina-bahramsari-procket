@@ -1,8 +1,7 @@
-import { BASE_URL } from "../../utils/constant-variables";
 import { TaskForm } from "../../components/TaskForm/TaskForm";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Loading from "../../components/Loading/Loading";
+import { createTask, fetchGoals } from "../../utils/apiUtils.js";
 
 const NewTask = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -10,22 +9,23 @@ const NewTask = () => {
   const [goalOptions, setGoalOptions] = useState({});
 
   useEffect(() => {
-    const fetchGoals = async () => {
-      try {
-        const response = await axios.get(`${BASE_URL}/api/goals/`);
-        const options = [];
-        response.data.forEach((goal) => {
-          options.push({ value: goal.id, text: goal.description });
-        });
-        setGoalOptions(options);
-        setIsLoading(false);
-      } catch (error) {
-        setIsLoading(false);
-        setHasError(true);
-      }
-    };
-    fetchGoals();
+    fetchData();
   }, []);
+
+  const fetchData = async () => {
+    try {
+      const goals = await fetchGoals();
+      const options = [];
+      goals.forEach((goal) => {
+        options.push({ value: goal.id, text: goal.description });
+      });
+      setGoalOptions(options);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      setHasError(true);
+    }
+  };
 
   if (hasError) {
     return <p>Unable to access goals right now. Please try again later.</p>;
@@ -34,7 +34,7 @@ const NewTask = () => {
   if (isLoading) return <Loading />;
 
   const handleSubmit = async (taskData) => {
-    await axios.post(`${BASE_URL}/api/tasks`, taskData);
+    await createTask(taskData);
   };
 
   return <TaskForm title="Add Task" formSubmitHandler={handleSubmit} options={goalOptions} />;

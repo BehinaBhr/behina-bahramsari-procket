@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { Chart } from "react-google-charts";
-import axios from "axios";
-import { BASE_URL } from "../../utils/constant-variables";
 import Loading from "../../components/Loading/Loading";
 import ConnectionError from "../../components/ConnectionError/ConnectionError";
 import "./ColumnChart.scss";
+import { fetchGoals } from "../../utils/apiUtils.js";
 
 const ColumnChart = ({ className }) => {
   const [goalData, setGoalData] = useState([]);
@@ -17,12 +16,10 @@ const ColumnChart = ({ className }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${BASE_URL}/api/goals`);
-      const goals = response.data;
+      const goals = await fetchGoals();
       const chartData = goals.map((goal) => [goal.description, goal.progress, goal.procastinations]);
       setGoalData(chartData);
       setIsLoading(false);
-      // setHasError(true);
     } catch (error) {
       setIsLoading(false);
       setHasError(true);
@@ -30,7 +27,6 @@ const ColumnChart = ({ className }) => {
   };
 
   if (hasError) return <ConnectionError />;
-
   if (isLoading) return <Loading />;
 
   return (
