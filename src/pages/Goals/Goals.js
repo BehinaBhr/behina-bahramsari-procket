@@ -28,7 +28,7 @@ const Goals = () => {
     } catch (error) {
       setHasError(true);
       setIsLoading(false);
-      console.error(error);
+      setHasError(true);
     }
   };
 

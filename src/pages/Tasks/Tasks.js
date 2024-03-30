@@ -40,7 +40,7 @@ const Tasks = () => {
     }
   };
 
-  if (hasError) return <ConnectionError error = {`Unable to access tasks right now. Please try again later`} />;
+  if (hasError) return <ConnectionError error={`Unable to access tasks right now. Please try again later`} />;
   if (isLoading) return <Loading />;
 
   if (tasks.length === 0) {

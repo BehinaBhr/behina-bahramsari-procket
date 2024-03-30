@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import FormField from "../../components/FormField/FormField";
 import EditAndBackButtonHeader from "../../components/EditAndBackButtonHeader/EditAndBackButtonHeader";
+import FailedSubmitError from "../FailedSubmitError/FailedSubmitError";
+import SuccessfulSubmitMessage from "../SuccessfulSubmitMessage/SuccessfulSubmitMessage";
 
 const GoalForm = ({ title, formSubmitHandler, goal = null }) => {
   const { goalId } = useParams();
@@ -10,6 +12,7 @@ const GoalForm = ({ title, formSubmitHandler, goal = null }) => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [errors, setErrors] = useState({});
+  const [submitError, setSubmitError] = useState("");
 
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const navigate = useNavigate();
@@ -23,6 +26,8 @@ const GoalForm = ({ title, formSubmitHandler, goal = null }) => {
   }, [goal]);
 
   const onSubmit = async (e) => {
+    setSubmitError("");
+
     e.preventDefault();
     let errors = {};
     if (description === "") {
@@ -101,7 +106,8 @@ const GoalForm = ({ title, formSubmitHandler, goal = null }) => {
           </Link>
           <button className="goal-form__button goal-form__button-add">Save</button>
         </div>
-        {submitSuccess && <div className="goal-form__success-message">The goal is successfully updated!</div>}
+        {submitSuccess && <SuccessfulSubmitMessage message="The new task is successfully created!" />}
+        {submitError && <FailedSubmitError error={submitError} />}
       </form>
     </section>
   );

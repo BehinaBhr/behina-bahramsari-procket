@@ -4,6 +4,8 @@ import { useNavigate, Link, useParams } from "react-router-dom";
 import FormField from "../FormField/FormField";
 import FormSelect from "../FormSelect/FormSelect";
 import EditAndBackButtonHeader from "../EditAndBackButtonHeader/EditAndBackButtonHeader";
+import FailedSubmitError from "../FailedSubmitError/FailedSubmitError";
+import SuccessfulSubmitMessage from "../SuccessfulSubmitMessage/SuccessfulSubmitMessage";
 
 const TaskForm = ({ title, formSubmitHandler, task = null, options = null }) => {
   const { taskId } = useParams();
@@ -12,8 +14,9 @@ const TaskForm = ({ title, formSubmitHandler, task = null, options = null }) => 
   const [isCompleted, setIsCompleted] = useState(false);
   const [goalId, setGoalId] = useState(null);
   const [errors, setErrors] = useState({});
-
+  const [submitError, setSubmitError] = useState("");
   const [submitSuccess, setSubmitSuccess] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,6 +29,8 @@ const TaskForm = ({ title, formSubmitHandler, task = null, options = null }) => 
   }, [task]);
 
   const onSubmit = async (e) => {
+    setSubmitError("");
+
     e.preventDefault();
     let errors = {};
     if (description === "" || description === null) {
@@ -56,7 +61,7 @@ const TaskForm = ({ title, formSubmitHandler, task = null, options = null }) => 
           task ? navigate(`/tasks/${taskId}`) : navigate(`/tasks`);
         }, 3000);
       } catch (error) {
-        console.error(error);
+        setSubmitError(error.response.data.message);
         setSubmitSuccess(false);
       }
     }
@@ -109,7 +114,8 @@ const TaskForm = ({ title, formSubmitHandler, task = null, options = null }) => 
           </Link>
           <button className="task-form__button task-form__button-add">Save</button>
         </div>
-        {submitSuccess && <div className="task-form__success-message">The task is successfully updated!</div>}
+        {submitSuccess && <SuccessfulSubmitMessage message="The new task is successfully created!" />}
+        {submitError && <FailedSubmitError error={submitError} />}
       </form>
     </section>
   );

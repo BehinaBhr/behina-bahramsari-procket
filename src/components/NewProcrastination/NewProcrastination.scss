@@ -7,12 +7,17 @@
   @include modal;
 
   @include tablet {
-    height: 22rem;
+    height: fit-content;
   }
 
   &__button {
     &-save {
       @include green-button;
     }
+  }
+
+  &__message {
+    margin: 0 !important;
+    margin-top: $mobile-padding !important;
   }
 }
