@@ -24,7 +24,7 @@ export default function TaskItem({ item, onDelete, triggerReload }) {
         <p className="task-item__attr-value task-item__attr-value-duedate">{due_date}</p>
       </div>
       <div className="task-item__actions">
-        <TaskStatusButton className="task-item__attr-value" task={item} triggerReload={triggerReload} />
+        <TaskStatusButton className="task-item__attr-value task-item__status-buttons" task={item} triggerReload={triggerReload} />
         <DeleteButton onClick={onDelete} />
       </div>
     </section>

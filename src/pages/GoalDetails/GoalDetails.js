@@ -7,6 +7,7 @@ import AddButton from "../../components/AddButton/AddButton";
 import Table from "../../components/Table/Table.js";
 import TaskItem from "../../components/TaskItem/TaskItem.js";
 import Loading from "../../components/Loading/Loading";
+import GoalProgress from "../../components/GoalProgress/GoalProgress";
 import ConnectionError from "../../components/ConnectionError/ConnectionError";
 import { fetchGoalsTasks, fetchGoal, deleteTask } from "../../utils/apiUtils.js";
 
@@ -63,7 +64,7 @@ export const GoalDetails = () => {
         </div>
         <div className="goal-details__sub-item">
           <h4 className="goal-details__label">progress</h4>
-          <div className="goal-details__value goal-details__value-progrees">{goal.progress} %</div>
+          <GoalProgress progress={goal.progress} className="goal-details__value"/>
         </div>
       </section>
       <hr className="goal-details__divider" />

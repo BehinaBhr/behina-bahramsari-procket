@@ -33,6 +33,7 @@ export const TaskDetails = () => {
         setIsLoading(false);
       }
     };
+    
     fetchData();
   }, [taskId, reload]);
 
