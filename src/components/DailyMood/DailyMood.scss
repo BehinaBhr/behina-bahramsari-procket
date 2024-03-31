@@ -9,9 +9,14 @@
   justify-content: center;
   border: 1px solid $darknavy;
   padding: $mobile-padding;
-  margin: 1rem;
-  gap: 1rem;
-  
+  margin-top: 1rem;
+  gap: $mobile-padding;
+  @include tablet {
+    margin-left: 0.5rem;
+  }
+  @include desktop {
+    margin-left: $tablet-padding;
+  }
   img {
     width: 60px;
   }

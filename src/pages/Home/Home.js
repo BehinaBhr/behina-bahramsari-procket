@@ -42,7 +42,7 @@ const Home = () => {
     <div className="home">
       <section className="home-section home-section--centered">
         <div className="home-section-mood">
-          <h2 className="home-section__header">Daily Mood</h2>
+          <h2 className="home-section__header home-section__header-mood">Daily Mood</h2>
           <DailyMood />
         </div>
         <div className="home-section-actions">
