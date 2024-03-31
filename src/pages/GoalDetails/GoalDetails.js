@@ -10,7 +10,6 @@ import Loading from "../../components/Loading/Loading";
 import GoalProgress from "../../components/GoalProgress/GoalProgress";
 import ConnectionError from "../../components/ConnectionError/ConnectionError";
 import { fetchGoalsTasks, fetchGoal, deleteTask } from "../../utils/apiUtils.js";
-import rocketLaunch from "../../assets/images/rocket-launch.gif"
 
 export const GoalDetails = () => {
   DocumentTitle("Goal Details Page");
@@ -31,7 +30,7 @@ export const GoalDetails = () => {
         setGoal(goal);
         if(lastCompletenessStatus != null && goal.progress === 100) {
           setlunchMissle(true)
-          setTimeout(()=> setlunchMissle(false), 3500)  
+          setTimeout(()=> setlunchMissle(false), 4000)  
         }
         setLastCompletenessStatus(goal.progress)
         setTasks(tasks);
@@ -58,7 +57,7 @@ export const GoalDetails = () => {
       <EditAndBackButtonHeader title="Goal Details" edit_button_to={`/goals/${goalId}/edit`} />
       <hr className="goal-details__divider" />
       <section className="goal-details__body">
-        <div className={`goal-details__launch-missle ${lunchMissle ? 'goal-details__launch-missle-fade-in' : 'goal-details__launch-missle-fade-out'}`}><img src={rocketLaunch} alt="Be patient..." /></div>
+        <div className={`goal-details__launch-missle ${lunchMissle ? 'goal-details__launch-missle-fade-in' : 'goal-details__launch-missle-fade-out'}`}></div>
         <div className="goal-details__sub-item goal-details__sub-item-description">
           <h4 className="goal-details__label">Description</h4>
           <div className="goal-details__value">{goal.description}</div>

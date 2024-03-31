@@ -8,7 +8,6 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  width: 100%;
 
   &__section-divider {
     @include divider;
@@ -37,28 +36,29 @@
 
   &__launch-missle {
     position: absolute;
-    width: 100%;
     height: 100%;
+    width: 100%;
     display: flex;
     justify-content: center;
-    background-color: $white;
+    align-items: center;
     border-radius: $oval-border-radius;
     top: 0;
     left: 0;
-
-    img {
-      height: 100%;
-    }
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
 
     &-fade-in {
+      background-image: url("../../assets/images/rocket-launch.gif");
       opacity: 1;
-      transition: opacity 1s;
       z-index: 1;
+      transition: all 1s;
     }
 
     &-fade-out {
       opacity: 0;
-      transition: opacity 1s;
+      z-index: -1;
+      transition: all 1s;
     }
   }
 
@@ -94,6 +94,7 @@
 
   &__value {
     @include body-medium;
+
     &-progrees {
       color: $pink;
       font-weight: 700;
