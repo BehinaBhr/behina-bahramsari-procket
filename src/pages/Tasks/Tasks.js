@@ -15,6 +15,17 @@ const Tasks = () => {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const tasks = await fetchTasks();
+        setTasks(tasks);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        setHasError(true);
+      }
+    };
+    
     fetchData();
   }, [reload]);
 
@@ -22,16 +33,6 @@ const Tasks = () => {
     setReload(!reload);
   };
 
-  const fetchData = async () => {
-    try {
-      const tasks = await fetchTasks();
-      setTasks(tasks);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      setHasError(true);
-    }
-  };
   if (hasError) return <ConnectionError error={`Unable to access tasks right now. Please try again later`} />;
   if (isLoading) return <Loading />;
 

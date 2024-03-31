@@ -33,7 +33,7 @@ export const TaskDetails = () => {
         setIsLoading(false);
       }
     };
-    
+
     fetchData();
   }, [taskId, reload]);
 
@@ -75,7 +75,7 @@ export const TaskDetails = () => {
         ItemComponent={ProcrastinationItem}
         columns={["Procrastinations", "Created at", "Actions"]}
         deleteSelectedItem={(ProcrastinationId) => {
-          deleteProcrastinations(ProcrastinationId, fetchTaskProcrastinations, setHasError);
+          deleteProcrastinations(ProcrastinationId, triggerReload, setHasError);
         }}
       />
     </div>

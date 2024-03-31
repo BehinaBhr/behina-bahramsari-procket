@@ -34,6 +34,7 @@ export const GoalDetails = () => {
         setIsLoading(false);
       }
     };
+    
     fetchData();
   }, [goalId, reload]);
 
