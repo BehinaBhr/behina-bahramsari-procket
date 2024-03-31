@@ -1,8 +1,8 @@
-// @use "../../styles/partials/variables" as *;
+@use "../../styles/partials/variables" as *;
 
-// .chart {
-//   width: 90%;
-//   border: 0.1px solid;
-//   padding: 1rem;
-//   border-radius: $oval-border-radius;
-// }
+.column-chart {
+  &__options {
+    padding: $mobile-padding;
+    padding-top: 0;
+  }
+}

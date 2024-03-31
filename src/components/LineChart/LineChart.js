@@ -4,7 +4,7 @@ import Loading from "../Loading/Loading.js";
 import ConnectionError from "../ConnectionError/ConnectionError.js";
 import { fetchGoals } from "../../utils/apiUtils.js";
 
-const BarChart = ({ className }) => {
+const LineChart = ({ className }) => {
   const [goalData, setGoalData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -16,7 +16,7 @@ const BarChart = ({ className }) => {
   const fetchData = async () => {
     try {
       const goals = await fetchGoals();
-      const chartData = goals.map((goal) => [goal.description, goal.progress]);
+      const chartData = goals.map((goal) => [goal.description, goal.procastinations]);
       setGoalData(chartData);
       setIsLoading(false);
     } catch (error) {
@@ -30,40 +30,29 @@ const BarChart = ({ className }) => {
 
   return (
     <div className={className}>
-      <h3>Goals Progress</h3>
+      <h3>Goals Procrastinations Count</h3>
 
       <Chart
-        chartType="BarChart"
+        chartType="LineChart"
+        width="100%"
         height="25rem"
-        data={[["Goal", "Progress"], ...goalData]}
+        data={[["Goal", "Procrastinations"], ...goalData]}
         options={{
           backgroundColor: "transparent",
           hAxis: {
-            title: "Value",
-            minValue: 0,
-            maxValue: 100,
-            gridlines: { count: 4 },
-          },
-          vAxis: {
             title: "Goal",
           },
-          series: {
-            0: { axis: "Progress" },
+          vAxis: {
+            title: "Count",
           },
-          axes: {
-            y: {
-              Progress: { label: "Progress (%)" },
-            },
-          },
-          chartArea: { width: "55%", height: "60%" },
+          chartArea: { width: "65%", height: "60%" },
           legend: {
             position: "top",
           },
           fontSize: 12,
-          bar: { groupWidth: "90%" },
         }}
       />
     </div>
   );
 };
-export default BarChart;
+export default LineChart;

@@ -27,24 +27,28 @@ const PieChart = ({ className }) => {
   if (hasError) return <ConnectionError />;
   if (isLoading) return <Loading />;
 
-  // Format data for the pie chart
   const pieChartData = [["Reason", "Frequency"]];
   for (const reason in procrastinationData) {
     pieChartData.push([reason, procrastinationData[reason]]);
   }
-  console.log(pieChartData);
 
   return (
     <div className={className}>
-      <h3>Procrastinations Stats</h3>
+      <h3>Procrastinations Distribution</h3>
       <Chart
         chartType="PieChart"
-        width="100%"
-        height="400px"
         data={pieChartData}
+        height="21rem"
         options={{
           is3D: true,
-          backgroundColor: "#f5fafe",
+          backgroundColor: "transparent",
+          height: "400",
+          chartArea: { width: "70%", height: "60%" },
+          legend: {
+            position: "top",
+            maxLines: 5,
+          },
+          fontSize: 12,
         }}
       />
     </div>
