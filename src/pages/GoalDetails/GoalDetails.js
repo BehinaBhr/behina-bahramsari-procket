@@ -10,6 +10,7 @@ import Loading from "../../components/Loading/Loading";
 import GoalProgress from "../../components/GoalProgress/GoalProgress";
 import ConnectionError from "../../components/ConnectionError/ConnectionError";
 import { fetchGoalsTasks, fetchGoal, deleteTask } from "../../utils/apiUtils.js";
+import rocketLaunch from "../../assets/images/rocket-launch.gif"
 
 export const GoalDetails = () => {
   DocumentTitle("Goal Details Page");
@@ -17,6 +18,8 @@ export const GoalDetails = () => {
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const [lastCompletenessStatus, setLastCompletenessStatus] = useState(null);
+  const [lunchMissle, setlunchMissle] = useState(false);
   const { goalId } = useParams();
   const [reload, setReload] = useState(false);
 
@@ -26,6 +29,11 @@ export const GoalDetails = () => {
         const goal = await fetchGoal(goalId);
         const tasks = await fetchGoalsTasks(goalId);
         setGoal(goal);
+        if(lastCompletenessStatus != null && goal.progress === 100) {
+          setlunchMissle(true)
+          setTimeout(()=> setlunchMissle(false), 3500)  
+        }
+        setLastCompletenessStatus(goal.progress)
         setTasks(tasks);
         setIsLoading(false);
         setHasError(false);
@@ -42,7 +50,7 @@ export const GoalDetails = () => {
     setReload(!reload);
   };
 
-  if (hasError) return <ConnectionError error={`Unable to access details of goal with id ${goalId} right now. Please try again later.`} />;
+  if (hasError) return <ConnectionError error = {`Unable to access details of goal with id ${goalId} right now. Please try again later`} />;
   if (isLoading) return <Loading />;
 
   return (
@@ -50,6 +58,7 @@ export const GoalDetails = () => {
       <EditAndBackButtonHeader title="Goal Details" edit_button_to={`/goals/${goalId}/edit`} />
       <hr className="goal-details__divider" />
       <section className="goal-details__body">
+        <div className={`goal-details__launch-missle ${lunchMissle ? 'goal-details__launch-missle-fade-in' : 'goal-details__launch-missle-fade-out'}`}><img src={rocketLaunch} alt="Be patient..." /></div>
         <div className="goal-details__sub-item goal-details__sub-item-description">
           <h4 className="goal-details__label">Description</h4>
           <div className="goal-details__value">{goal.description}</div>
