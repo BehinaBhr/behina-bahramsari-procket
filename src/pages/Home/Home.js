@@ -28,6 +28,7 @@ const Home = () => {
         setHasError(true);
       }
     };
+    
     fetchData();
   }, [reload]);
 

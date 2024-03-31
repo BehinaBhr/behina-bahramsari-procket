@@ -3,32 +3,39 @@ import Table from "../../components/Table/Table.js";
 import { SearchAndAddButtonHeader } from "../../components/SearchAndAddButtonHeader/SearchAndAddButtonHeader";
 import { BASE_URL } from "../../utils/constant-variables";
 import { useState, useEffect } from "react";
+import { DocumentTitle } from "../../utils/utils";
 import GoalItem from "../../components/GoalItem/GoalItem.js";
 import Loading from "../../components/Loading/Loading";
 import ConnectionError from "../../components/ConnectionError/ConnectionError";
 import { deleteGoal, fetchGoals, fetchRocketImages } from "../../utils/apiUtils.js";
 
 const Goals = () => {
+  DocumentTitle("Goals List Page");
   const [goals, setGoals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [rocketImages, setRocketImages] = useState([]);
+  const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    const fetchData = async () => {
+      try {
+        const goals = await fetchGoals();
+        const rocketImages = await fetchRocketImages();
+        setGoals(goals);
+        setRocketImages(rocketImages);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        setHasError(true);
+      }
+    };
 
-  const fetchData = async () => {
-    try {
-      const goals = await fetchGoals();
-      const rocketInages = await fetchRocketImages();
-      setGoals(goals);
-      setRocketImages(rocketInages);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      setHasError(true);
-    }
+    fetchData();
+  }, [reload]);
+
+  const triggerReload = () => {
+    setReload(!reload);
   };
 
   if (hasError) return <ConnectionError error={`Unable to access goals right now. Please try again later`} />;
@@ -36,6 +43,9 @@ const Goals = () => {
 
   if (goals.length === 0) {
     return <p>No goals available</p>;
+  }
+  if (rocketImages.length === 0) {
+    return <p>No rocket available</p>;
   }
 
   return (
@@ -47,7 +57,7 @@ const Goals = () => {
         ItemComponent={GoalItem}
         columns={["Goal", "Start Date", "End Date", "Progress", "Actions"]}
         deleteSelectedItem={(goalId) => {
-          deleteGoal(goalId, fetchGoals, setHasError);
+          deleteGoal(goalId, triggerReload, setHasError);
         }}
       />
       <section className="goals-collection">

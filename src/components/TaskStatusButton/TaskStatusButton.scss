@@ -9,18 +9,10 @@
     display: flex;
     flex-wrap: nowrap;
     align-items: center;
+    gap: 0.5rem;
   }
 
   &__button {
-    border: none;
-    background: none;
-    cursor: pointer;
-    margin-right: 0.5rem;
-    display: flex;
-    flex-direction: column;
-        
-    img {
-      width: 24px;
-    }
+    @include circle-button;
   }
 }

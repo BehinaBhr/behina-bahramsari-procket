@@ -1,17 +1,17 @@
 import "./TaskDetails.scss";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { DocumentTitle } from "../../utils/utils";
 import EditAndBackButtonHeader from "../../components/EditAndBackButtonHeader/EditAndBackButtonHeader.js";
 import Table from "../../components/Table/Table.js";
 import ProcrastinationItem from "../../components/ProcrastinationItem/ProcrastinationItem.js";
-import { DocumentTitle } from "../../utils/utils";
 import TaskStatusButton from "../../components/TaskStatusButton/TaskStatusButton";
 import Loading from "../../components/Loading/Loading";
 import ConnectionError from "../../components/ConnectionError/ConnectionError";
 import { fetchTask, fetchTaskProcrastinations, deleteProcrastinations } from "../../utils/apiUtils.js";
 
 export const TaskDetails = () => {
-  DocumentTitle("TaskDetails Page");
+  DocumentTitle("Task Details Page");
   const [task, setTask] = useState({});
   const [procrastinations, setProcrastinations] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -33,6 +33,7 @@ export const TaskDetails = () => {
         setIsLoading(false);
       }
     };
+
     fetchData();
   }, [taskId, reload]);
 
@@ -40,10 +41,7 @@ export const TaskDetails = () => {
     setReload(!reload);
   };
 
-  if (hasError)
-    return (
-      <ConnectionError error={`Unable to access details of task with id ${taskId} right now. Please try again later`} />
-    );
+  if (hasError) return <ConnectionError error = {`Unable to access details of task with id ${taskId} right now. Please try again later`} />;
   if (isLoading) return <Loading />;
 
   return (
@@ -77,7 +75,7 @@ export const TaskDetails = () => {
         ItemComponent={ProcrastinationItem}
         columns={["Procrastinations", "Created at", "Actions"]}
         deleteSelectedItem={(ProcrastinationId) => {
-          deleteProcrastinations(ProcrastinationId, fetchTaskProcrastinations, setHasError);
+          deleteProcrastinations(ProcrastinationId, triggerReload, setHasError);
         }}
       />
     </div>

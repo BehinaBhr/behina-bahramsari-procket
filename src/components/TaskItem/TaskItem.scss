@@ -4,7 +4,7 @@
 @use "../../styles/partials/colors" as *;
 
 .task-item {
-  padding: $mobile-padding 1.5rem;
+  padding: $mobile-small-padding 1.5rem;
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
@@ -13,6 +13,7 @@
   border-radius: $oval-border-radius;
   margin: 0.5rem 0;
   background-color: $lavender;
+  position: relative;
 
   &:hover {
     background-color: $darklavender;
@@ -25,18 +26,19 @@
   }
 
   &__attr {
-    padding-bottom: $mobile-padding;
     display: flex;
-    flex-direction: column;
+    position: relative;
+    align-items: center;
 
     @include tablet {
-      padding-bottom: 0;
       width: 15%;
+      white-space: nowrap;
     }
 
     &-label {
       @include table-header;
       color: $darknavy;
+      padding-right: $mobile-small-padding;
 
       @include tablet {
         display: none;
@@ -47,6 +49,7 @@
       @include body-medium;
       display: flex;
       flex-direction: column;
+
       &-duedate {
         color: $pink;
         font-weight: 700;
@@ -68,6 +71,7 @@
 
     &--description {
       width: 100%;
+      padding-bottom: $mobile-small-padding;
 
       a {
         color: $darknavy;
@@ -75,6 +79,7 @@
       }
 
       @include tablet {
+        padding-bottom: 0;
         width: 45%;
         margin-right: 5%;
       }
@@ -85,11 +90,21 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
+    position: absolute;
+    flex-direction: row;
+    top: auto;
+    right: $mobile-padding;
 
     @include tablet {
+      position: inherit;
       justify-content: flex-end;
       width: 5%;
+      top: 0;
+      right: 0;
     }
+  }
+
+  &__status-buttons {
+    padding-right: $mobile-small-padding;
   }
 }
