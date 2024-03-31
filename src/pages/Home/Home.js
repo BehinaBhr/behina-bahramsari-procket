@@ -6,6 +6,7 @@ import Loading from "../../components/Loading/Loading";
 import ConnectionError from "../../components/ConnectionError/ConnectionError";
 import { deleteTask, fetchPastTasks, fetchOnGoingTasks } from "../../utils/apiUtils.js";
 import AddButton from "../../components/AddButton/AddButton";
+import DailyMood from "../../components/DailyMood/DailyMood";
 
 const Home = () => {
   const [pastTasks, setPastTasks] = useState([]);
@@ -28,7 +29,7 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [reload]);
 
   const triggerReload = () => {
     setReload(!reload);
@@ -39,12 +40,18 @@ const Home = () => {
 
   return (
     <div className="home">
-      <section className="home-actions">
-        <AddButton target="Task" link_to="/tasks/new" className="home-actions__add-task" />
-        <AddButton target="Goal" link_to="/goals/new" className="home-actions__add-goal" />
+      <section className="home-section home-section--centered">
+        <div className="home-section-mood">
+          <h2 className="home-section__header">Daily Mood</h2>
+          <DailyMood />
+        </div>
+        <div className="home-section-actions">
+          <AddButton target="Task" link_to="/tasks/new" className="home-actions__add-task" />
+          <AddButton target="Goal" link_to="/goals/new" className="home-actions__add-goal" />
+        </div>
       </section>
       <hr className="home__divider" />
-      <section className="home-section">
+      <section className="home-section home-section-ongoing">
         <h2 className="home-section__header">Ongoing Tasks</h2>
         <Table
           target="task"
@@ -57,7 +64,7 @@ const Home = () => {
           triggerReload={triggerReload}
         />
       </section>
-      <section className="home-section">
+      <section className="home-section home-section-past">
         <h2 className="home-section__header">Past Tasks</h2>
         <Table
           target="task"

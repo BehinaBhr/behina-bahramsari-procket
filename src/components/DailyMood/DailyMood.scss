@@ -1,0 +1,18 @@
+@use "../../styles/partials/component_mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+.daily-mood {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  border: 1px solid $darknavy;
+  padding: $mobile-padding;
+  margin: 1rem;
+  gap: 1rem;
+  
+  img {
+    width: 60px;
+  }
+}

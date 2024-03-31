@@ -5,18 +5,6 @@
 @use "../../styles/partials/component_mixins" as *;
 
 .home {
-  &-actions {
-    display: flex;
-    justify-content: center;
-    padding-top: 2rem;
-    padding-bottom: 1.5rem;
-    > * {
-      margin-right: 1rem;
-    }
-    @include tablet {
-      justify-content: flex-end;
-    }
-  }
   &__divider {
     @include divider;
   }
@@ -25,9 +13,37 @@
     flex-direction: column;
     width: 100%;
     padding: $mobile-padding;
+
     @include tablet {
       padding-right: $tablet-padding;
       padding-left: $tablet-padding;
+    }
+
+    &--centered {
+      align-items: center;
+      @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    &-mood {
+      @include tablet {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    &-actions {
+      display: flex;
+      justify-content: center;
+      padding-top: 2rem;
+      padding-bottom: 1.5rem;
+      gap: 1rem;
+      @include tablet {
+        justify-content: flex-end;
+      }
     }
 
     &__header {
@@ -37,6 +53,18 @@
       @include tablet {
         justify-content: flex-start;
         padding-bottom: 1.5rem;
+      }
+    }
+
+    &-ongoing {
+      .task-item {
+        background-color: #bfd0d3;
+      }
+    }
+
+    &-past {
+      .task-item {
+        background-color: #f4bcb3;
       }
     }
   }
