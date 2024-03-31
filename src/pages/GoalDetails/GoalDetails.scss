@@ -89,12 +89,4 @@
       @include subheader;
     }
   }
-
-  &__add-task {
-    align-self: end;
-
-    @include tablet {
-      width: fit-content;
-    }
-  }
 }

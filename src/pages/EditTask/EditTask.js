@@ -11,19 +11,19 @@ const EditTask = () => {
   const [task, setTask] = useState({});
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const task = await fetchTask(taskId);
+        setTask(task);
+        setIsLoading(false);
+      } catch (error) {
+        setIsLoading(false);
+        setHasError(true);
+      }
+    };
+
     fetchData();
   }, [taskId]);
-
-  const fetchData = async () => {
-    try {
-      const task = await fetchTask(taskId);
-      setTask(task);
-      setIsLoading(false);
-    } catch (error) {
-      setIsLoading(false);
-      setHasError(true);
-    }
-  };
 
   if (hasError) {
     return <p>Unable to access the task right now. Please try again later.</p>;

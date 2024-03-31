@@ -18,28 +18,27 @@ export const GoalDetails = () => {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const goal = await fetchGoal(goalId);
+        const tasks = await fetchGoalsTasks(goalId);
+        setGoal(goal);
+        setTasks(tasks);
+        setIsLoading(false);
+        setHasError(false);
+      } catch (error) {
+        setHasError(true);
+        setIsLoading(false);
+      }
+    };
     fetchData();
   }, [goalId, reload]);
-
-  const fetchData = async () => {
-    try {
-      const goal = await fetchGoal(goalId);
-      const tasks = await fetchGoalsTasks(goalId);
-      setGoal(goal);
-      setTasks(tasks);
-      setIsLoading(false);
-      setHasError(false);
-    } catch (error) {
-      setHasError(true);
-      setIsLoading(false);
-    }
-  };
 
   const triggerReload = () => {
     setReload(!reload);
   };
 
-  if (hasError) return <ConnectionError error = {`Unable to access details of goal with id ${goalId} right now. Please try again later`} />;
+  if (hasError)return (<ConnectionError error={`Unable to access details of goal with id ${goalId} right now. Please try again later`} />);
   if (isLoading) return <Loading />;
 
   return (
@@ -66,7 +65,7 @@ export const GoalDetails = () => {
         </div>
       </section>
       <hr className="goal-details__divider" />
-      <div className="goal-details__tasks"> 
+      <div className="goal-details__tasks">
         <h3 className="goal-details__tasks-header">Tasks</h3>
         <AddButton target="Task" link_to="/tasks/new" className="goal-details__add-task" />
       </div>

@@ -1,0 +1,78 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/component_mixins" as *;
+
+.home {
+  &__divider {
+    @include divider;
+  }
+  &-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: $mobile-padding;
+
+    @include tablet {
+      padding-right: $tablet-padding;
+      padding-left: $tablet-padding;
+    }
+
+    &--centered {
+      align-items: center;
+      @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    &-mood {
+      @include tablet {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    &-actions {
+      display: flex;
+      justify-content: center;
+      padding-top: 2rem;
+      padding-bottom: 1.5rem;
+      gap: 0.75rem;
+      @include tablet {
+        justify-content: flex-end;
+        gap: 0.5rem;
+      }
+      @include desktop {
+        gap: $tablet-padding;
+      }
+    }
+
+    &__header {
+      display: flex;
+      justify-content: center;
+      @include subheader;
+      @include tablet {
+        justify-content: flex-start;
+        padding-bottom: 1.5rem;
+      }
+      &-mood {
+        padding-bottom: 0;
+      }
+    }
+
+    &-ongoing {
+      .task-item {
+        background-color: #bfd0d3;
+      }
+    }
+
+    &-past {
+      .task-item {
+        background-color: #f4bcb3;
+      }
+    }
+  }
+}
