@@ -41,13 +41,6 @@ const Goals = () => {
   if (hasError) return <ConnectionError error={`Unable to access goals right now. Please try again later`} />;
   if (isLoading) return <Loading />;
 
-  if (goals.length === 0) {
-    return <p>No goals available</p>;
-  }
-  if (rocketImages.length === 0) {
-    return <p>No rocket available</p>;
-  }
-
   return (
     <div>
       <SearchAndAddButtonHeader title="Goals" add_button_target="Goal" add_button_link="/goals/new" />
@@ -71,6 +64,7 @@ const Goals = () => {
               alt={`Rocket ${index + 1}`}
             />
           ))}
+          {rocketImages.length === 0 && <div> No Rocket Available, Try Harder To Earn Rocket. </div>}
         </div>
       </section>
     </div>

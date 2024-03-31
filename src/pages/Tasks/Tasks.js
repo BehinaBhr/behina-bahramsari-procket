@@ -36,9 +36,6 @@ const Tasks = () => {
   if (hasError) return <ConnectionError error={`Unable to access tasks right now. Please try again later`} />;
   if (isLoading) return <Loading />;
 
-  if (tasks.length === 0) {
-    return <p>No tasks available</p>;
-  }
   return (
     <div>
       <SearchAndAddButtonHeader title="Tasks" add_button_target="Task" add_button_link="/tasks/new" />
