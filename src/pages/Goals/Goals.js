@@ -3,12 +3,14 @@ import Table from "../../components/Table/Table.js";
 import { SearchAndAddButtonHeader } from "../../components/SearchAndAddButtonHeader/SearchAndAddButtonHeader";
 import { BASE_URL } from "../../utils/constant-variables";
 import { useState, useEffect } from "react";
+import { DocumentTitle } from "../../utils/utils";
 import GoalItem from "../../components/GoalItem/GoalItem.js";
 import Loading from "../../components/Loading/Loading";
 import ConnectionError from "../../components/ConnectionError/ConnectionError";
 import { deleteGoal, fetchGoals, fetchRocketImages } from "../../utils/apiUtils.js";
 
 const Goals = () => {
+  DocumentTitle("Goals List Page");
   const [goals, setGoals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);

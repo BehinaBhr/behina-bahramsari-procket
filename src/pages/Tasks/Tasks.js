@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { SearchAndAddButtonHeader } from "../../components/SearchAndAddButtonHeader/SearchAndAddButtonHeader";
+import { DocumentTitle } from "../../utils/utils";
 import Table from "../../components/Table/Table.js";
 import TaskItem from "../../components/TaskItem/TaskItem.js";
 import Loading from "../../components/Loading/Loading";
@@ -7,6 +8,7 @@ import { deleteTask, fetchTasks } from "../../utils/apiUtils.js";
 import ConnectionError from "../../components/ConnectionError/ConnectionError";
 
 const Tasks = () => {
+  DocumentTitle("Tasks List Page");
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);

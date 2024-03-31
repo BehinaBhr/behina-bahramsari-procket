@@ -1,6 +1,7 @@
 import "./GoalDetails.scss";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { DocumentTitle } from "../../utils/utils";
 import EditAndBackButtonHeader from "../../components/EditAndBackButtonHeader/EditAndBackButtonHeader";
 import AddButton from "../../components/AddButton/AddButton";
 import Table from "../../components/Table/Table.js";
@@ -10,6 +11,7 @@ import ConnectionError from "../../components/ConnectionError/ConnectionError";
 import { fetchGoalsTasks, fetchGoal, deleteTask } from "../../utils/apiUtils.js";
 
 export const GoalDetails = () => {
+  DocumentTitle("Goal Details Page");
   const [goal, setGoal] = useState({});
   const [tasks, setTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -38,7 +40,7 @@ export const GoalDetails = () => {
     setReload(!reload);
   };
 
-  if (hasError)return (<ConnectionError error={`Unable to access details of goal with id ${goalId} right now. Please try again later`} />);
+  if (hasError) return <ConnectionError error={`Unable to access details of goal with id ${goalId} right now. Please try again later.`} />;
   if (isLoading) return <Loading />;
 
   return (
@@ -65,7 +67,7 @@ export const GoalDetails = () => {
         </div>
       </section>
       <hr className="goal-details__divider" />
-      <div className="goal-details__tasks">
+      <div className="goal-details__tasks"> 
         <h3 className="goal-details__tasks-header">Tasks</h3>
         <AddButton target="Task" link_to="/tasks/new" className="goal-details__add-task" />
       </div>
