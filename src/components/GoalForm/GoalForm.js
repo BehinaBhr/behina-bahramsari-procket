@@ -43,7 +43,7 @@ const GoalForm = ({ title, formSubmitHandler, goal = null }) => {
     setErrors(errors);
     if (Object.keys(errors).length === 0) {
       try {
-        const response = await formSubmitHandler({
+        await formSubmitHandler({
           description: description,
           start_date: startDate,
           end_date: endDate,
