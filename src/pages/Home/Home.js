@@ -55,7 +55,7 @@ const Home = () => {
       <section className="home-section home-section-ongoing">
         <h2 className="home-section__header">Ongoing Tasks</h2>
         <Table
-          target="task"
+          target="ongoing task"
           items={onGoingTasks}
           ItemComponent={TaskItem}
           columns={["Task (goal)", "Due Date", "Actions"]}
@@ -68,7 +68,7 @@ const Home = () => {
       <section className="home-section home-section-past">
         <h2 className="home-section__header">Past Tasks</h2>
         <Table
-          target="task"
+          target="past task"
           items={pastTasks}
           ItemComponent={TaskItem}
           columns={["Task (goal)", "Due Date", "Actions"]}
