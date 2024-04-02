@@ -7,6 +7,7 @@ import EditAndBackButtonHeader from "../EditAndBackButtonHeader/EditAndBackButto
 import FailedSubmitError from "../FailedSubmitError/FailedSubmitError";
 import SuccessfulSubmitMessage from "../SuccessfulSubmitMessage/SuccessfulSubmitMessage";
 
+// A form commonly used in both add and edit task
 const TaskForm = ({ title, formSubmitHandler, task = null, options = null }) => {
   const { taskId } = useParams();
   const [description, setDescription] = useState("");

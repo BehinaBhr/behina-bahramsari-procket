@@ -6,6 +6,7 @@ import EditAndBackButtonHeader from "../../components/EditAndBackButtonHeader/Ed
 import FailedSubmitError from "../FailedSubmitError/FailedSubmitError";
 import SuccessfulSubmitMessage from "../SuccessfulSubmitMessage/SuccessfulSubmitMessage";
 
+// A form used in both edit and add goal
 const GoalForm = ({ title, formSubmitHandler, goal = null }) => {
   const { goalId } = useParams();
   const [description, setDescription] = useState("");

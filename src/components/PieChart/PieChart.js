@@ -4,6 +4,7 @@ import Loading from "../../components/Loading/Loading";
 import ConnectionError from "../ConnectionError/ConnectionError";
 import { fetchProcrastinations } from "../../utils/apiUtils.js";
 
+// Pie chart component displaying distribution of procrastination reasons
 const PieChart = ({ className }) => {
   const [procrastinationData, setProcrastinationData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

@@ -3,6 +3,7 @@ import iconNeutral from "../../assets/images/neutral.svg";
 import iconHappy from "../../assets/images/happy.svg";
 import iconSad from "../../assets/images/sad.svg";
 
+// A future-feature displayed on the home page
 function DailyMood() {
   return (
     <div className="daily-mood">

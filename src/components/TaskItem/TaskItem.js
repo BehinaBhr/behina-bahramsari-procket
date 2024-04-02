@@ -4,6 +4,7 @@ import DetailsLink from "../DetailsLink/DetailsLink.js";
 import { Link } from "react-router-dom";
 import TaskStatusButton from "../../components/TaskStatusButton/TaskStatusButton";
 
+// Each row in a list of tasks
 export default function TaskItem({ item, onDelete, triggerReload }) {
   const { id, description, is_completed, due_date, goal_description, goal_id } = item;
   return (

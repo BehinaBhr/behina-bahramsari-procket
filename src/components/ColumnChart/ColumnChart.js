@@ -6,6 +6,7 @@ import FormSelect from "../FormSelect/FormSelect.js";
 import { fetchGoals, fetchGoalProcrastinations } from "../../utils/apiUtils.js";
 import "./ColumnChart.scss";
 
+// Dynamic column chart displaying procrastination data per selected goal
 const ColumnChart = ({ className }) => {
   const [selectedGoal, setSelectedGoal] = useState(null);
   const [goalOptions, setGoalDescriptions] = useState([]);

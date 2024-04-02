@@ -2,6 +2,7 @@ import "./FormSelect.scss";
 import FieldError from "../FieldError/FieldError";
 import FormLabel from "../FormLabel/FormLabel";
 
+// Select option form field
 const FormSelect = ({ field_name, options, errors=[], errorSetter=()=>{}, valueSetter, className = "" }) => {
   const onOptionChangeHandler = (event) => {
     valueSetter(event.target.value);
