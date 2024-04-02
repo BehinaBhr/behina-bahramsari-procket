@@ -2,7 +2,7 @@ import arrowBack from "../../assets/images/arrow_back-24px.svg";
 import { NavLink, useNavigate } from "react-router-dom";
 import "./ArrowBack.scss";
 
-// allow this function to go back to where the user was but also be able to define the path
+// For navigating back or to a specific or previous path with an arrow icon
 function ArrowBack({ to }) {
   const navigate = useNavigate();
   return (

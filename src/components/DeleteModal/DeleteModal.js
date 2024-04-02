@@ -1,5 +1,6 @@
 import "./DeleteModal.scss";
 
+// A confirmation modal displayed after the delete button being clicked
 function DeleteModal({ target, onDelete, onCancel }) {
   return (
     <section className="delete-modal__background">

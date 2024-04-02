@@ -4,6 +4,7 @@ import Loading from "../Loading/Loading.js";
 import ConnectionError from "../ConnectionError/ConnectionError.js";
 import { fetchGoals } from "../../utils/apiUtils.js";
 
+// To display a bar chart showing goals progress
 const BarChart = ({ className }) => {
   const [goalData, setGoalData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

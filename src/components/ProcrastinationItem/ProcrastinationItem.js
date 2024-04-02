@@ -2,6 +2,7 @@ import "./ProcrastinationItem.scss";
 import DeleteButton from "../DeleteButton/DeleteButton";
 import { dateFormatter } from "../../utils/utils.js";
 
+// Each row in a list of procrastinations
 export default function ProcrastinationItem({ item, onDelete }) {
   const { id, reason, created_at } = item;
   return (

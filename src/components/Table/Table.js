@@ -2,6 +2,7 @@ import "./Table.scss";
 import { useState } from "react";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 
+// A tables used in all lists views
 function Table({ target, items, columns, ItemComponent, deleteSelectedItem, triggerReload = null }) {
   const [deleteItemId, setDeleteItemId] = useState(null);
   if (items.length === 0) {

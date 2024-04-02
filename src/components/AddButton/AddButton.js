@@ -1,7 +1,7 @@
 import "./AddButton.scss";
 import { Link } from "react-router-dom";
 
-//add a new item
+// Add a new item
 function AddButton({ target, link_to, className = "" }) {
   return (
     <Link to={link_to} className={className}>

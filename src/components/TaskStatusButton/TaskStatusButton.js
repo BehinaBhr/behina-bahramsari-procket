@@ -6,6 +6,7 @@ import iconComplete from "../../assets/images/complete.svg";
 import iconUndone from "../../assets/images/undone.svg";
 import { updateTask } from "../../utils/apiUtils.js";
 
+// A set of dynamic buttons allowing to change the status of a task, submit and procrastination, and update the task's due date
 const TaskStatusButton = ({ task, triggerReload, className = "" }) => {
   const [newProcrastination, setNewProcrastination] = useState(false);
 

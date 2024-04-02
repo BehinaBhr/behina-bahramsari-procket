@@ -7,6 +7,7 @@ import FailedSubmitError from "../FailedSubmitError/FailedSubmitError";
 import SuccessfulSubmitMessage from "../SuccessfulSubmitMessage/SuccessfulSubmitMessage";
 import { createProcrastinations, updateTask } from "../../utils/apiUtils.js";
 
+// A form to submit new procrastination
 function NewProcrastination({ task, onCancel, onSuccess }) {
   const [reason, setReason] = useState("");
   const [dueDate, setDueDate] = useState("");

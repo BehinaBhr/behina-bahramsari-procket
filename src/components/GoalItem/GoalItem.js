@@ -3,6 +3,7 @@ import DeleteButton from "../DeleteButton/DeleteButton.js";
 import DetailsLink from "../DetailsLink/DetailsLink.js";
 import GoalProgress from "../GoalProgress/GoalProgress.js";
 
+// Each row in a list of goals
 function GoalItem({ item, onDelete }) {
   const { id, description, start_date, end_date, progress } = item;
   const is_completed = progress===100;
