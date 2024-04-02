@@ -1,37 +1,40 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography-mixins" as *;
 @use "../../styles/partials/variables" as *;
-@use "../../styles/partials/colors" as *;
-@use "../../styles/partials/component_mixins" as *;
+@use "../../styles/partials/component-mixins" as *;
 
 .goal-details {
-  display: flex;
+  @include details-section;
   position: relative;
-  flex-direction: column;
 
-  &__section-divider {
-    @include divider;
-    margin: $mobile-padding;
-
-    @include tablet {
-      margin-top: $tablet-padding;
-      margin-bottom: $tablet-padding;
-    }
-  }
-
-  &__divider {
-    @include divider;
-  }
-
-  &__body {
-    padding: 1rem;
+  &__tasks {
     display: flex;
+    width: 100%;
     justify-content: space-between;
-    flex-wrap: wrap;
+    align-items: center;
+    padding: $mobile-padding;
+    padding-bottom: 0;
 
     @include tablet {
-      padding: $tablet-padding;
+      padding-right: $tablet-padding;
+      padding-left: $tablet-padding;
     }
+
+    &-header {
+      @include subheader;
+    }
+  }
+
+  &__add-task {
+    align-self: end;
+
+    @include tablet {
+      width: fit-content;
+    }
+  }
+
+  .goal-progrees {
+    text-align: center;
   }
 
   &__launch-missle {
@@ -59,71 +62,6 @@
       opacity: 0;
       z-index: -1;
       transition: all 1s;
-    }
-  }
-
-  &__sub-item {
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-
-    @include tablet {
-      align-items: center;
-      flex-direction: row;
-    }
-
-    &-description {
-      width: 100%;
-    }
-  }
-
-  &__label {
-    @include table-header;
-    color: $darknavy;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    background-color: $lavender;
-    border-radius: $oval-border-radius;
-    width: fit-content;
-
-    @include tablet {
-      margin-bottom: 0;
-      margin-right: 0.5rem;
-    }
-  }
-
-  &__value {
-    @include body-medium;
-
-    &-progrees {
-      color: $pink;
-      font-weight: 700;
-    }
-  }
-
-  &__tasks {
-    display: flex;
-    width: 100%;
-    padding: $mobile-padding;
-    padding-bottom: 0;
-    justify-content: space-between;
-    align-items: center;
-
-    @include tablet {
-      padding-right: $tablet-padding;
-      padding-left: $tablet-padding;
-    }
-
-    &-header {
-      @include subheader;
-    }
-  }
-
-  &__add-task {
-    align-self: end;
-
-    @include tablet {
-      width: fit-content;
     }
   }
 }

@@ -41,7 +41,10 @@ export const TaskDetails = () => {
     setReload(!reload);
   };
 
-  if (hasError) return <ConnectionError error = {`Unable to access details of task with id ${taskId} right now. Please try again later`} />;
+  if (hasError)
+    return (
+      <ConnectionError error={`Unable to access details of task with id ${taskId} right now. Please try again later`} />
+    );
   if (isLoading) return <Loading />;
 
   return (
@@ -69,15 +72,18 @@ export const TaskDetails = () => {
         </div>
       </section>
       <hr className="task-details__divider" />
-      <Table
-        target="procrastination"
-        items={procrastinations}
-        ItemComponent={ProcrastinationItem}
-        columns={["Procrastinations", "Created at", "Actions"]}
-        deleteSelectedItem={(ProcrastinationId) => {
-          deleteProcrastinations(ProcrastinationId, triggerReload, setHasError);
-        }}
-      />
+      <div class="task-details__procrastinations">
+        <h3 class="task-details__procrastinations-header">Procrastinations</h3>
+        <Table
+          target="procrastination"
+          items={procrastinations}
+          ItemComponent={ProcrastinationItem}
+          columns={["Reason", "Created at", "Action"]}
+          deleteSelectedItem={(ProcrastinationId) => {
+            deleteProcrastinations(ProcrastinationId, triggerReload, setHasError);
+          }}
+        />
+      </div>
     </div>
   );
 };

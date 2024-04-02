@@ -38,6 +38,7 @@ a {
 main {
   margin-left: $mobile-padding;
   margin-right: $mobile-padding;
+
   @include tablet {
     margin-left: $tablet-padding;
     margin-right: $tablet-padding;
@@ -50,7 +51,14 @@ main {
     color: $darknavy;
     background-color: $lightblue;
     margin-top: $mobile-padding;
+    padding-bottom: $mobile-padding;
+    padding-top: $mobile-padding;
     border-radius: $oval-border-radius;
     border: 0.1px solid;
+
+    @include tablet {
+      padding-bottom: $tablet-padding;
+      padding-top: $tablet-padding;
+    }
   }
 }

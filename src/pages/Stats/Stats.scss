@@ -1,5 +1,5 @@
+@use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/variables" as *;
-@use "../../styles/partials/colors" as *;
 
 .error {
   &__image {
@@ -12,8 +12,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
-  padding: 1rem;
+  padding-left: $mobile-padding;
+  padding-right: $mobile-padding;
   gap: 1rem;
+  
+  @include tablet {
+    padding-left: $tablet-padding;
+    padding-right: $tablet-padding;
+  }
+
   &__chart {
     width: 100%;
     border: 0.1px solid;

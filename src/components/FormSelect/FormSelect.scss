@@ -1,4 +1,4 @@
-@use "../../styles/partials/component_mixins" as *;
+@use "../../styles/partials/component-mixins" as *;
 
 .form-select {
   @include form-field;

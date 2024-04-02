@@ -1,7 +1,6 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography-mixins" as *;
 @use "../../styles/partials/variables" as *;
-@use "../../styles/partials/colors" as *;
 
 .goals-collection {
   display: flex;
@@ -9,6 +8,7 @@
   align-items: center;
   width: 100%;
   padding: $mobile-padding;
+
   @include tablet {
     align-items: flex-start;
     padding: $tablet-padding;
@@ -29,6 +29,7 @@
     &-image {
       height: 5rem;
       margin-right: $mobile-padding;
+      
       @include tablet {
         height: 10rem;
       }

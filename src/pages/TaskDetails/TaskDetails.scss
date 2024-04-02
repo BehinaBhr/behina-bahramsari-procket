@@ -1,70 +1,20 @@
 @use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/component_mixins" as *;
+@use "../../styles/partials/component-mixins" as *;
 @use "../../styles/partials/typography-mixins" as *;
 @use "../../styles/partials/variables" as *;
-@use "../../styles/partials/colors" as *;
 
 .task-details {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  @include details-section;
 
-  &__section-divider {
-    @include divider;
-    margin: $mobile-padding;
-
-    @include tablet {
-      margin-top: $tablet-padding;
-      margin-bottom: $tablet-padding;
+  &__procrastinations {
+    &-header {
+      @include subheader;
+      padding: $mobile-padding;
+      padding-bottom: 0;
+      @include tablet {
+        padding-right: $tablet-padding;
+        padding-left: $tablet-padding;
+      }
     }
-  }
-
-  &__divider {
-    @include divider;
-  }
-
-  &__body {
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    @include tablet {
-      padding: $tablet-padding;
-    }
-  }
-
-  &__sub-item {
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-
-    @include tablet {
-      align-items: center;
-      flex-direction: row;
-    }
-
-    &-description {
-      width: 100%;
-    }
-  }
-
-  &__label {
-    @include table-header;
-    color: $darknavy;
-    margin-bottom: 0.5rem;
-    padding: 0.5rem;
-    background-color: $lightgray;
-    border-radius: 4px;
-    width: fit-content;
-
-    @include tablet {
-      margin-bottom: 0;
-      margin-right: 0.5rem;
-    }
-  }
-
-  &__value {
-    @include body-medium;
   }
 }

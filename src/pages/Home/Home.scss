@@ -2,17 +2,21 @@
 @use "../../styles/partials/typography-mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/colors" as *;
-@use "../../styles/partials/component_mixins" as *;
+@use "../../styles/partials/component-mixins" as *;
 
 .home {
+  gap: $mobile-padding;
+  display: flex;
+  flex-direction: column;
+
   &__divider {
     @include divider;
   }
+
   &-section {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: $mobile-padding;
 
     @include tablet {
       padding-right: $tablet-padding;
@@ -38,12 +42,13 @@
     &-actions {
       display: flex;
       justify-content: center;
-      padding-top: 2rem;
-      padding-bottom: 1.5rem;
+      padding-top: $mobile-padding;
       gap: 0.75rem;
+      
       @include tablet {
         justify-content: flex-end;
         gap: 0.5rem;
+        padding-top: 0;
       }
       @include desktop {
         gap: $tablet-padding;
@@ -51,27 +56,32 @@
     }
 
     &__header {
+      @include subheader;
       display: flex;
       justify-content: center;
-      @include subheader;
+      
       @include tablet {
         justify-content: flex-start;
-        padding-bottom: 1.5rem;
       }
+      
       &-mood {
-        padding-bottom: 0;
+        padding-bottom: $mobile-padding;
+
+        @include tablet {
+          padding-bottom: 0;
+        }
       }
     }
 
     &-ongoing {
       .task-item {
-        background-color: #bfd0d3;
+        background-color: $skyblue;
       }
     }
 
     &-past {
       .task-item {
-        background-color: #f4bcb3;
+        background-color: $appricat;
       }
     }
   }

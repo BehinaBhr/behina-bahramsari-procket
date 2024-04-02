@@ -1,7 +1,5 @@
-@use "../../styles/partials/colors" as *;
 @use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/variables" as *;
-@use "../../styles/partials/component_mixins" as *;
+@use "../../styles/partials/component-mixins" as *;
 
 .delete-modal {
   @include modal;

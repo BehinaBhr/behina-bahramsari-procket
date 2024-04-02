@@ -8,7 +8,7 @@ export default function TaskItem({ item, onDelete, triggerReload }) {
   const { id, description, is_completed, due_date, goal_description, goal_id } = item;
   return (
     <section className={`task-item ${is_completed ? "task-item--done" : ""}`}>
-      <div className="task-item__attr task-item__attr--description">
+      <div className="task-item__attr task-item__attr-description">
         <h4 className="task-item__attr-label">Task</h4>
         <p className="task-item__attr-value">
           <DetailsLink text={description} to={`/tasks/${id}`} />

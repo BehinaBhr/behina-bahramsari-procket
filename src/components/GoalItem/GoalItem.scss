@@ -1,6 +1,6 @@
 @use "../../styles/partials/typography-mixins" as *;
 @use "../../styles/partials/mixins" as *;
-@use "../../styles/partials/component_mixins" as *;
+@use "../../styles/partials/component-mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/colors" as *;
 
@@ -37,9 +37,17 @@
   }
 
   &__attr {
-    padding-bottom: $mobile-padding;
+    padding-bottom: $mobile-small-padding;
     display: flex;
     flex-direction: column;
+    width: 50%;
+    &-progress {
+      padding-bottom: 0;
+
+      @include tablet {
+        padding-left: 1rem;
+      }
+    }
 
     @include tablet {
       padding-bottom: 0;
@@ -59,7 +67,7 @@
       @include body-medium;
     }
 
-    &--description {
+    &-description {
       width: 100%;
 
       a {
