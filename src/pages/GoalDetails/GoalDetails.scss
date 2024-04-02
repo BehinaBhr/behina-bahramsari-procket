@@ -9,16 +9,6 @@
   position: relative;
   flex-direction: column;
 
-  &__section-divider {
-    @include divider;
-    margin: $mobile-padding;
-
-    @include tablet {
-      margin-top: $tablet-padding;
-      margin-bottom: $tablet-padding;
-    }
-  }
-
   &__divider {
     @include divider;
   }
@@ -28,9 +18,11 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    gap: $mobile-small-padding;
 
     @include tablet {
       padding: $tablet-padding;
+      gap: 1rem;
     }
   }
 
@@ -125,5 +117,9 @@
     @include tablet {
       width: fit-content;
     }
+  }
+
+  .goal-progrees {
+    text-align: center;
   }
 }

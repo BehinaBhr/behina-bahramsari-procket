@@ -9,10 +9,12 @@
   flex-direction: column;
   justify-content: space-between;
   padding: $mobile-padding;
+  padding-top: 0;
   gap: $mobile-padding;
 
   @include tablet {
     padding: $tablet-padding;
+    padding-top: 0;
     flex-direction: row;
     align-items: center;
   }

@@ -48,7 +48,7 @@ const Goals = () => {
         target={"goal"}
         items={goals}
         ItemComponent={GoalItem}
-        columns={["Goal", "Start Date", "End Date", "Progress", "Actions"]}
+        columns={["Goal", "Start Date", "End Date", "Progress", "Action"]}
         deleteSelectedItem={(goalId) => {
           deleteGoal(goalId, triggerReload, setHasError);
         }}

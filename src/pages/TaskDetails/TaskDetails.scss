@@ -38,6 +38,7 @@
     width: fit-content;
     display: flex;
     flex-direction: column;
+    margin-bottom: 0.5rem;
 
     @include tablet {
       align-items: center;
@@ -54,8 +55,8 @@
     color: $darknavy;
     margin-bottom: 0.5rem;
     padding: 0.5rem;
-    background-color: $lightgray;
-    border-radius: 4px;
+    background-color: $lavender;
+    border-radius: $oval-border-radius;
     width: fit-content;
 
     @include tablet {
@@ -66,5 +67,18 @@
 
   &__value {
     @include body-medium;
+  }
+
+  &__procrastinations {
+    
+    &-header {
+      @include subheader;
+      padding: $mobile-padding;
+      padding-bottom: 0;
+      @include tablet {
+        padding-right: $tablet-padding;
+        padding-left: $tablet-padding;
+      }
+    }
   }
 }

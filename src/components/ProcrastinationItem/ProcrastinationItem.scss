@@ -4,15 +4,21 @@
 @use "../../styles/partials/colors" as *;
 
 .procrastination-item {
-  width: 100%;
-  padding: $mobile-padding 1.5rem;
+  padding: $mobile-small-padding;
+  padding-top: $mobile-padding;
   justify-content: space-between;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  border-bottom: solid $darknavy 1px;
+  border-radius: $oval-border-radius;
+
+  @include tablet {
+    padding: $mobile-padding;
+  }
 
   &__attr {
-    padding-bottom: $mobile-padding;
+    padding-bottom: $mobile-small-padding;
     display: flex;
     flex-direction: column;
 
@@ -23,7 +29,7 @@
 
     &-label {
       @include table-header;
-      color: $darknavy;
+      color: $pink;
 
       @include tablet {
         display: none;
@@ -36,7 +42,7 @@
       flex-direction: column;
     }
 
-    &--description {
+    &-description {
       width: 100%;
 
       @include tablet {
