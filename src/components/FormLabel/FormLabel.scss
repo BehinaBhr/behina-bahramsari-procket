@@ -1,0 +1,8 @@
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.form-label {
+  @include labels-links-button;
+  padding-bottom: $mobile-small-padding;
+  padding-top: $mobile-small-padding;
+}

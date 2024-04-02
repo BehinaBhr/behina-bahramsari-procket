@@ -1,0 +1,19 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/colors" as *;
+
+.footer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 2.5rem 0;
+
+  @include desktop {
+    padding: 3rem 0;
+  }
+
+  &__rights {
+    @include body-small;
+    color:$lightblue;
+  }
+}

@@ -1,0 +1,88 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/component-mixins" as *;
+
+.home {
+  gap: $mobile-padding;
+  display: flex;
+  flex-direction: column;
+
+  &__divider {
+    @include divider;
+  }
+
+  &-section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    @include tablet {
+      padding-right: $tablet-padding;
+      padding-left: $tablet-padding;
+    }
+
+    &--centered {
+      align-items: center;
+      @include tablet {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    &-mood {
+      @include tablet {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+    }
+
+    &-actions {
+      display: flex;
+      justify-content: center;
+      padding-top: $mobile-padding;
+      gap: 0.75rem;
+      
+      @include tablet {
+        justify-content: flex-end;
+        gap: 0.5rem;
+        padding-top: 0;
+      }
+      @include desktop {
+        gap: $tablet-padding;
+      }
+    }
+
+    &__header {
+      @include subheader;
+      display: flex;
+      justify-content: center;
+      
+      @include tablet {
+        justify-content: flex-start;
+      }
+      
+      &-mood {
+        padding-bottom: $mobile-padding;
+
+        @include tablet {
+          padding-bottom: 0;
+        }
+      }
+    }
+
+    &-ongoing {
+      .task-item {
+        background-color: $skyblue;
+      }
+    }
+
+    &-past {
+      .task-item {
+        background-color: $appricat;
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/component-mixins" as *;
+
+.new-procrastination-modal {
+  @include modal;
+
+  @include tablet {
+    height: fit-content;
+  }
+
+  &__button {
+    &-save {
+      @include green-button;
+    }
+  }
+
+  &__message {
+    margin: 0 !important;
+    margin-top: $mobile-padding !important;
+  }
+}

@@ -1,0 +1,11 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/component-mixins" as *;
+
+.failed-submit-error {
+  @include form-message;
+  color: $red;
+
+  &::after {
+    background: $red;
+  }
+}

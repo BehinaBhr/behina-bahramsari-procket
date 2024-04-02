@@ -1,0 +1,17 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/typography-mixins" as *;
+
+.empty-field {
+  @include body-small;
+  display: flex;
+  align-items: center;
+  padding-top: 0.3rem;
+
+  &__icon {
+    width: 1rem;
+  }
+
+  &__text {
+    color: $red;
+  }
+}

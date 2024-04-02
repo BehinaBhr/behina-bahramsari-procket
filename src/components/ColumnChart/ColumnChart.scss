@@ -1,0 +1,8 @@
+@use "../../styles/partials/variables" as *;
+
+.column-chart {
+  &__options {
+    padding: $mobile-padding;
+    padding-top: 0;
+  }
+}

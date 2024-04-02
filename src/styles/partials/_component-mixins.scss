@@ -1,0 +1,304 @@
+@use "./typography-mixins" as *;
+@use "./colors" as colors;
+@use "./variables" as *;
+@use "./mixins" as *;
+
+@mixin divider {
+  width: 100%;
+  border: 0.25px solid colors.$darknavy;
+}
+
+@mixin circle-button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: flex;
+  img {
+    width: 20px;
+  }
+}
+
+@mixin button {
+  @include labels-links-button;
+  cursor: pointer;
+  border-radius: $oval-border-radius;
+  width: 100%;
+  height: $button-height;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+@mixin blue-button {
+  background-color: colors.$darknavy;
+  color: colors.$lightblue;
+
+  &:hover {
+    background-color: colors.$navy;
+  }
+}
+
+@mixin green-button {
+  background-color: colors.$green;
+  color: colors.$lightblue;
+
+  &:hover {
+    background-color: colors.$darkgreen;
+  }
+}
+
+@mixin white-button {
+  background-color: colors.$lightgray;
+  color: colors.$darknavy;
+  border: 0.0625rem solid colors.$fadeblack;
+
+  &:hover {
+    border-color: colors.$darknavy;
+    color: colors.$darknavy;
+  }
+}
+
+@mixin red-button {
+  background-color: colors.$red;
+  border: 0;
+  color: colors.$lightblue;
+
+  &:hover {
+    background-color: colors.$darkred;
+  }
+}
+
+@mixin form-field {
+  display: flex;
+  flex-direction: column;
+
+  &__input {
+    height: $button-height;
+    width: 100%;
+    padding: 0 1rem;
+    border: 0.0625rem solid colors.$darknavy;
+    border-radius: $oval-border-radius;
+    background-color: colors.$white;
+    color: colors.$darknavy;
+
+    &::placeholder {
+      color: colors.$darknavy;
+      opacity: 0.5;
+    }
+
+    &::-ms-input-placeholder {
+      color: colors.$darknavy;
+      opacity: 0.5;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0.25rem colors.$navy;
+    }
+  }
+
+  &__error {
+    border: 0.0625rem solid colors.$red;
+  }
+}
+
+@mixin from {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__divider {
+    @include divider;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+
+  &__input-group {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      gap: 1rem;
+
+      > * {
+        width: 100%;
+      }
+    }
+  }
+
+  &__buttons-group {
+    display: flex;
+    flex-direction: row;
+    padding: 1rem 1.5rem;
+    gap: 1rem;
+    justify-content: space-around;
+
+    @include tablet {
+      justify-content: flex-end;
+    }
+  }
+
+  &__button {
+    @include button;
+    width: 100%;
+
+    @include tablet {
+      width: 10rem;
+    }
+
+    &-cancel {
+      @include white-button();
+    }
+
+    &-add {
+      @include green-button();
+      border: none;
+    }
+  }
+
+  &__success-message {
+    @include body-medium;
+    width: 100%;
+    padding: 1rem;
+    background-color: colors.$lightgray;
+  }
+}
+
+@mixin form-message {
+  position: relative;
+  @include body-medium;
+  text-align: center;
+  padding: $mobile-padding;
+  margin: $mobile-padding;
+  margin-top: 0;
+  box-sizing: border-box;
+
+  &::after {
+    content: "";
+    border-radius: $oval-border-radius;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+  }
+}
+
+@mixin modal {
+  background-color: colors.$lightblue;
+  color: colors.$darknavy;
+  width: 100%;
+  height: 100%;
+  border-radius: $oval-border-radius;
+  padding: 3rem;
+
+  @include tablet {
+    width: 40rem;
+    margin: 12rem auto;
+  }
+
+  &__background {
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: colors.$fadeblack !important;
+  }
+
+  &__content {
+    &-header {
+      font-weight: 600;
+      font-size: 1.75rem;
+      line-height: 2.25rem;
+    }
+
+    &-body {
+      padding-top: 1rem;
+      font-weight: 400;
+      font-size: 0.938rem;
+      line-height: 1.625rem;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    gap: 1rem;
+  }
+
+  &__button {
+    @include button;
+
+    &-cancel {
+      @include white-button;
+    }
+  }
+}
+@mixin details-section {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+
+  &__divider {
+    @include divider;
+  }
+
+  &__body {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $mobile-padding;
+
+    @include tablet {
+      padding: $tablet-padding;
+    }
+  }
+
+  &__sub-item {
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      align-items: center;
+      flex-direction: row;
+    }
+
+    &-description {
+      width: 100%;
+    }
+  }
+
+  &__label {
+    @include table-header;
+    color: colors.$darknavy;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem;
+    background-color: colors.$lavender;
+    border-radius: $oval-border-radius;
+    width: fit-content;
+
+    @include tablet {
+      margin-bottom: 0;
+      margin-right: 0.5rem;
+    }
+  }
+
+  &__value {
+    @include body-medium;
+  }
+}

@@ -1,0 +1,66 @@
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+
+.procrastination-item {
+  padding: $mobile-small-padding;
+  padding-top: $mobile-padding;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border-bottom: solid $darknavy 1px;
+  border-radius: $oval-border-radius;
+
+  @include tablet {
+    padding: $mobile-padding;
+  }
+
+  &__attr {
+    padding-bottom: $mobile-small-padding;
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      padding-bottom: 0;
+      width: 15%;
+    }
+
+    &-label {
+      @include table-header;
+      color: $pink;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &-value {
+      @include body-medium;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-description {
+      width: 100%;
+      padding-bottom: $mobile-small-padding;
+
+      @include tablet {
+        width: 45%;
+        margin-right: 5%;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include tablet {
+      justify-content: flex-end;
+      width: 5%;
+    }
+  }
+}

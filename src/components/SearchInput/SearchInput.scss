@@ -1,0 +1,21 @@
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/component-mixins" as *;
+
+.search {
+  @include form-field;
+  @include body-medium;
+
+  &__input {
+    background: transparent url("../../assets/images/search-24px.svg") no-repeat right;
+    background-position-x: calc(100% - 0.625rem);
+    padding: 1rem;
+
+    @include tablet {
+      width: 11.5625rem;
+    }
+    @include desktop {
+      width: 17.125rem;
+    }
+  }
+}

@@ -1,0 +1,20 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/component-mixins" as *;
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.task-details {
+  @include details-section;
+
+  &__procrastinations {
+    &-header {
+      @include subheader;
+      padding: $mobile-padding;
+      padding-bottom: 0;
+      @include tablet {
+        padding-right: $tablet-padding;
+        padding-left: $tablet-padding;
+      }
+    }
+  }
+}

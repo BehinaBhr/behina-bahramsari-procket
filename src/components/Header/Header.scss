@@ -1,0 +1,105 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/typography-mixins" as *;
+
+.header {
+  @include body-medium;
+  width: 100%;
+  background-color: $darknavy;
+  padding: 1rem;
+
+  @include tablet {
+    padding: $tablet-padding;
+  }
+
+  &__center-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+
+    @include tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @include desktop {
+      max-width: $breakpoint-desktop;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    align-self: center;
+    flex-direction: row;
+    align-items: center;
+
+    @include tablet {
+      justify-content: flex-start;
+    }
+
+    &-image {
+      margin: 0;
+      width: 40px;
+      height: auto;
+      margin-right: 4px;
+    }
+
+    &-text {
+      color: $orange;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: center;
+
+    &-list {
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 0;
+      margin: 0;
+      padding-top: 0.5rem;
+
+      @include tablet {
+        padding-top: 0;
+        justify-content: flex-start;
+      }
+    }
+    &-item {
+      width: 40%;
+      text-align: center;
+      padding: 0.5rem;
+
+      @include tablet {
+        padding: 0.5rem 1.1rem;
+        margin: 0 0.25rem;
+      }
+
+      @include desktop {
+        width: fit-content;
+        min-width: 4rem;
+        margin-right: 0.75rem;
+      }
+
+      &--active {
+        border-radius: $oval-border-radius;
+        border: solid 2px $orange;
+      }
+    }
+
+    &-link {
+      text-decoration: none;
+      color: $lightblue;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
+  }
+}

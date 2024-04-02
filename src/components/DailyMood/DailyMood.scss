@@ -1,0 +1,24 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/mixins" as *;
+
+.daily-mood {
+  width: fit-content;
+  display: flex;
+  justify-content: center;
+  border: 1px solid $darknavy;
+  border-radius: $oval-border-radius;
+  padding: $mobile-padding;
+  gap: $mobile-padding;
+
+  @include tablet {
+    margin-left: 0.5rem;
+  }
+
+  @include desktop {
+    margin-left: $tablet-padding;
+  }
+  img {
+    width: 60px;
+  }
+}

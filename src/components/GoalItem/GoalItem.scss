@@ -1,0 +1,95 @@
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/component-mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+
+.goal-item {
+  &--done {
+    opacity: 0.5;
+  }
+  &__divider {
+    @include divider;
+    margin-left: $mobile-padding;
+    margin-right: $mobile-padding;
+    width: auto;
+  }
+
+  &__body {
+    width: 100%;
+    padding: $mobile-padding;
+    justify-content: space-between;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    &:hover {
+      background-color: $fadenavy;
+    }
+
+    @include tablet {
+      padding: 1rem $tablet-padding;
+    }
+
+    @include desktop {
+      padding: 1rem 3rem;
+    }
+  }
+
+  &__attr {
+    padding-bottom: $mobile-small-padding;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    &-progress {
+      padding-bottom: 0;
+
+      @include tablet {
+        padding-left: 1rem;
+      }
+    }
+
+    @include tablet {
+      padding-bottom: 0;
+      width: 15%;
+    }
+
+    &-label {
+      @include table-header;
+      color: $darknavy;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &-value {
+      @include body-medium;
+    }
+
+    &-description {
+      width: 100%;
+
+      a {
+        color: $darknavy;
+      }
+
+      @include tablet {
+        width: 45%;
+        margin-right: 5%;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+
+    @include tablet {
+      justify-content: flex-end;
+      width: 5%;
+    }
+  }
+}

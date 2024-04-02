@@ -1,0 +1,74 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/component-mixins" as *;
+
+.table {
+  display: flex;
+  flex-direction: column;
+  padding: $mobile-padding;
+  
+  @include tablet {
+      padding-left: $tablet-padding;
+      padding-right: $tablet-padding;
+  }
+  
+  &__divider {
+    @include divider;
+
+    &:nth-child(2) {
+      display: none;
+      @include tablet {
+        display: inline;
+      }
+    }
+  }
+
+  &__labels {
+    display: none;
+
+    @include tablet {
+      @include table-header;
+      display: flex;
+      background-color: $darknavy;
+      color: $lightblue;
+      padding-left: $tablet-padding;
+      padding-right: $tablet-padding;
+      height: 2.5rem;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: $oval-border-radius;
+    }
+
+    @include desktop {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  &__label {
+    align-items: center;
+
+    &:first-child {
+      width: 45%;
+      margin-right: 5%;
+    }
+
+    &:not(:first-child) {
+      width: 15%;
+    }
+
+    &:last-child {
+      text-align: end;
+      width: 5%;
+    }
+  }
+}
+
+.no-children {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: $mobile-padding;
+}

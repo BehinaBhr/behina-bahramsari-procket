@@ -1,0 +1,30 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.edit_and_back_button_header {
+  display: flex;
+  justify-content: space-between;
+  padding: $mobile-padding;
+  padding-top: 0;
+  padding-bottom: 1.5rem;
+  align-items: center;
+
+  @include tablet {
+    padding: $tablet-padding;
+    padding-top: 0;
+  }
+
+  &__name {
+    @include page-header;
+    padding-left: 0.5rem;
+
+    @include tablet {
+      margin-right: 5rem;
+    }
+  }
+
+  &__section {
+    display: flex;
+  }
+}

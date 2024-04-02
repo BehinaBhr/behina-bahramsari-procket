@@ -1,0 +1,33 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.error {
+  &__image {
+    height: 5rem !important;
+  }
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-left: $mobile-padding;
+  padding-right: $mobile-padding;
+  gap: 1rem;
+  
+  @include tablet {
+    padding-left: $tablet-padding;
+    padding-right: $tablet-padding;
+  }
+
+  &__chart {
+    width: 100%;
+    border: 0.1px solid;
+    border-radius: $oval-border-radius;
+
+    h3 {
+      padding: 1rem;
+    }
+  }
+}

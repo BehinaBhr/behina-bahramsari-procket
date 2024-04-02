@@ -1,0 +1,11 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/component-mixins" as *;
+
+.add-button {
+  @include button;
+  @include green-button;
+
+  @include tablet {
+    width: fit-content;
+  }
+}

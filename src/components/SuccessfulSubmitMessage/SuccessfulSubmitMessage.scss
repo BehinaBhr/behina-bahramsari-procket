@@ -1,0 +1,11 @@
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/component-mixins" as *;
+
+.successfull-submit-message {
+  @include form-message;
+  color: $green;
+
+  &::after {
+    background: $green;
+  }
+}

@@ -1,0 +1,64 @@
+@use "./styles/partials/typography" as *;
+@use "./styles/partials/colors.scss" as *;
+@use "./styles/partials/mixins" as *;
+@use "./styles/partials/breakpoints" as *;
+@use "./styles/partials/variables" as *;
+
+//default styling for website
+*,
+*::before,
+*::after,
+a {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Titillium Web", Arial, Helvetica, sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.app {
+  background-image: url("./assets//images/background.jpg");
+  background-size: cover;
+  min-height: 100vh;
+  background-attachment: fixed;
+
+  @include desktop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    > * {
+      width: 100%;
+    }
+  }
+}
+
+main {
+  margin-left: $mobile-padding;
+  margin-right: $mobile-padding;
+
+  @include tablet {
+    margin-left: $tablet-padding;
+    margin-right: $tablet-padding;
+  }
+  @include desktop {
+    max-width: $breakpoint-desktop;
+  }
+
+  > * {
+    color: $darknavy;
+    background-color: $lightblue;
+    margin-top: $mobile-padding;
+    padding-bottom: $mobile-padding;
+    padding-top: $mobile-padding;
+    border-radius: $oval-border-radius;
+    border: 0.1px solid;
+
+    @include tablet {
+      padding-bottom: $tablet-padding;
+      padding-top: $tablet-padding;
+    }
+  }
+}

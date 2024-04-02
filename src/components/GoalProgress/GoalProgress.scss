@@ -1,0 +1,8 @@
+@use "../../styles/partials/colors" as *;
+
+.goal-progrees {
+  color: $pink;
+  &--done {
+    color: $green;
+  }
+}

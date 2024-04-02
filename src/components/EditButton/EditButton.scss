@@ -1,0 +1,33 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/component-mixins" as *;
+
+.edit-button {
+  @include blue-button;
+  display: flex;
+  height: $button-height;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+
+  @include tablet {
+    @include button;
+    aspect-ratio: auto;
+  }
+
+  &__icon {
+    width: 1.2rem;
+  }
+
+  &__text {
+    @include labels-links-button;
+    display: none;
+    margin-left: 0.25rem;
+
+    @include tablet {
+      display: inline;
+    }
+  }
+}

@@ -1,0 +1,105 @@
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+
+.task-item {
+  padding: $mobile-small-padding $mobile-padding;
+  justify-content: space-between;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: solid $darknavy 1px;
+  border-radius: $oval-border-radius;
+  margin: 0.5rem 0;
+  background-color: $lavender;
+  position: relative;
+
+  &:hover {
+    background-color: $darklavender;
+  }
+
+  &--done {
+    margin-bottom: 0;
+    margin-top: 0.25rem;
+    opacity: 0.5;
+  }
+
+  &__attr {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+    @include tablet {
+      width: 15%;
+      white-space: nowrap;
+    }
+
+    &-label {
+      @include table-header;
+      color: $darknavy;
+      padding-right: $mobile-small-padding;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &-value {
+      @include body-medium;
+      display: flex;
+      flex-direction: column;
+
+      &-duedate {
+        color: $pink;
+        font-weight: 700;
+      }
+    }
+
+    &-sub-value {
+      color: $navy !important;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      @include tablet {
+        display: inline;
+        margin-top: 0.6rem;
+        padding-left: 1.2rem;
+      }
+    }
+
+    &-description {
+      width: 100%;
+      padding-bottom: $mobile-small-padding;
+
+      a {
+        color: $darknavy;
+        width: fit-content;
+      }
+
+      @include tablet {
+        padding-bottom: 0;
+        width: 45%;
+        margin-right: 5%;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    right: $mobile-padding;
+
+    @include tablet {
+      justify-content: flex-end;
+      width: 5%;
+    }
+  }
+
+  &__status-buttons {
+    padding-right: $mobile-small-padding;
+  }
+}

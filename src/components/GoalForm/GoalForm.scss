@@ -1,0 +1,5 @@
+@use "../../styles/partials/component-mixins" as *;
+
+.goal-form {
+  @include from;
+}

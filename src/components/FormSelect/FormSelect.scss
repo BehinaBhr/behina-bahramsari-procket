@@ -1,0 +1,11 @@
+@use "../../styles/partials/component-mixins" as *;
+
+.form-select {
+  @include form-field;
+
+  &__input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+}
