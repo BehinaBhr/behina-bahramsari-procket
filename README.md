@@ -211,15 +211,13 @@ Procket is for anyone looking to enhance their productivity and better understan
 
 ### Endpoints
 
-<!-- List endpoints that your server will implement, including HTTP methods, parameters, and example responses. -->
-
 **Base URL**
 
 - http://localhost:5001/api
 
 **GET /goals**
 
-- Retrieve all goals sorted by ascending progress percentage, starting with lower progress goals followed by higher progress goals.
+- Retrieve all goals sorted in ascending order, first by their progress percentage, and then, in case of a tie, by their end date.
 - Response:
   - Status Code: 200 OK
   - Body:
@@ -615,8 +613,6 @@ Procket is for anyone looking to enhance their productivity and better understan
     ```
 
 ### Auth
-
-<!-- Does your project include any login or user profile functionality? If so, describe how authentication/authorization will be implemented. -->
 
 No, the project does not include any login or user profile functionality. Authentication and authorization features are not implemented in this version of the app.
 
