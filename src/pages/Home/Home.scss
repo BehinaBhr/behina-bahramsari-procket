@@ -2,7 +2,7 @@
 @use "../../styles/partials/typography-mixins" as *;
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/colors" as *;
-@use "../../styles/partials/component_mixins" as *;
+@use "../../styles/partials/component-mixins" as *;
 
 .home {
   gap: $mobile-padding;
@@ -75,13 +75,13 @@
 
     &-ongoing {
       .task-item {
-        background-color: #bfd0d3;
+        background-color: $skyblue;
       }
     }
 
     &-past {
       .task-item {
-        background-color: #f4bcb3;
+        background-color: $appricat;
       }
     }
   }

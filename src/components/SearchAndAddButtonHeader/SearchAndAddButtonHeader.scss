@@ -1,9 +1,7 @@
 @use "../../styles/partials/mixins" as *;
 @use "../../styles/partials/typography-mixins" as *;
 @use "../../styles/partials/variables" as *;
-@use "../../styles/partials/colors" as *;
 
-//button styling for search and add header
 .search_and_add_button_header {
   display: flex;
   flex-direction: column;

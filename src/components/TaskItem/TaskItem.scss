@@ -90,17 +90,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    // position: absolute;
     flex-direction: row;
-    // top: auto;
     right: $mobile-padding;
 
     @include tablet {
-      // position: inherit;
       justify-content: flex-end;
       width: 5%;
-      // top: 0;
-      // right: 0;
     }
   }
 

@@ -9,7 +9,6 @@ function GoalItem({ item, onDelete }) {
 
   return (
     <div className={`goal-item ${is_completed ? "goal-item--done" : ""}`}>
-      <hr className="goal-item__divider" />
       <section className="goal-item__body">
         <div className="goal-item__attr goal-item__attr-description">
           <h4 className="goal-item__attr-label">Goal</h4>
@@ -33,6 +32,7 @@ function GoalItem({ item, onDelete }) {
           <DeleteButton onClick={onDelete} />
         </div>
       </section>
+      <hr className="goal-item__divider" />
     </div>
   );
 }

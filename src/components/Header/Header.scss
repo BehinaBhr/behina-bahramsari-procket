@@ -1,19 +1,17 @@
-@import "../../styles/partials/mixins";
-@import "../../styles/partials/breakpoints";
-@import "../../styles/partials/variables";
-@import "../../styles/partials/colors";
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/breakpoints" as *;
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/colors" as *;
+@use "../../styles/partials/typography-mixins" as *;
 
 .header {
+  @include body-medium;
   width: 100%;
   background-color: $darknavy;
-  font-size: 13px;
-  line-height: 20px;
   padding: 1rem;
 
   @include tablet {
     padding: $tablet-padding;
-    font-size: 14px;
-    line-height: 22px;
   }
 
   &__center-wrapper {
@@ -89,7 +87,7 @@
       }
 
       &--active {
-        border-radius: 50px;
+        border-radius: $oval-border-radius;
         border: solid 2px $orange;
       }
     }

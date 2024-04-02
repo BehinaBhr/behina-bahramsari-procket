@@ -1,6 +1,6 @@
-@import "../../styles/partials/mixins";
-@import "../../styles/partials/variables";
-@import "../../styles/partials/colors";
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/typography-mixins" as *;
+@use "../../styles/partials/colors" as *;
 
 .footer {
   display: flex;
@@ -13,14 +13,7 @@
   }
 
   &__rights {
-    // color: $darknavy;
+    @include body-small;
     color:$lightblue;
-    font-size: 0.688rem;
-    line-height: 1rem;
-
-    @include tablet {
-      font-size: 0.75rem;
-      line-height: 1.125rem;
-    }
   }
 }
