@@ -1,4 +1,5 @@
 import "./Home.scss";
+import { DocumentTitle } from "../../utils/utils";
 import { useEffect, useState } from "react";
 import TaskItem from "../../components/TaskItem/TaskItem.js";
 import Table from "../../components/Table/Table.js";
@@ -9,6 +10,7 @@ import AddButton from "../../components/AddButton/AddButton";
 import DailyMood from "../../components/DailyMood/DailyMood";
 
 const Home = () => {
+  DocumentTitle("Procket");
   const [pastTasks, setPastTasks] = useState([]);
   const [onGoingTasks, setOngoingTasks] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
